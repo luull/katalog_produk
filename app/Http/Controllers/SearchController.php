@@ -29,7 +29,7 @@ class SearchController extends Controller
         $product = Product::with(['category', 'sub_category', 'sub_sub_category'])
             ->where('nama', 'LIKE', '%' . $search . '%')
             ->get();
-        return view("pages.search", compact('product', 'search', 'category'));
+        return view("pages.product", compact('product', 'search', 'category'));
     }
     public function defaultproduk(Request $req)
     {

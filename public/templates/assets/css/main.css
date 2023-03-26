@@ -1639,7 +1639,8 @@ input[disabled], select[disabled], textarea[disabled], input[readonly], select[r
   position: relative; }
 
 .search-form-control {
-  border-radius: .25rem; }
+  border-radius: .25rem;
+}
 
 /*  Table   */
 .table-bordered {

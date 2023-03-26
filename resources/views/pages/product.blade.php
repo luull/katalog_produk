@@ -39,7 +39,7 @@
                                         <section class="mb-0 mt-0 pb-0 pt-0">
                                             <div role="menu" data-toggle="collapse" data-target="#ac-{{ $c->id }}"
                                                 aria-expanded="true" aria-controls="withoutSpacingAccordionOne">
-                                                <span class="nunito bolder black mb-0"><a href="#"
+                                                <span class="nunito bolder black mb-0"><a href="#" id="c"
                                                         onclick="category({{ $c->id }})">{{ ucfirst($c->name) }}</a></span>
                                                 <i style="float: right !important;" class="black"
                                                     data-feather="chevron-down"></i>
@@ -59,7 +59,7 @@
                                             @endphp
 
 
-                                            <div class="card-body p-0 pl-3 m-0 ">
+                                            <div class="card-body p-0 pl-3 m-0 " >
                                                 <div id="iconsAccordion" class="accordion-icons">
                                                     <div class="card m-0 p-0 ">
                                                         <div class="card-header pt-0 mt-0 " id="{{ $sc->id }}">
@@ -69,7 +69,7 @@
                                                                     aria-expanded="true"
                                                                     aria-controls="iconAccordion{{ $sc->id }}">
 
-                                                                    <span><a href="#"
+                                                                    <span><a href="#" id="sc"
                                                                             onclick="sub_category({{ $sc->id }})">{{ ucfirst($sc->name) }}</a></span>
                                                                     @if (count($sc->sub_sub_category) > 0)
                                                                         <i style="float: right !important;" class="black"
@@ -89,7 +89,7 @@
                                                                     @php
                                                                         $xxx++;
                                                                     @endphp
-                                                                    <li><a href="#"
+                                                                    <li ><a href="#" id="ssc"
                                                                             onclick="sub_sub_category({{ $ssc->id }})">{{ ucfirst($ssc->name) }}</a>
                                                                     </li>
 
@@ -144,10 +144,44 @@
                 </div>
             </div>
             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12 col-12">
-                <div class="container-fluid">
-                    <h4 class="mt-3 font-weight-bold text-uppercase text-center" id="judul"></h4>
+                <div class="container-fluid" id="search">
                     <hr>
+                    <p class="mb-4">Menampilkan {{ count($product) }} produk untuk pencarian "<strong>{{ $search }}</strong>"</p>
+                    @if(count($product) >= 1)
+                        <div class="row mb-3">
+                            @foreach ($product as $item)
+                            <?PHP
+                            $firsturl = str_replace(" ", "%20", $item->name);
+                            $resulturl = str_replace("&", "n", $firsturl);
+                            ?>
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6 mb-3">
+                                 <a href="/detil-produk/{{$item->slug}}">
+                             
+                                <div class="card" style="width:100% !important;">
+                                    <img src="{{ asset($item->image) }}" class="card-img-top" alt="widget-card-2">
+                                    <div class="card-body product">
+                                        <h5 class="card-title mb-1">{{ $item->nama }}</h5>
+                                        <h5 class="mb-2"><b>Rp.<?PHP echo number_format($item->harga); ?></b></h5>
+                                        {{-- <p class="card-text">{!! Str::limit($item->keterangan_singkat, 50, '...') !!}</p> --}}
 
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <div class="text-center mt-5">
+                            <h3 class="nunito bolder">Oppss..Produk {{ $search }} tidak ditemukan</h3>
+                            <p>Silahkan gunakan kata kunci yang lainnya</p>
+                            <img src="{{ asset('templates/assets/img/search.png')}}" class="img-fluid mt-3" style="width: 400px;" alt="">
+                        </div>
+                    @endif
+                </div>
+                <div class="container-fluid">
+                    {{-- <h4 class="mt-3 font-weight-bold text-uppercase text-center" id="judul"></h4> --}}
+                    <hr>
+                    <p class="mb-4" id="judul"></p>
 
                     <div id="displayproduct">
                     </div>
@@ -161,8 +195,10 @@
 @section('script')
     <script>
         $(document).ready(function() {
-            category(1);
-
+            // category(1);
+            $('#bla').attr('style', 'display:none')  // option 2
+            $('#bla2').attr('style', 'display:none')
+            $('#bla3').attr('style', 'display:none')
         });
 
         function harga() {
@@ -176,6 +212,7 @@
                 success: function(hsl) {
                     var i;
                     if (hsl.record > 0) {
+                        $("#search").remove();
                         html = '<div class="row mb-3">';
                         for (i = 0; i < hsl.record; ++i) {
                             var	number_string = hsl.data[i].harga.toString(),
@@ -220,7 +257,9 @@
                 success: function(hsl) {
                     var i;
                     if (hsl.record > 0) {
-                
+                        $("#search").remove();
+                        $('#bla').attr('style', 'display:block')
+                        $('#bla2').attr('style', 'display:none')
                         html = '<div class="row mb-3">';
                         for (i = 0; i < hsl.record; ++i) {
                             var	number_string = hsl.data[i].harga.toString(),
@@ -245,9 +284,12 @@
                         }
                         html = html + '</div>';
                     } else {
-                        html =
-                            '<div class="alert alert-danger text-center">Daftar Produk dengan Kategori tersebut tidak ditemukan</div>';
+                        html = '<div class="text-center mt-5">'
+                            html = '<h3 class="nunito bolder">Oppss..Produk tidak ditemukan</h3>'
+                            html = '<p>Silahkan gunakan kategori yang lainnya</p>'
+                        html = '</div>'
                     }
+                    
                     $("#judul").html(hsl.title)
                     var element = document.getElementById("name");
                     element.classList.add("active");
@@ -255,8 +297,8 @@
                     $("#bla").addClass("active mb-2")
                     $("#bla2").removeClass("active")
                     $("#bla3").removeClass("active")
-                    $("#name2").html("");
-                    $("#name3").html("");
+                    $('#name2').html("") 
+                    $('#name3').html("")
                     $("#displayproduct").html(html);
 
                 }
@@ -272,6 +314,9 @@
                 success: function(hsl) {
                     var i;
                     if (hsl.record > 0) {
+                        $("#search").remove();
+                        $('#bla').attr('style', 'display:block')
+                        $('#bla2').attr('style', 'display:block')
                         html = '<div class="row mb-3">';
                         for (i = 0; i < hsl.record; ++i) {
                             var	number_string = hsl.data[i].harga.toString(),
@@ -296,15 +341,18 @@
                         }
                         html = html + '</div>';
                     } else {
-                        html =
-                            '<div class="alert alert-danger text-center">Daftar Produk dengan Sub Kategori tersebut tidak ditemukan</div>';
+                        html = '<div class="text-center mt-5">'
+                            html = '<h3 class="nunito bolder">Oppss..Produk tidak ditemukan</h3>'
+                            html = '<p>Silahkan gunakan kategori yang lainnya</p>'
+                        html = '</div>'
                     }
                     $("#judul").html(hsl.title)
                     $("#name").html(hsl.name)
                     $("#name2").html(hsl.name2)
                     $("#bla").removeClass("active")
+                    $("#bla3").removeClass("active")
                     $("#bla2").addClass("active mb-2")
-                    $("#name3").html("")
+                    $('#name3').html("")
                     $("#displayproduct").html(html);
 
                 }
@@ -320,7 +368,10 @@
                 success: function(hsl) {
                     var i;
                     if (hsl.record > 0) {
-                       
+                        $("#search").remove();
+                        $('#bla').attr('style', 'display:block')
+                        $('#bla2').attr('style', 'display:block')
+                        $('#bla3').attr('style', 'display:block')
                         html = '<div class="row mb-3">';
                         for (i = 0; i < hsl.record; ++i) {
                             var	number_string = hsl.data[i].harga.toString(),
@@ -345,8 +396,10 @@
                         }
                         html = html + '</div>';
                     } else {
-                        html =
-                            '<div class="alert alert-danger text-center">Daftar Produk dengan Sub Kategori tersebut tidak ditemukan</div>';
+                        html = '<div class="text-center mt-5">'
+                            html = '<h3 class="nunito bolder">Oppss..Produk tidak ditemukan</h3>'
+                            html = '<p>Silahkan gunakan kategori yang lainnya</p>'
+                        html = '</div>'
                     }
                     $("#judul").html(hsl.title)
                     $("#name").html(hsl.name)

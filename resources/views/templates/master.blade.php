@@ -9,6 +9,7 @@
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
     <link href="{{ asset('templates/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templates/assets/css/plugins.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('templates/assets/css/style.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templates/assets/css/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templates/assets/css/components/custom-carousel.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templates/assets/css/components/tabs-accordian/custom-tabs.css')}}" rel="stylesheet" type="text/css" />
@@ -16,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('templates/plugins/font-icons/fontawesome/css/fontawesome.css')}}"> --}}
     <link href="{{ asset('templates/assets/css/components/tabs-accordian/custom-accordions.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templates/assets/css/elements/breadcrumb.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('templates/assets/css/elements/search.css')}}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('templates/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css')}}">
     <link href="{{ asset('templates/assets/css/elements/infobox.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templates/assets/css/components/custom-modal.css')}}" rel="stylesheet" type="text/css" />

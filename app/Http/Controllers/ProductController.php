@@ -36,11 +36,11 @@ class ProductController extends Controller
             ->get();
         $count = $product->count();
         if ($count > 0) {
-            $judul = "Daftar Produk Kategori " . $product[0]->category->name;
+            $judul = "Menampilkan <b>".$count."</b> produk untuk sub kategori <b>". $product[0]->category->name."</b>";
         } else {
             $sub_cat = Category::where('id', $req->id)->first('name');
             if ($sub_cat) {
-                $judul = "Daftar Produk Kategori " . $sub_cat->name;
+                $judul = "Menampilkan <b>".$count."</b> produk untuk kategori <b>". $sub_cat->name."</b>";
             } else {
                 $judul = "Kategori Produk tidak ditemukan";
             }
@@ -55,11 +55,11 @@ class ProductController extends Controller
 
         $count = $product->count();
         if ($count > 0) {
-            $judul = "Daftar Produk Sub Kategori " . $product[0]->sub_category->name;
+            $judul = "Menampilkan <b>".$count."</b> produk untuk sub kategori <b>". $product[0]->sub_category->name."</b>";
         } else {
             $sub_cat = SubCategory::where('id', $req->id)->first('name');
             if ($sub_cat) {
-                $judul = "Daftar Produk Sub Kategori " . $sub_cat->name;
+                $judul = "Menampilkan <b>".$count."</b> produk untuk sub kategori <b>". $sub_cat->name."</b>";
             } else {
                 $judul = "Sub Kategori Produk tidak ditemukan";
             }
@@ -74,11 +74,11 @@ class ProductController extends Controller
             ->get();
         $count = $product->count();
         if ($count > 0) {
-            $judul = "Daftar Produk Sub Kategori " . $product[0]->sub_sub_category->name;
+            $judul = "Menampilkan <b>".$count."</b> produk untuk sub kategori <b>". $product[0]->sub_sub_category->name."</b>";
         } else {
             $sub_cat = SubSubCategory::where('id', $req->id)->first('name');
             if ($sub_cat) {
-                $judul = "Daftar Produk Sub Kategori " . $sub_cat->name;
+                $judul = "Menampilkan <b>".$count."</b> produk untuk sub kategori <b>". $sub_cat->name."</b>";
             } else {
                 $judul = "Sub Kategori Produk tidak ditemukan";
             }
