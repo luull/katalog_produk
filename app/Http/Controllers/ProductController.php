@@ -26,7 +26,7 @@ class ProductController extends Controller
             ->get();
 
         $count = $product->count();
-        $judul = "Daftar Produk Dengan Range Harga " . number_format($req->h1) . ' s/d ' . number_format($req->h2);
+        $judul = "Menampilkan Daftar Produk Dengan Range Harga <b>Rp.".number_format($req->h1). ' s/d Rp.' . number_format($req->h2)."</b>";
         return response()->json(['record' => $count, 'title' => $judul, 'data' => $product]);
     }
     public function category(Request $req)

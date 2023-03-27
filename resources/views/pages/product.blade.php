@@ -50,7 +50,7 @@
                                         $xx = 0;
                                     @endphp
                                     <div id="ac-{{ $c->id }}"
-                                        class="collapse {{ $x == 1 ? 'show' : '' }} pb-0 pt-0 mb-0 mt-0 "
+                                        class="collapse {{ $c->id == 1 ? 'show' : '' }} pb-0 pt-0 mb-0 mt-0 "
                                         aria-labelledby="headingOne2" data-parent="#withoutSpacing">
 
                                         @foreach ($c->sub_category as $sc)
@@ -148,24 +148,30 @@
                     <hr>
                     <p class="mb-4">Menampilkan {{ count($product) }} produk untuk pencarian "<strong>{{ $search }}</strong>"</p>
                     @if(count($product) >= 1)
-                        <div class="row mb-3">
+                        <div class="row row-no-padding mb-3">
                             @foreach ($product as $item)
                             <?PHP
                             $firsturl = str_replace(" ", "%20", $item->name);
                             $resulturl = str_replace("&", "n", $firsturl);
                             ?>
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6 mb-3">
-                                 <a href="/detil-produk/{{$item->slug}}">
-                             
-                                <div class="card" style="width:100% !important;">
-                                    <img src="{{ asset($item->image) }}" class="card-img-top" alt="widget-card-2">
-                                    <div class="card-body product">
-                                        <h5 class="card-title mb-1">{{ $item->nama }}</h5>
-                                        <h5 class="mb-2"><b>Rp.<?PHP echo number_format($item->harga); ?></b></h5>
-                                        {{-- <p class="card-text">{!! Str::limit($item->keterangan_singkat, 50, '...') !!}</p> --}}
-
+                                <a href="/detil-produk/{{ $item->slug }}">
+                                    <div class="card card-product">
+                                        <img src="{{ asset($item->image) }}" class="card-img-top" alt="widget-card-2">
+                                        <div class="card-body product">
+                                            <div class="height-title">
+                                                @if(\Str::length($item->nama) > 35)
+                                                    <h5 class="card-title-produk-resize mb-1">{{ $item->nama }}</h5>
+                                                @else
+                                                    <h5 class="card-title-produk mb-1">{{ $item->nama }}</h5>
+                                                @endif
+                                                
+                                            </div>
+                                            <h5 class="mb-2"><b>Rp.<?php echo number_format($item->harga);
+                                                    ?></b></h5>
+                                            {{-- <p class="card-text">{!! Str::limit($item->keterangan_singkat, 50, '...') !!}</p> --}}
+                                        </div>
                                     </div>
-                                </div>
                                 </a>
                             </div>
                             @endforeach
@@ -213,7 +219,7 @@
                     var i;
                     if (hsl.record > 0) {
                         $("#search").remove();
-                        html = '<div class="row mb-3">';
+                        html = '<div class="row row-no-padding2 mb-3">';
                         for (i = 0; i < hsl.record; ++i) {
                             var	number_string = hsl.data[i].harga.toString(),
                                 sisa 	= number_string.length % 3,
@@ -227,13 +233,18 @@
                             html = html +
                                 ' <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6 mb-3">';
                             html = html + '<a href="/detil-produk/' + hsl.data[i].slug + '">';
-                            html = html + '<div class="card" style="width:100% !important;">';
+                            html = html + '<div class="card card-product">';
                             html = html + '<img src="/' + hsl.data[i].image +
                                 '" class="card-img-top" alt="widget-card-2">';
                             html = html + '<div class="card-body product">';
-                            html = html + '<h5 class="card-title mb-1">' + hsl.data[i].nama + '</h5>';
-                            html = html + '<h5 class="mb-2"><b>Rp. ' + rupiah +
-                                '</b></h5>';
+                            html = html + '<div class="height-title">';
+                                if(hsl.data[i].nama.length > 35 ){
+                                    html = html + '<h5 class="card-title-produk-resize mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
+                                }else{
+                                    html = html + '<h5 class="card-title-produk mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
+                                }
+                            html = html + '</div>';
+                            html = html + '<h5 class="mb-2"><b>Rp. ' + rupiah + '</b></h5>';
                             html = html + '</div></div></a></div>';
                         }
                         html = html + '</div>';
@@ -260,7 +271,7 @@
                         $("#search").remove();
                         $('#bla').attr('style', 'display:block')
                         $('#bla2').attr('style', 'display:none')
-                        html = '<div class="row mb-3">';
+                        html = '<div class="row row-no-padding2 mb-3">';
                         for (i = 0; i < hsl.record; ++i) {
                             var	number_string = hsl.data[i].harga.toString(),
                                 sisa 	= number_string.length % 3,
@@ -274,11 +285,17 @@
                             html = html +
                                 ' <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6 mb-3">';
                             html = html + '<a href="/detil-produk/' + hsl.data[i].slug + '">';
-                            html = html + '<div class="card" style="width:100% !important;">';
+                            html = html + '<div class="card card-product">';
                             html = html + '<img src="/' + hsl.data[i].image +
                                 '" class="card-img-top" alt="widget-card-2">';
                             html = html + '<div class="card-body product">';
-                            html = html + '<h5 class="card-title mb-1">' + hsl.data[i].nama + '</h5>';
+                            html = html + '<div class="height-title">';
+                                if(hsl.data[i].nama.length > 35 ){
+                                    html = html + '<h5 class="card-title-produk-resize mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
+                                }else{
+                                    html = html + '<h5 class="card-title-produk mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
+                                }
+                            html = html + '</div>';
                             html = html + '<h5 class="mb-2"><b>Rp. ' + rupiah + '</b></h5>';
                             html = html + '</div></div></a></div>';
                         }
@@ -317,7 +334,7 @@
                         $("#search").remove();
                         $('#bla').attr('style', 'display:block')
                         $('#bla2').attr('style', 'display:block')
-                        html = '<div class="row mb-3">';
+                        html = '<div class="row row-no-padding2 mb-3">';
                         for (i = 0; i < hsl.record; ++i) {
                             var	number_string = hsl.data[i].harga.toString(),
                                 sisa 	= number_string.length % 3,
@@ -331,11 +348,17 @@
                             html = html +
                                 ' <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6 mb-3">';
                             html = html + '<a href="/detil-produk/' + hsl.data[i].slug + '">';
-                            html = html + '<div class="card" style="width:100% !important;">';
+                            html = html + '<div class="card card-product">';
                             html = html + '<img src="/' + hsl.data[i].image +
                                 '" class="card-img-top" alt="widget-card-2">';
                             html = html + '<div class="card-body product">';
-                            html = html + '<h5 class="card-title mb-1">' + hsl.data[i].nama + '</h5>';
+                            html = html + '<div class="height-title">';
+                                if(hsl.data[i].nama.length > 35 ){
+                                    html = html + '<h5 class="card-title-produk-resize mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
+                                }else{
+                                    html = html + '<h5 class="card-title-produk mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
+                                }
+                            html = html + '</div>';
                             html = html + '<h5 class="mb-2"><b>Rp. ' + rupiah + '</b></h5>';
                             html = html + '</div></div></a></div>';
                         }
@@ -372,7 +395,7 @@
                         $('#bla').attr('style', 'display:block')
                         $('#bla2').attr('style', 'display:block')
                         $('#bla3').attr('style', 'display:block')
-                        html = '<div class="row mb-3">';
+                        html = '<div class="row row-no-padding2 mb-3">';
                         for (i = 0; i < hsl.record; ++i) {
                             var	number_string = hsl.data[i].harga.toString(),
                                 sisa 	= number_string.length % 3,
@@ -386,12 +409,18 @@
                             html = html +
                                 ' <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6 mb-3">';
                             html = html + '<a href="/detil-produk/' + hsl.data[i].slug + '">';
-                            html = html + '<div class="card" style="width:100% !important;">';
+                            html = html + '<div class="card card-product">';
                             html = html + '<img src="/' + hsl.data[i].image +
                                 '" class="card-img-top" alt="widget-card-2">';
                             html = html + '<div class="card-body product">';
-                            html = html + '<h5 class="card-title mb-1">' + hsl.data[i].nama + '</h5>';
-                            html = html + '<h5 class="mb-2"><b>Rp.' + rupiah + '</b></h5>';
+                            html = html + '<div class="height-title">';
+                                if(hsl.data[i].nama.length > 35 ){
+                                    html = html + '<h5 class="card-title-produk-resize mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
+                                }else{
+                                    html = html + '<h5 class="card-title-produk mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
+                                }
+                            html = html + '</div>';
+                            html = html + '<h5 class="mb-2"><b>Rp. ' + rupiah + '</b></h5>';
                             html = html + '</div></div></a></div>';
                         }
                         html = html + '</div>';
