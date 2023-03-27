@@ -6,6 +6,7 @@ use App\Banner;
 use App\Cart;
 use App\City;
 use App\Company;
+use App\Category;
 use App\Product;
 use App\Province;
 use App\Subdistrict;
@@ -69,9 +70,12 @@ class HomeController extends Controller
                 ->where('product.show', true)
                 ->get();
             $banner = Banner::where('show', 1)->get();
+            $gets = Category::all();
+            $category = $gets->toArray();
 
+            // dd($category);
             $product = Product::where('show', true)->get();
-            return view("pages.home", compact('product', 'produk_display', 'banner'));
+            return view("pages.home", compact('product', 'produk_display', 'banner','category'));
         } catch (Exception $e) {
             echo '<div class="alert alert-danger text-center" style="text-align:center;color:red">Mohon maaf server ada sedikit masalah.. silahkan hubungi admin </div>';
         }

@@ -1,3 +1,45 @@
-.sub-active{
-    color:red;
+.card-slider{
+    margin-top: 20px;
+    width: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+    border-radius: 12px !important;
+    display: table;
+    padding-left:10px !important;
+    padding-right:10px !important;
+    padding-bottom:0px !important;
+    padding-top:0px !important;
 }
+.card-slider p {
+    text-transform: capitalize;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+}
+.card-product{
+    width:100% !important;
+    border: 0 !important;
+box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.card-product img{
+    width:100% !important;
+    border: 0 !important;
+box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.card-title-produk{
+    font-family: 'Nunito Sans', sans-serif !important;
+    font-size:14px !important;
+}
+.card-title-produk-resize{
+    font-family: 'Nunito Sans', sans-serif !important;
+    font-size:12px !important;
+}
+.height-title{
+    height: 40px;
+}
+.row-no-padding > [class*="col-"] {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+}
+  
