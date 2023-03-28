@@ -1,6 +1,14 @@
 @extends('templates.master')
 @section('content')
+<style>
+    input[type="radio"]:checked{
+    visibility:hidden;
+}
+input[type="radio"]{
+    visibility:hidden;
+}
 
+</style>
     <div class="container-fluid mt-5">
         @if (session('message'))
             <div class="row ">
@@ -29,7 +37,7 @@
                 <p class="text-muted size-12">{{ $getaddress->address }}, {{ $getaddress->city_name }},
                     {{ $getaddress->subdistrict_name }}, {{ $getaddress->province }}, {{ $getaddress->kd_pos }}</p>
                 <hr>
-                <button class="btn btn-dark" data-toggle="modal" data-target="#editAddress">Ubah alamat</button>
+                <button class="btn btn-default" data-toggle="modal" data-target="#editAddress">Ubah alamat</button>
                 <div class="row">
                     <div class="col-md-8">
                         <div class="form-group ">
@@ -49,15 +57,55 @@
                         <div class="form-group ">
                             <label>Pilih Ekspedisi<span>*</span>
                             </label>
-                            <select name="kurir" id="kurir" class="form-control">
-                                <option value="">Pilih kurir</option>
-                                <option value="jne">JNE</option>
-                                <option value="tiki">TIKI</option>
-                                <option value="pos">POS INDONESIA</option>
-                                <option value="ninja">NINJA XPRESS</option>
-                                <option value="sicepat">SICEPAT</option>
-                                <option value="anteraja">ANTER AJA</option>
-                            </select>
+                            <div class="paymentCont">
+                             
+                                <div class="paymentWrap">
+                                    <div class="btn-group paymentBtnGroup btn-group-justified" data-toggle="buttons">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <label class="btn paymentMethod">
+                                                    <div class="method jne"></div>
+                                                    <input type="radio" value="jne" name="kurir" id="kurir"> 
+                                                </label>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label class="btn paymentMethod">
+                                                    <div class="method sicepat"></div>
+                                                    <input type="radio" value="sicepat" name="kurir" id="kurir"> 
+                                                </label>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label class="btn paymentMethod">
+                                                    <div class="method anteraja"></div>
+                                                    <input type="radio" value="anteraja" name="kurir" id="kurir"> 
+                                                </label>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label class="btn paymentMethod">
+                                                    <div class="method ninja"></div>
+                                                    <input type="radio" value="ninja" name="kurir" id="kurir"> 
+                                                </label>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label class="btn paymentMethod">
+                                                    <div class="method tiki"></div>
+                                                    <input type="radio" value="tiki" name="kurir" id="kurir"> 
+                                                </label>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label class="btn paymentMethod">
+                                                    <div class="method pos"></div>
+                                                    <input type="radio" value="pos" name="kurir" id="kurir"> 
+                                                </label>
+                                            </div>
+                                          
+                                        </div>
+                                     
+                                    </div>        
+                                </div>
+                               
+                            </div>
+                          
                         </div>
                         <div class="form-group">
                             <label>Pilih Layanan<span>*</span>
@@ -175,8 +223,8 @@
                             </select>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Discard</button>
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button class="btn" data-dismiss="modal"><i class="flaticon-cancel-12"></i> Batal</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </form>
                 </div>
@@ -223,12 +271,13 @@
     <script>
         $(document).ready(function() {
             $("#bank").hide();
-            $('select[name="kurir"]').on('change', function() {
+            $("input[type='radio']").click(function(){
+                var courier = $("input[name='kurir']:checked").val();
                 let origin = $("input[name=city_origin]").val();
                 let destination = $("input[name=get_kota]").val();
-                let courier = $("select[name=kurir]").val();
                 let weight = $("input[name=weight]").val();
                 var destinationType = $("#destinationType").val();
+                console.log('bla',courier);
                 $("#courier").val(courier);
                 if (courier) {
                     $.ajax({
@@ -238,41 +287,46 @@
                         type: 'GET',
                         dataType: 'json',
                         success: function(data) {
-                            $('select[name="layanan"]').empty();
-                            $('select[name="layanan"]').append(
-                                '<option selected>Pilih Layanan</option>');
-                            $.each(data, function(key, value) {
-                                $.each(value.costs, function(key1, value1) {
-                                    $.each(value1.cost, function(key2, value2) {
-                                        var number_string = value2.value
-                                            .toString(),
-                                            sisa = number_string
-                                            .length % 3,
-                                            hasil = number_string
-                                            .substr(0, sisa),
-                                            ribuan = number_string
-                                            .substr(sisa).match(
-                                                /\d{3}/g);
-
-                                        if (ribuan) {
-                                            separator = sisa ? '.' : '';
-                                            hasil += separator + ribuan
-                                                .join('.');
-                                        }
-                                        $('select[name="layanan"]')
-                                            .append('<option value="' +
-                                                key +
-                                                '" harga_ongkir="' +
-                                                value2.value +
-                                                '" etd="' + value2.etd +
-                                                '">' + value1.service +
-                                                '-' + hasil +
-                                                ' Estimasi ' + value2
-                                                .etd + ' Hari</option>'
-                                            );
+                            if(data){
+                                
+                                $('select[name="layanan"]').empty();
+                                $('select[name="layanan"]').append(
+                                    '<option selected>Pilih Layanan</option>');
+                                $.each(data, function(key, value) {
+                                    $.each(value.costs, function(key1, value1) {
+                                        $.each(value1.cost, function(key2, value2) {
+                                            var number_string = value2.value
+                                                .toString(),
+                                                sisa = number_string
+                                                .length % 3,
+                                                hasil = number_string
+                                                .substr(0, sisa),
+                                                ribuan = number_string
+                                                .substr(sisa).match(
+                                                    /\d{3}/g);
+    
+                                            if (ribuan) {
+                                                separator = sisa ? '.' : '';
+                                                hasil += separator + ribuan
+                                                    .join('.');
+                                            }
+                                            $('select[name="layanan"]')
+                                                .append('<option value="' +
+                                                    key +
+                                                    '" harga_ongkir="' +
+                                                    value2.value +
+                                                    '" etd="' + value2.etd +
+                                                    '">' + value1.service +
+                                                    '-' + hasil +
+                                                    ' Estimasi ' + value2
+                                                    .etd + ' Hari</option>'
+                                                );
+                                        });
                                     });
                                 });
-                            });
+                            }else{
+                                $('#layanan').remove() 
+                            }
                         }
                     });
                 } else {

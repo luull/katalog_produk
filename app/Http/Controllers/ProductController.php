@@ -87,7 +87,10 @@ class ProductController extends Controller
     }
     public function detilproduk(Request $req)
     {
-        $product = Product::where('slug', $req->slug)->first();
+        // $product = Product::where('slug', $req->slug)->first();
+        $product = Product::with('category', 'sub_category', 'sub_sub_category')
+        ->where('slug', $req->slug)
+        ->first();
         $reff = $req->reff;
         if ($reff) {
             $cookie_name = env('STORE_NAME');
@@ -100,6 +103,7 @@ class ProductController extends Controller
 
     public function produk(Request $req)
     {
+        
         $produk = Product::where('id', $req->id)->first();
         return view("pages.detilProduk", compact('produk'));
     }

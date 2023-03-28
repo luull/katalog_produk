@@ -213,6 +213,70 @@
     height: 35px;
     text-align:center !important;
 }
+.paymentWrap {
+
+}
+
+.paymentWrap .paymentBtnGroup {
+	max-width: 800px;
+	margin: auto;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod {
+	padding: 35px;
+	box-shadow: none;
+	position: relative;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod.active {
+	outline: none !important;
+    border: 2px solid #065706;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod.active .method {
+	/* border-color: #7b7b7b; */
+    /* border: 2px solid #065706; */
+	/* box-shadow: 0px 3px 22px 0px #7b7b7b; */
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method {
+	position: absolute;
+	right: 3px;
+	top: 3px;
+	bottom: 3px;
+	left: 3px;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	border: 2px solid transparent;
+	transition: all 0.5s;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method.jne {
+    background-image: url('../../../images/expedisi/jne.png');
+}
+.paymentWrap .paymentBtnGroup .paymentMethod .method.tiki {
+    background-image: url('../../../images/expedisi/tiki.png');
+}
+.paymentWrap .paymentBtnGroup .paymentMethod .method.pos {
+    background-image: url('../../../images/expedisi/pos.png');
+}
+.paymentWrap .paymentBtnGroup .paymentMethod .method.anteraja {
+    background-image: url('../../../images/expedisi/anteraja.png');
+}
+.paymentWrap .paymentBtnGroup .paymentMethod .method.sicepat {
+    background-image: url('../../../images/expedisi/sicepat.png');
+}
+.paymentWrap .paymentBtnGroup .paymentMethod .method.ninja {
+    background-image: url('../../../images/expedisi/ninja.png');
+}
+
+
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method:hover {
+	/* border-color: #929292; */
+	outline: none !important;
+}
 @media only screen and (max-width: 800px) {
     .form-search {
         width:100% !important;
