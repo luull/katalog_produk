@@ -1,106 +1,154 @@
 @extends('templates.master')
 @section('content')
 
-<div class="container-fluid mt-5">
-    <div class="row justify-content-center">
-        <div clas="col-12">
-     <h4 class="nunito bolder mb-4 text-center">No Transaksi {{$no_transaksi}}</h4>
-                            
-    </div>
-</div>
-            <div class="row ">
-                    
+<div class="mt-5">
+            <div class="row">
+                       
+                <div class="col-lg-8 col-md-6 col-sm-6 col-12 list-receipt">
+                            @php 
+                                $status_invoice = \App\Transaction::where('id_transaction',  $no_transaksi)
+                                ->first('status');
+                                @endphp 
+                                @if ($status_invoice->status==0)
+                                <div class="row mt-3 justify-content-center">
+                                    <div class="col-md-12 text-center">
+                                        <h4 class="nunito" style="text-transform: uppercase">Silahkan lakukan pembayaran <br> ke No Rek berikut </h4>
+                                        {{-- <img src="{{ asset('images/payment.svg') }}" class="img-fluid mt-5" alt=""> --}}
+                                        <hr>
+                                    </div>
+                                    <div class="col"></div>
+                                    <div class="col-12 demo-content mb-5">
 
-                        <div class="col-md-6">
-                           
-                            <h4 class="nunito bolder mb-4">Daftar Barang</h4>
-                                @php 
-                                $countbuy=0;
-                                  @endphp
-                                @foreach ( $data as $d )
+                                      <div class="text-center">
+                                          
+                                          @foreach ($bank as $b)
+                                        <input type="hidden" value="{{$b->no_akun}}" id="myInput">
+                                        <h3 class="mb-0 bolder">{{$b->nama_bank}}</h3>
+                                        <h3 class="mb-0 bolder ml-5">{{$b->no_akun}}   <button class="btn-copy" onclick="myFunction()"><i class="fa fa-copy"></i></button></h3>
+                                        <p class="size-18 nunito">{{$b->nama_akun}}</p>
+                                        <hr>
+                                        <p class="size-18 nunito mt-5">TOTAL</p>
+                                        <h1 class="bolder nunito" style="color:#158422">
+                                            Rp. {{number_format($trans->total_bayar)}}
+                                          
+                                        </h1>
+                                    @endforeach
+                                      </div>
+                                    </div>
+                                    <div class="col"></div>
+                                   
+                                            {{-- <table border=0 cellpadding=5 cellspacing=1> 
+                                    
+                                                <tr><td>Nama Bank</td><td> : </td><td> {{$b->nama_bank}}</td></tr>
+                                                <tr><td>No Rekening</td><td> : </td><td> {{$b->no_akun}}</td></tr>
+                                                <tr><td>Pemilik Rekening</td><td> : </td><td> {{$b->nama_akun}}</td></tr>
+                                                <tr><td>Nominal Yang ditransfer</td><td> : </td><td class="text-danger"> </td></tr>
+                                            </table> --}}
+                                       
+                                    </div>
+                               
+                                </div>
+                                @endif
+                
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-12 receipt mt-2">
+                            <div class="container">
+                     
+                                <div class="receipt_box">
+                                    <div class="head">
+                                        <div class="logo">
+                                          <img src="{{ asset('images/logo.png')}}" style="width:100px" alt="">
+                                        </div>
+                                        <div class="number">
+                                            <div class="date">{{ date('d-m-Y') }}</div>
+                                            <div class="ref">{{$no_transaksi}}</div>
+                                        </div>
+                                   
+                                    </div>
+                                    @php 
+                                    $countbuy=0;
+                                    @endphp
+                                    @foreach ( $data as $d )
                                     @php 
                                     $countbuy++;
                                     @endphp
-                                @if ($d->id_user == session('user-session')->id)
-                                <div class="card card-cart mb-3 ">
-                                   
-                                    <div class="card-body">
-                                        <div class="row pl-3">
-                                        <div class="col-md-2 col-sm-3 col-xs-3 col-3 align-self-start">
-                                            <img alt="avatar" src="{{ asset($d->image)}}" class="img-fluid">
+                                    @endforeach
+                                    <div class="body mb-0">
+                                        <div class="info">
+                                            <div class="welcome mb-0">Hi, <span class="username">{{ session('user-session')->name }}</span></div>
+                                            <p>Kamu membeli Total <b>({{$countbuy}})</b> barang</p>
                                         </div>
-                                        <div class="col-md-10 col-sm-9 col-xs-9 col-9 align-self-center">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <input type="hidden" id="berat" value="{{$d->berat}}">
-                                                    <h4 class="size-16">{{$d->nama}}</h4>
-                                                    <h5 class="semi-bolder size-14 mb-0">Rp.{{ number_format($d->harga) }} | Jumlah ({{$d->qty}})</h5>
+                                        <div class="cart">
+                                            <div class="title mb-0">Rincian</div>
+                                            <div class="content">       
+                                                <ul class="cart_list">
+                                                    @php 
+                                                    $countbuy=0;
+                                                      @endphp
+                                                    @foreach ( $data as $d )
+                                                        @php 
+                                                        $countbuy++;
+                                                        @endphp
+                                                    @if ($d->id_user == session('user-session')->id)
+                                                    <li class="cart_item">
+                                                        <span class="name">{{$d->nama}}</span>
+                                                        <span class="index">({{ $d->qty }})</span>
+                                                        <span class="price">Rp.{{ number_format($d->harga) }}</span>
+                                                    </li>
+                                                    @endif
+                                                    @endforeach
+                                                </ul>
+                                                <div class="total">
+                                                    <span class="size-12 nunito">Sub Total ({{$countbuy}} Barang)</span>
+                                                    <span class="total_price">Rp. {{ number_format($trans->sub_total) }}</span>
+                                                    <br>
+                                                    <span class="size-12 nunito">Ongkos Kirim ({{number_format(($trans->total_berat/1000),2)}} Kg)</span>
+                                                    <span class="total_price">Rp. {{ number_format($trans->total_ongkir) }}</span>
+                                                    <br>
+                                                    <span class="size-12 nunito">Diskon</span>
+                                                    <span class="total_price">Rp. 0</span>
+                                                    <br>
+                                                    <span class="size-12 nunito">Kode unik</span>
+                                                    <span class="total_price">Rp. {{ number_format($trans->unix_code) }}</span>
+                                                    <br>
+                                                    <span class="size-16">Total</span>
+                                                    <span class="total_prices size-16">Rp. {{ number_format($trans->total_bayar) }}</span>
                                                 </div>
+                                            
                                             </div>
-
-                                        </div>
-                                        <div class="col-md-12 col-sm-12 col-xs-12 col-12 align-self-center">
-                                            <hr>
-                                           
                                         </div>
                                     </div>
+                                    <div class="box mb-3">
+                                        <p class="nunito">BELUM DIBAYAR</p>
+                                    </div>
+                                    <div class="foot">
+                                        
+                                        <img src="https://i.ibb.co/c8CQvBq/barcode.png" alt="barcode" class="barcode" />
+                                    </div>
                                 </div>
-                            </div>
 
-                            @endif
-                            @endforeach
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card card-cart2">
-                                <div class="card-body">
-                                    <h4 class="nunito bolder">Ringkasan Belanja</h4>
-                                    <p class="size-16">Total Harga ({{$countbuy}} Barang)
-                                        <span style="float: right;">Rp. {{ number_format($trans->sub_total) }}</span>
-                                    </p>
-                                    <p class="size-16">Ongkos Kirim ({{number_format(($trans->total_berat/1000),2)}} Kg)
-                                        <span style="float: right;">Rp. {{ number_format($trans->total_ongkir) }}</span>
-                                    </p>
-                                    <p class="size-16">Total Diskon Barang
-                                        <span style="float: right;">Rp. 0</span>
-                                    </p>
-                                    <hr>
-                                    <h4 class="nunito bolder">Total Belanja  <span style="float: right;">Rp. {{ number_format($trans->total) }}</span></h4>
-                                     <hr>
-                                    <h4 class="nunito bolder">Kode Unik  <span style="float: right;">Rp. {{ number_format($trans->unix_code) }}</span></h4>
-                                    <hr>
-                                    <h4 class="nunito bolder">Total Yang harus ditransfer  <span  class="text-danger" style="float: right;">Rp. {{ number_format($trans->total_bayar) }}</span></h4>
-
-                                </div>
                             </div>
                         </div>
-
             </div>
-            @php 
-            $status_invoice = \App\Transaction::where('id_transaction',  $no_transaksi)
-            ->first('status');
-               @endphp 
-            @if ($status_invoice->status==0)
-            <div class="row mt-3 justify-content-center">
-             <div class="col-md-6">
-                 <div class="card card-cart2">
-                <div class="card-body">
-                
-                <h4 class="nunito bolder">Silahkan lakukan pembayaran ke No Rek berikut : 
-                <table border=0 cellpadding=5 cellspacing=1> 
-                @foreach ($bank as $b)
-                    <tr><td>Nama Bank</td><td> : </td><td> {{$b->nama_bank}}</td></tr>
-                    <tr><td>No Rekening</td><td> : </td><td> {{$b->no_akun}}</td></tr>
-                     <tr><td>Pemilik Rekening</td><td> : </td><td> {{$b->nama_akun}}</td></tr>
-                @endforeach
-                     <tr><td>Nominal Yang ditransfer</td><td> : </td><td class="text-danger"> {{number_format($trans->total_bayar)}}</td></tr>
-                </table>
-            </h4>
-                </div>
-            </div>
-            </div>
-        </div>
-        @endif
+           
 </div>
 
 @endsection
 
+@section('script')
+<script>
+    function myFunction() {
+      // Get the text field
+      var copyText = document.getElementById("myInput");
+    
+      // Select the text field
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); // For mobile devices
+    
+      // Copy the text inside the text field
+      navigator.clipboard.writeText(copyText.value);
+      
+      // Alert the copied text
+      alert("Copied the text: " + copyText.value);
+    }
+    </script>
+@stop
