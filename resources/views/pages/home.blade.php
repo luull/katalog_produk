@@ -35,7 +35,7 @@
                     </a>
                 </div>
             </div>
-            <div class="container-fluid">
+            <div class="container-fluid" id="category-list">
                 <div class="row" >
                     <div class="col-sm-12">
                         <div id="inam" class="carousel slide" data-interval="false">
@@ -99,9 +99,9 @@
                 <div class="m-3 p-3 w-100 alert alert-{{ session('alert') }} text-center">{{ session('message') }}</div>
             @endif
             <div id="custom_carousel" class="col-lg-12">
-                <div class="container-fluid">
+           
                     <hr>
-                    <h2 class="nunito bolder mb-3">Produk Pilihan </h1>
+                    <h2 class="nunito bolder mb-3 title">Produk Pilihan </h1>
                         <div class="row row-no-padding mb-3">
                             @foreach ($produk_display as $item)
                             <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 col-xs-6 col-6 mb-3">
@@ -126,13 +126,12 @@
                             </div>
                             @endforeach
                         </div>
-                </div>
+                
             </div>
 
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
-                <div class="container-fluid">
                     <hr>
-                    <h2 class="nunito bolder mb-3">Produk</h1>
+                    <h2 class="nunito bolder mb-3 title">Produk</h1>
                     <div class="row row-no-padding mb-3">
                         @foreach ($product as $item)
                             <?php
@@ -165,7 +164,6 @@
                 </div>
             </div>
 
-        </div>
     </div>
 
 @endsection

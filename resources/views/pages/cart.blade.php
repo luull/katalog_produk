@@ -6,19 +6,20 @@
             <div class="col-md-12">
                 <div class="breadcrumb-five">
                     <ul class="breadcrumb">
-                        <li class="active mb-2"><a href="/">Beranda</a>
+                        <li class="mb-2"><a href="/">Beranda</a>
                         </li>
-                        <li class="mb-2"><a href="javscript:void(0);">Keranjang</a></li>
+                        <li class="active mb-2"><a href="javscript:void(0);">Keranjang</a></li>
 
                     </ul>
                 </div>
             </div>
 
             @if (count($data) > 0)
-                <h4 class="nunito bolder text-center  m-3">KERANJANG BELANJA</h4>
+            <div class="container">
                 <div class="row">
-
-                    <div class="col-lg-7 col-md-7 mt-1">
+                    
+                    <div class="col-lg-8 col-md-8 mt-1">
+                        <h4 class="nunito bolder m-3">Keranjang</h4>
                         @if (session('message'))
                             <div class="alert alert-{{ session('alert') }} alert-dismissible fade show">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
@@ -60,10 +61,10 @@
                                             </label> --}}
                                                 @endif
                                             </div>
-                                            <div class="col-md-1 col-sm-3 col-xs-3 col-3 align-self-start">
-                                                <img alt="avatar" src="{{ asset($d->product->image) }}" class="img-fluid">
+                                            <div class="col-md-1 col-sm-3 col-xs-3 col-4 align-self-start">
+                                                <img alt="avatar" src="{{ asset($d->product->image) }}" class="img-fluid ml-3 mb-3">
                                             </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 col-8 align-self-center">
+                                            <div class="col-md-8 col-sm-8 col-xs-8 col-12 align-self-start mb-5">
                                                 <input type="hidden" id="berat" value="{{ $d->berat }}">
                                                 <h4 class="size-16">{{ $d->product->nama }}</h4>
                                                 <h5 class="semi-bolder size-14 mb-0">
@@ -73,7 +74,7 @@
 
 
                                             </div>
-                                            <div class="col-md-2 float-right col-sm-12 col-xs-12 col-12 align-self-center">
+                                            <div class="col-md-2 float-right col-sm-12 col-xs-12 col-12 align-self-center mb-0">
                                                 <a href="/deletecart/{{ $d->id }}" title="Hapus barang"> <i
                                                         data-feather="trash"></i></a>
                                                 <a href="#" class="ml-2" onclick="javascript:edit({{ $d->id }})"
@@ -88,7 +89,7 @@
                         @endforeach
 
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <form id="myForm" action="{{ route('add-dummy') }}" method="post">
                             @csrf
                             <input type="hidden" id="getID" name="id_barang">
@@ -97,26 +98,38 @@
                         <div class="card card-cart2">
                             <div class="card-body">
                                 <h4 class="nunito bolder">Ringkasan Belanja</h4>
-                                <p class="size-16">Total Harga ({{ $countbuy }} Barang)
+                                <p class="nunito size-16">Total Harga ({{ $countbuy }} Barang)
                                     <span style="float: right;">Rp. {{ number_format($sum) }}</span>
                                 </p>
-                                <p class="size-16">Total Diskon Barang
+                                <p class="nunito size-16">Total Diskon Barang
                                     <span style="float: right;">Rp. {{ number_format($diskon) }}</span>
                                 </p>
                                 <hr>
                                 <h4 class="nunito bolder">Total Harga <span style="float: right;">Rp.
                                         {{ number_format($sum) }}</span></h4>
-                                <div class="row float-right">
-                                    <a href="/display-product" class="mr-3 btn btn-info">Belanja Lagi</a> <a
-                                        href="/checkout"
-                                        class="btn btn-success {{ $sum == '0' ? 'btn-default disabled' : 'btn-success' }}">Proses
-                                        Beli</a>
+                               
+                            </div>
+                            <div class="card-footer">
+                                <div class="row justify-content-between">
+                                    <div class="col-md-6 mb-2">
+
+                                        <a href="/" class="btn btn-default btn-block mb-0">Belanja Lagi</a> 
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+
+                                        <a
+                                            href="/checkout"
+                                            class="btn btn-success btn-block mb-0 {{ $sum == '0' ? 'btn-default disabled' : 'btn-success' }}">
+                                            Beli</a>
+                                    </div>
 
                                 </div>
+                              
                             </div>
                         </div>
                     </div>
                 </div>
+              </div>
             @else
 
                 <div class="row w-100 justify-content-center">
@@ -139,7 +152,7 @@
                 </div>
                 <form action="{{ route('update-qty') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="modal-body">
+                    <div class="modal-body custom-qty">
                         <input type="hidden" name="id" id="edit_id">
                         <input type="text" name="qty" id="edit_qty">
                     </div>

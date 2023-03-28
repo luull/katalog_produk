@@ -12,7 +12,7 @@
                     <ul class="breadcrumb">
                         <li class="mb-2"><a href="/">Beranda</a>
                         </li>
-                        <li class="mb-2"><a href="javscript:void(0);">Produk</a></li>
+                        <li class="mb-2"><a href onclick="history.back();">Produk</a></li>
                         <li id="bla"><a href="javscript:void(0);" id="name"></a></li>
                         <li id="bla2"><a href="javscript:void(0);" id="name2"></a></li>
                         <li id="bla3"><a href="javscript:void(0);" id="name3"></a></li>

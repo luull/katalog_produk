@@ -75,6 +75,8 @@ class HomeController extends Controller
 
             // dd($category);
             $product = Product::where('show', true)->get();
+            session(['data-product' => $product]);
+            // dd(session('product'));
             return view("pages.home", compact('product', 'produk_display', 'banner','category'));
         } catch (Exception $e) {
             echo '<div class="alert alert-danger text-center" style="text-align:center;color:red">Mohon maaf server ada sedikit masalah.. silahkan hubungi admin </div>';

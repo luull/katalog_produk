@@ -8,10 +8,10 @@
             <div class="col-md-12">
                 <div class="breadcrumb-five">
                     <ul class="breadcrumb">
-                        <li class="active mb-2"><a href="/">Beranda</a>
+                        <li class="mb-2"><a href="/">Beranda</a>
                         </li>
-                        <li class="mb-2"><a href="/display-product">Produk</a></li>
-                        <li class="mb-2"><a href="javscript:void(0);">{{ $product->nama }}</a></li>
+                        <li class="mb-2"><a href onclick="history.back();">Produk</a></li>
+                        <li class="active mb-2"><a href="javscript:void(0);">{{ $product->nama }}</a></li>
 
                     </ul>
                 </div>
@@ -73,16 +73,17 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="nunito bolder mb-3">Atur Jumlah dan catatan</h4>
+                        <hr>
                         <form action="{{ route('add-cart') }}" method="POST">
-                            <div class="mb-3">
+                            <div class="mb-3 custom-qty">
                                 @csrf
+                       
                                 <input type="hidden" name="id_barang" value="{{ $product->id }}">
-                                <input type="text" id="demo6" value="1"
-                                    style="width: 20% !important;text-align:center !important;" name="qty">
+                                <div class="container">
+                                    <input type="text" id="demo6" value="1" class="form-control" name="qty">
+                                </div>
                             </div>
-
-                            <hr>
-                            <div class="row mt-4">
+                            <div class="row justify-content-center mt-4">
                                 {{-- <form id="myForm" action="{{ route('add-dummy')}}" method="post">
                                             @csrf
                                             <input type="hidden" value="{{$product->name}}" name="id_barang">
@@ -91,17 +92,19 @@
                                                 <button class="btn btn-outline-success btn-block">Beli</button>
                                             </div>
                                         </form> --}}
+                              <div class="text-center">
                                 @if (session('isCustomerLogin'))
-                                    <div class="col-md-12 mb-2">
-                                        <button type="submit" class="btn btn-sm btn-success btn-block"> <i
-                                                data-feather="plus"></i> Keranjang</button>
-                                    </div>
-                                @else
-                                    <div class="col-md-12 mb-2">
-                                        <a href="/login" class="btn btn-sm btn-success btn-block"> <i
-                                                data-feather="plus"></i> Keranjang</a>
-                                    </div>
-                                @endif
+                                <div class="col-md-12 mb-2">
+                                    <button type="submit" class="btn btn-sm btn-outline-success"> <i
+                                            data-feather="plus"></i> Keranjang</button>
+                                </div>
+                            @else
+                                <div class="col-md-12 mb-2">
+                                    <a href="/login" class="btn btn-sm btn-success btn-block"> <i
+                                            data-feather="plus"></i> Keranjang</a>
+                                </div>
+                            @endif
+                              </div>
                         </form>
                     </div>
                 </div>
@@ -113,5 +116,5 @@
 
 @endsection
 @section('script')
-
+<script></script>
 @endsection
