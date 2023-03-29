@@ -46,7 +46,7 @@
                         </div>
                     </a>
                 </li>
-                <li
+                {{-- <li
                     class="list-group-item list-group-item-action {{ Request::is('display-product') ? 'active' : '' }}">
 
                     <a href="/display-product">
@@ -60,7 +60,7 @@
                             </div>
                         </div>
                     </a>
-                </li>
+                </li> --}}
                 <li class="list-group-item list-group-item-action {{ Request::is('cart') ? 'active' : '' }}">
 
                     <a href="/cart">

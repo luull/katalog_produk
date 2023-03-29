@@ -21,6 +21,7 @@
                     <div class="col-lg-8 col-md-8 mt-1">
                         <h4 class="nunito bolder m-3">Keranjang</h4>
                         @if (session('message'))
+                        
                             <div class="alert alert-{{ session('alert') }} alert-dismissible fade show">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                                         aria-hidden="true">&times;</span>
@@ -132,9 +133,20 @@
               </div>
             @else
 
-                <div class="row w-100 justify-content-center">
-                    <div class="alert alert-success text-center p-3 m-3">Keranjang Masih Kosong</div>
+              <div class="container">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <img src="{{ asset('images/empty.svg') }}" class="img-center" style="height: 350px" alt="">
+                            <h2 class="nunito bolder">Keranjang Masih Kosong</h2>
+                     
+                            <a href="/" class="btn btn-outline-success mb-5">Belanja sekarang</a>
+                        </div>
+                    </div>
+                    <div class="col"></div>
                 </div>
+              </div>
             @endif
 
 

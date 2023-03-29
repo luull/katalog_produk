@@ -7,7 +7,7 @@ use App\Product;
 use App\SubCategory;
 use App\SubSubCategory;
 use Illuminate\Http\Request;
-
+Use Alert;
 class ProductController extends Controller
 {
     public function index()

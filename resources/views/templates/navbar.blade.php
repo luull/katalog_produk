@@ -97,11 +97,11 @@
                                 <i data-feather="user"></i><span>Profil</span>
                             </a>
                         </div>
-                        <div class="dropdown-item">
+                        {{-- <div class="dropdown-item">
                             <a href="/display-product">
                                 <i class="fa fa-cubes"></i> <span>Product</span>
                             </a>
-                        </div>
+                        </div> --}}
                         <div class="dropdown-item">
                             <a href="/myorder">
                                 <i data-feather="truck"></i><span>Pesanan Saya</span>

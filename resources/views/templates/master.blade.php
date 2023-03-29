@@ -33,6 +33,7 @@
 <body class="sidebar-noneoverflow" data-spy="scroll" data-target="#navSection" data-offset="100">
     @include("templates.navbar")
     <div class="containerr">
+        @include('sweetalert::alert')
         @yield('content')
     </div>
     @include("templates.footer")

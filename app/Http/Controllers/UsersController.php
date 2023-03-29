@@ -11,7 +11,7 @@ use App\Subdistrict;
 use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\DB;
-
+Use Alert;
 class UsersController extends Controller
 {
     public function index()
@@ -66,13 +66,15 @@ class UsersController extends Controller
                 'photo' => $photo,
             ]);
             if ($hsl) {
-                session(['user-session' => $usr]);
-                return redirect()->back()->with(['message' => 'Avatar berhasil diubah', 'color' => 'alert-success']);
+                Alert::success('Avatar berhasil diubah');
+                return redirect()->back();
             } else {
-                return redirect()->back()->with(['message' => 'Avatar gagal diubah', 'color' => 'alert-danger']);
+                Alert::error('Avatar gagal diubah');
+                return redirect()->back();
             }
         } catch (Exception $e) {
-            return redirect()->back()->with(['message' => 'Avatar gagal diubah ' . $e->getMessage(), 'color' => 'alert-danger']);
+            Alert::error('Avatar gagal diubah '. $e->getMessage());
+            return redirect()->back();
         }
     }
     public function addcontact(Request $request)
@@ -110,9 +112,11 @@ class UsersController extends Controller
                 'kd_pos' => $request->kd_pos,
             ]);
             if ($hsl) {
-                return redirect()->back()->with(['message' => 'Data berhasil ditambahkan', 'color' => 'alert-success']);
+                Alert::success('Data berhasil ditambahkan');
+                return redirect()->back();
             } else {
-                return redirect()->back()->with(['message' => 'Data gagal ditambahkan', 'color' => 'alert-danger']);
+                Alert::error('Data gagal ditambahkan');
+                return redirect()->back();
             }
         } catch (Exception $e) {
             dd($e->getMessage());
@@ -152,9 +156,11 @@ class UsersController extends Controller
                 'kd_pos' => $request->edit_kd_pos,
             ]);
             if ($hsl) {
-                return redirect()->back()->with(['message' => 'Data berhasil ditambahkan', 'color' => 'alert-success']);
+                Alert::success('Data berhasil ditambahkan');
+                return redirect()->back();
             } else {
-                return redirect()->back()->with(['message' => 'Data gagal ditambahkan', 'color' => 'alert-danger']);
+                Alert::error('Data gagal ditambahkan');
+                return redirect()->back();
             }
         } catch (Exception $e) {
             dd($e->getMessage());
@@ -178,9 +184,11 @@ class UsersController extends Controller
                 'pick' => '1',
             ]);
             if ($hsl) {
-                return redirect()->back()->with(['message' => 'Alamat berhasil diaktifkan', 'color' => 'alert-success']);
+                Alert::success('Alamat berhasil diaktifkan');
+                return redirect()->back();
             } else {
-                return redirect()->back()->with(['message' => 'Alamat gagal diaktifkan', 'color' => 'alert-danger']);
+                Alert::error('Alamat gagal diaktifkan');
+                return redirect()->back();
             }
         } catch (Exception $e) {
             dd($e->getMessage());
@@ -211,9 +219,11 @@ class UsersController extends Controller
         }
         $hsl = Contact::find($req->id)->delete();
         if ($hsl) {
-            return redirect()->back()->with(['message' => 'Data berhasil dihapus', 'color' => 'alert-success']);
+            Alert::success('Data berhasil dihapus');
+            return redirect()->back();
         } else {
-            return redirect()->back()->with(['message' => 'Data gagal dihapus', 'color' => 'alert-danger']);
+            Alert::error('Data gagal dihapus');
+            return redirect()->back();
         }
     }
 }

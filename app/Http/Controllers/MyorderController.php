@@ -13,6 +13,7 @@ use App\Payget;
 use App\Product;
 use App\Transaction;
 use Exception;
+Use Alert;
 use Illuminate\Support\Facades\Redis;
 
 class MyorderController extends Controller
@@ -47,7 +48,8 @@ class MyorderController extends Controller
             // dd($resi);
             return view("users.myorder", compact('countcart', 'transaction', 'list', 'product', 'getaddress'));
         } catch (Exception $e) {
-            return redirect()->back()->with(['message' => 'Halaman tidak bisa ditampilkan silahkan hubungin Admin', 'alert' => 'danger']);
+            Alert::error('Halaman tidak bisa ditampilkan silahkan hubungin Admin');
+            return redirect()->back();
         }
     }
     public function cekresi(Request $req)
@@ -99,10 +101,12 @@ class MyorderController extends Controller
                     return view("users.tracking", compact('data_resi', 'noresi', 'data_paket', 'idtrans', 'data_status', 'etd'));
                 }
             } else {
-                return redirect()->back()->with(['message' => 'No Resi Masih Kosong', 'alert' => 'danger']);
+                Alert::error('No Resi Masih Kosong');
+                return redirect()->back();
             }
         } catch (Exception $e) {
-            return redirect()->back()->with(['message' => 'Halaman tidak bisa ditampilkan silahkan hubungin Admin', 'alert' => 'danger']);
+            Alert::error('Halaman tidak bisa ditampilkan silahkan hubungin Admin');
+            return redirect()->back();
         }
     }
 
@@ -157,10 +161,12 @@ class MyorderController extends Controller
                     return view("backend.pages.tracking", compact('data_resi', 'noresi', 'data_paket', 'idtrans', 'data_status', 'etd'));
                 }
             } else {
-                return redirect()->back()->with(['message' => 'No Resi Masih Kosong', 'alert' => 'danger']);
+                Alert::error('No Resi Masih Kosong');
+                return redirect()->back();
             }
         } catch (Exception $e) {
-            return redirect()->back()->with(['message' => 'Halaman tidak bisa ditampilkan silahkan hubungin Admin', 'alert' => 'danger']);
+            Alert::error('Halaman tidak bisa ditampilkan silahkan hubungin Admin');
+            return redirect()->back();
         }
     }
 
@@ -214,10 +220,12 @@ class MyorderController extends Controller
                     return view("branch.pages.tracking", compact('data_resi', 'noresi', 'data_paket', 'idtrans', 'data_status', 'etd'));
                 }
             } else {
-                return redirect()->back()->with(['message' => 'No Resi Masih Kosong', 'alert' => 'danger']);
+                Alert::error('No Resi Masih Kosong');
+                return redirect()->back();
             }
         } catch (Exception $e) {
-            return redirect()->back()->with(['message' => 'Halaman tidak bisa ditampilkan silahkan hubungin Admin', 'alert' => 'danger']);
+            Alert::error('Halaman tidak bisa ditampilkan silahkan hubungin Admin');
+            return redirect()->back();
         }
     }
 
@@ -258,15 +266,19 @@ class MyorderController extends Controller
                     'bukti_pembayaran' => $photo,
                 ]);
                 if ($hsl) {
-                    return redirect()->back()->with(['message' => 'Bukti Pembayaran berhasil dikirim', 'color' => 'alert-success']);
+                    Alert::success('Bukti pembayaran berhasil dikirim');
+                    return redirect()->back();
                 } else {
-                    return redirect()->back()->with(['message' => 'Bukti Pembayaran gagal dikirim', 'color' => 'alert-danger']);
+                    Alert::error('Bukti pembayaran gagal dikirim');
+                    return redirect()->back();
                 }
             } else {
-                return redirect()->back()->with(['message' => 'Bukti Pembayaran gagal dikirim', 'color' => 'alert-danger']);
+                Alert::error('Bukti pembayaran gagal dikirim');
+                return redirect()->back();
             }
         } catch (Exception $e) {
-            return redirect()->back()->with(['message' => 'Bukti Pembayaran gagal dikirim ' . $e->getMessage(), 'color' => 'alert-danger']);
+            Alert::error('Bukti pembayaran gagal dikirim');
+            return redirect()->back();
         }
     }
     public function konfirmasi_pembayaran(Request $req)
@@ -296,9 +308,11 @@ class MyorderController extends Controller
                     'detail' => $data
                 ];
                 log_transaction($log_transaction);
-                return redirect('/myorder')->with(['message' => $trans->id_transaction . ' telah diterima pembayaranya', 'alert' => 'success']);
+                Alert::success($trans->id_transaction . ' telah diterima pembayaranya');
+                return redirect('/myorder');
             } else {
-                return redirect('/myorder')->with(['message' => $trans->id_transaction . ' belum melakukan pembayaran,<br> atau silahkan <a href="/kirim-bukti-pembayaran/' . $trans->id . '" class="text-success">kirim bukti pembayaran</a> jika memang sudah melakukan pembayaran', 'alert' => 'danger']);
+                Alert::error($trans->id_transaction . ' belum melakukan pembayaran,<br> atau silahkan <a href="/kirim-bukti-pembayaran/' . $trans->id . '" class="text-success">kirim bukti pembayaran</a> jika memang sudah melakukan pembayaran');
+                return redirect('/myorder');
             }
         } catch (Exception $e) {
             return redirect()->back()->with(['message' => 'Halaman tidak bisa ditampilkan silahkan hubungin Admin', 'alert' => 'danger']);
@@ -330,12 +344,15 @@ class MyorderController extends Controller
                     'detail' => $data
                 ];
                 log_transaction($log_transaction);
-                return redirect('/backend/dashboard')->with(['message' => $trans->id_transaction . ' telah diterima pembayaranya', 'alert' => 'success']);
+                Alert::success($trans->id_transaction . ' telah diterima pembayaranya');
+                return redirect('/backend/dashboard');
             } else {
-                return redirect('/backend/dashboard')->with(['message' => $trans->id_transaction . ' belum melakukan pembayaran, atau jika sudah silahkan klik tombol cek mutasi', 'alert' => 'danger']);
+                Alert::error($trans->id_transaction . ' belum melakukan pembayaran, atau jika sudah silahkan klik tombol cek mutasi');
+                return redirect('/backend/dashboard');
             }
         } catch (Exception $e) {
-            return redirect()->back()->with(['message' => 'Halaman tidak bisa ditampilkan silahkan hubungin Admin', 'alert' => 'danger']);
+            Alert::error('Halaman tidak bisa ditampilkan silahkan hubungin Admin');
+            return redirect()->back();
         }
     }
 
@@ -348,7 +365,8 @@ class MyorderController extends Controller
             $id_transaksi = $data[0]->id_transaction;
             return view('backend.pages.log-transaction', compact('data', 'id_transaksi'));
         } else {
-            return redirect()->back()->with(['message' => 'Transaksi tidak ditemukan', 'alert' => 'danger']);
+            Alert::error('Transaksi tidak ditemukan');
+            return redirect()->back();
         }
         /* } catch (Exception $e) {
             return redirect()->back()->with(['message' => 'Halaman tidak bisa ditampilkan silahkan hubungin Admin', 'alert' => 'danger']);

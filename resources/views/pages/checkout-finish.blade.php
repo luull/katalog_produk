@@ -22,7 +22,7 @@
                                       <div class="text-center">
                                           
                                           @foreach ($bank as $b)
-                                        <input type="hidden" value="{{$b->no_akun}}" id="myInput">
+                                        <input type="text" value="{{$b->no_akun}}" id="myInput" hidden>
                                         <h3 class="mb-0 bolder">{{$b->nama_bank}}</h3>
                                         <h3 class="mb-0 bolder ml-5">{{$b->no_akun}}   <button class="btn-copy" onclick="myFunction()"><i class="fa fa-copy"></i></button></h3>
                                         <p class="size-18 nunito">{{$b->nama_akun}}</p>
@@ -135,6 +135,7 @@
 @endsection
 
 @section('script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     function myFunction() {
       // Get the text field
@@ -148,7 +149,28 @@
       navigator.clipboard.writeText(copyText.value);
       
       // Alert the copied text
-      alert("Copied the text: " + copyText.value);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'bottom-start',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+        })
+
+        Toast.fire({
+        icon: 'success',
+        title: 'Nomer ATM Berhasil di salin',
+        })
+    //   Swal.fire({
+    //     title: 'Berhasil!',
+    //     text: 'No ATM Berhasil di salin',
+    //     icon: 'success',
+    //     confirmButtonText: 'Ok'
+    //     })
     }
     </script>
 @stop

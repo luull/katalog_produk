@@ -8,7 +8,7 @@ use App\Bank;
 use App\Contact;
 use App\Users;
 use Illuminate\Support\Facades\DB;
-
+Use Alert;
 class TransactionController extends Controller
 {
     public function detil_transaksi(Request $req)
@@ -68,18 +68,22 @@ class TransactionController extends Controller
     {
         $hsl = update_status_transaksi($req->id, 2);
         if ($hsl) {
-            return redirect()->back()->with(['message' => 'Proses Transaksi Sukses', 'alert' => 'success']);
+            Alert::success('Proses Transaksi Sukses');
+            return redirect()->back();
         } else {
-            return redirect()->back()->with(['message' => 'Proses Transaksi  Gagal', 'alert' => 'danger']);
+            Alert::error('Proses Transaksi gagal');
+            return redirect()->back();
         }
     }
     public function kemas(Request $req)
     {
         $hsl = update_status_transaksi($req->id, 3);
         if ($hsl) {
-            return redirect()->back()->with(['message' => 'Proses Kemas Transaksi Sukses', 'alert' => 'success']);
+            Alert::success('Proses kemas Transaksi Sukses');
+            return redirect()->back();
         } else {
-            return redirect()->back()->with(['message' => 'Proses Kemas Transaksi  Gagal', 'alert' => 'danger']);
+            Alert::error('Proses kemas Transaksi gagal');
+            return redirect()->back();
         }
     }
     public function kirim(Request $req)
@@ -91,45 +95,55 @@ class TransactionController extends Controller
     {
         $hsl = update_status_transaksi($req->id, 4, $req->resi);
         if ($hsl) {
-            return redirect()->back()->with(['message' => 'Proses Kirim Transaksi  Sukses', 'alert' => 'success']);
+            Alert::success('Proses kirim Transaksi Sukses');
+            return redirect()->back();
         } else {
-            return redirect()->back()->with(['message' => 'Proses Kirim Transaksi  Gagal', 'alert' => 'danger']);
+            Alert::error('Proses kirim Transaksi gagal');
+            return redirect()->back();
         }
     }
     public function selesai(Request $req)
     {
         $hsl = update_status_transaksi($req->id, 6);
         if ($hsl) {
-            return redirect()->back()->with(['message' => 'Proses Transaksi Selesai Sukses', 'alert' => 'success']);
+            Alert::success('Proses Transaksi selesai Sukses');
+            return redirect()->back();
         } else {
-            return redirect()->back()->with(['message' => 'Proses  Transaksi Selesai  Gagal', 'alert' => 'danger']);
+            Alert::error('Proses Transaksi selesai gagal');
+            return redirect()->back();
         }
     }
     public function komplain(Request $req)
     {
         $hsl = update_status_transaksi($req->id, 7);
         if ($hsl) {
-            return redirect()->back()->with(['message' => 'Proses Transaksi Selesai Sukses', 'alert' => 'success']);
+            Alert::success('Proses Transaksi selesai Sukses');
+            return redirect()->back();
         } else {
-            return redirect()->back()->with(['message' => 'Proses  Transaksi Selesai  Gagal', 'alert' => 'danger']);
+            Alert::error('Proses Transaksi selesai gagal');
+            return redirect()->back();
         }
     }
     public function batal(Request $req)
     {
         $hsl = update_status_transaksi($req->id, 9);
         if ($hsl) {
-            return redirect()->back()->with(['message' => 'Proses Pembatalan Transaksi  Sukses', 'alert' => 'success']);
+            Alert::success('Proses Pembatalan Transaksi Sukses');
+            return redirect()->back();
         } else {
-            return redirect()->back()->with(['message' => 'Proses Pembatalan Transaksi  Gagal', 'alert' => 'danger']);
+            Alert::error('Proses Pembatalan Transaksi gagal');
+            return redirect()->back();
         }
     }
     public function dibayar(Request $req)
     {
         $hsl = update_status_transaksi($req->id, 1);
         if ($hsl) {
-            return redirect()->back()->with(['message' => 'Proses Bayar Transaksi  Sukses', 'alert' => 'success']);
+            Alert::success('Proses Bayar Transaksi Sukses');
+            return redirect()->back();
         } else {
-            return redirect()->back()->with(['message' => 'Proses Bayar Transaksi  Gagal', 'alert' => 'danger']);
+            Alert::error('Proses Bayar Transaksi gagal');
+            return redirect()->back();
         }
     }
     public function foto_bukti_pembayaran(Request $req)

@@ -20,6 +20,7 @@ use App\Transaction;
 use App\Bank;
 use App\Branch;
 use App\Log_Processed_By;
+Use Alert;
 use Exception;
 
 class CheckoutController extends Controller
@@ -81,7 +82,8 @@ class CheckoutController extends Controller
             $bank = Bank::all();
             return view("pages.checkout", compact('countbuy', 'sum', 'provinsi', 'getcontact', 'getToken', 'getaddress', 'berat', 'bank', 'getid'));
         } catch (Exception $e) {
-            return redirect()->back()->with(['message' => 'Transaksi gagal diproses ', 'alert' => 'danger']);
+            Alert::error('Transaksi gagal');
+            return redirect()->back();
         }
     }
     public function checkout_midtrans(Request $req)
@@ -146,7 +148,8 @@ class CheckoutController extends Controller
             $provinsi = $this->get_province();
             return view("pages.checkout", compact('countbuy', 'sum', 'provinsi', 'getcontact', 'getaddress', 'berat', 'snapToken', 'getToken', 'getid'));
         } catch (Exception $e) {
-            return redirect()->back()->with(['message' => 'Transaksi gagal diproses ', 'alert' => 'danger']);
+            Alert::error('Transaksi gagal');
+            return redirect()->back();
         }
     }
     public function get_province()
@@ -260,9 +263,11 @@ class CheckoutController extends Controller
             'pick' => '1'
         ]);
         if ($hsl) {
-            return redirect()->back()->with(['message' => 'Alamat berhasil diubah', 'color' => 'alert-success']);
+            Alert::success('Alamat berhasil diubah');
+            return redirect()->back();
         } else {
-            return redirect()->back()->with(['message' => 'Alamat gagal diubah', 'color' => 'alert-danger']);
+            Alert::error('Alamat gagal diubah');
+            return redirect()->back();
         }
     }
 
@@ -383,13 +388,15 @@ class CheckoutController extends Controller
                         ]);
                     }
                 }
-
+                Alert::success('Transaksi Berhasil');
                 return redirect('/checkout-finish/' . $transaction);
             } else {
-                return redirect()->back()->with(['message' => 'Transaksi gagal diproses', 'alert' => 'danger']);
+                Alert::error('Transaksi gagal');
+                return redirect()->back();
             }
         } catch (Exception $e) {
-            return redirect()->back()->with(['message' => 'Transaksi gagal diproses ', 'alert' => 'danger']);
+            Alert::error('Transaksi gagal');
+            return redirect()->back();
         }
     }
     public function checkout_finish(Request $req)
@@ -407,7 +414,8 @@ class CheckoutController extends Controller
                 }
             }
         } catch (Exception $e) {
-            return redirect()->back()->with(['message' => 'Proses Checkout Gagal ' . $e->getMessage(), 'alert' => 'danger']);
+            Alert::error('Proses Checkout Gagal ' . $e->getMessage());
+            return redirect()->back();
         }
     }
 }

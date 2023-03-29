@@ -6,7 +6,7 @@ use App\Branch;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+Use Alert;
 class LoginController extends Controller
 {
     public function index()
@@ -28,19 +28,22 @@ class LoginController extends Controller
             if (Hash::check($pwd, $data->password)) {
                 session(['branch-session' => $data]);
                 session(['isBranchLogin' => true]);
-
+                Alert::success('Berhasil login');
                 return redirect('/branch/dashboard');
             } else {
-                return redirect()->back()->with('message', 'Password salah ');
+                Alert::error('Password salah');
+                return redirect()->back();
             }
         } else {
-            return redirect()->back()->with('message', 'Username salah ');
+            Alert::error('Username salah');
+            return redirect()->back();
         }
     }
     public function logout(Request $request)
     {
         $request->session()->flush();
-        return redirect('/branch/login')->with('message', 'Berhasil logout');
+        Alert::success('Berhasil logout');
+        return redirect('/branch/login');
     }
     public function dashboard()
     {

@@ -12,7 +12,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-
+Use Alert;
 class LoginController extends Controller
 {
     public function index()
@@ -42,18 +42,24 @@ class LoginController extends Controller
                         session(['user-session' => $data]);
                         get_refferal($data->refferal);
                         session(['isCustomerLogin' => true]);
+                        Alert::success('Berhasil login');
                         return redirect('/');
                     } else {
-                        return redirect()->back()->with('message', 'Username  ' . $uid . ' belum aktif silahkan lakukan konfirmasi dari email Anda');
+                    
+                        Alert::error('Username  ' . $uid . ' belum aktif silahkan lakukan konfirmasi dari email Anda');
+                        return redirect()->back();
                     }
                 } else {
-                    return redirect()->back()->with('message', 'Password salah ');
+                    Alert::error('Password salah');
+                    return redirect()->back();
                 }
             } else {
-                return redirect()->back()->with('message', 'Username salah ');
+                Alert::error('Username salah');
+                return redirect()->back();
             }
         } catch (Exception $e) {
-            return redirect()->back()->with(['message' => $e->getMessage(), 'alert' => 'danger']);
+            Alert::error($e->getMessage());
+            return redirect()->back();
         }
     }
     public function logout(Request $request)
@@ -68,6 +74,7 @@ class LoginController extends Controller
         $request->session()->forget('isCustomerLogin');
         $request->session()->forget('user-session');
         $request->session()->flush();
+        Alert::success('Berhasil logout');
         return redirect('/');
     }
     public function register(Request $request)
@@ -147,13 +154,15 @@ class LoginController extends Controller
                 $headers .= 'From: <no-reply@' . env('APP_DOMAIN') . '>' . "\r\n";
 
                 $kirim_email = mail($email, 'Proses Pendaftaran Anda di ' . env('STORE_NAME'), $isi_email, $headers);
-
+                Alert::success('Registrasi berhasil');
                 return redirect('/register/success')->with(['data_user_registered' => $data_user_registered]);
             } else {
-                return redirect()->back()->with(['message' => 'Proses Registrasi Gagal', 'alert' => 'warning'])->withInput;
+                Alert::success('Registrasi gagal');
+                return redirect()->back()->withInput;
             }
         } catch (Exception $e) {
-            return redirect()->back()->with(['message' => 'Proses Registrasi Gagal', 'alert' => 'danger'])->withInput;
+            Alert::success('Registrasi gagal');
+            return redirect()->back()->withInput;
         }
     }
     public function register_sukses(Request $req)
@@ -183,7 +192,8 @@ class LoginController extends Controller
                     return redirect('/');
                 }
             } else {
-                return redirect('/')->with(['message' => 'Proses Konfirmasi gagal,silahkan hubungin web admin', 'alert' => 'danger']);
+                Alert::success('Proses Konfirmasi gagal,silahkan hubungin web admin');
+                return redirect('/');
             }
         }
     }

@@ -8,6 +8,7 @@ use App\Dumy;
 use App\Payget;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+Use Alert;
 
 class CartController extends Controller
 {
@@ -75,10 +76,11 @@ class CartController extends Controller
                 'qty' => $tambah
             ]);
             if ($hsl) {
-
-                return redirect('/cart')->with(['message' => 'Barang berhasil ditambah ke keranjang', 'alert' => 'success']);
+                Alert::success('Barang berhasil ditambah ke keranjang');
+                return redirect('/cart');
             } else {
-                return redirect()->back()->with(['message' => 'Barang gagal ditambah ke keranjang', 'alert' => 'danger']);
+                Alert::error('Barang gagal ditambah ke keranjang');
+                return redirect()->back();
             }
         } else {
             $hsl = Cart::create([
@@ -88,10 +90,11 @@ class CartController extends Controller
                 'status' => 1
             ]);
             if ($hsl) {
-
-                return redirect('/cart')->with(['message' => 'Barang berhasil ditambah ke keranjang', 'alert' => 'success']);
+                Alert::success('Barang berhasil ditambah ke keranjang');
+                return redirect('/cart');
             } else {
-                return redirect()->back()->with(['message' => 'Barang gagal ditambah ke keranjang', 'alert' => 'danger']);
+                Alert::error('Barang gagal ditambah ke keranjang');
+                return redirect()->back();
             }
         }
     }
@@ -105,9 +108,11 @@ class CartController extends Controller
         }
         $hsl = Cart::find($req->id)->delete();
         if ($hsl) {
-            return redirect()->back()->with(['message' => 'Barang berhasil dihapus dari keranjang', 'alert' => 'success']);
+            Alert::success('Barang berhasil dihapus dari keranjang');
+            return redirect()->back();
         } else {
-            return redirect()->back()->with(['message' => 'Barang gagal dihapus dari keranjang', 'alert' => 'danger']);
+            Alert::error('Barang gagal dihapus dari keranjang');
+            return redirect()->back();
         }
     }
 
@@ -195,9 +200,11 @@ class CartController extends Controller
                     'berat' => $barang->berat * $qty,
                     'total' => $barang->harga * $qty
                 ]);
-            return redirect()->back()->with(['message' => 'Jumlah Barang berhasil diubah', 'alert' => 'success']);
-        } else {
-            return redirect()->back()->with(['message' => 'Jumlah Barang gagal diubah', 'alert' => 'success']);
+                Alert::success('Jumlah Barang berhasil diubah');
+                return redirect()->back();
+            } else {
+            Alert::error('Jumlah Barang gagal diubah');
+            return redirect()->back();
         }
 
         // $hsl = Cart::create([
@@ -319,9 +326,11 @@ class CartController extends Controller
             'qty' => $req->qty
         ]);
         if ($hsl) {
-            return redirect()->back()->with(['message' => 'Jumlah Barang berhasil diubah', 'alert' => 'success']);
+            Alert::success('Jumlah Barang berhasil diubah');
+            return redirect()->back();
         } else {
-            return redirect()->back()->with(['message' => 'Jumlah Barang gagal diubah', 'alert' => 'success']);
+            Alert::error('Jumlah Barang gagal diubah');
+            return redirect()->back();
         }
 
         // $hsl = Cart::create([

@@ -14,7 +14,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
-
+Use Alert;
 class HomeController extends Controller
 {
 
@@ -79,7 +79,8 @@ class HomeController extends Controller
             // dd(session('product'));
             return view("pages.home", compact('product', 'produk_display', 'banner','category'));
         } catch (Exception $e) {
-            echo '<div class="alert alert-danger text-center" style="text-align:center;color:red">Mohon maaf server ada sedikit masalah.. silahkan hubungi admin </div>';
+            Alert::error('Mohon maaf server ada sedikit masalah.. silahkan hubungi admin');
+            return redirect()->back();
         }
     }
     public function city_list(Request $req)
