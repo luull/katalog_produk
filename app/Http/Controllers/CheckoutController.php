@@ -71,7 +71,8 @@ class CheckoutController extends Controller
                 ->where('contact.pick', '=', '1')
                 ->first();
             if (!$getaddress) {
-                return redirect('/dashboard')->with(['message' => ' Alamat masih kosong, silahkan isi terlebih dahulu Alamat Anda', 'alert' => 'danger']);
+                Alert::error('Alamat masih kosong, silahkan isi terlebih dahulu Alamat Anda');
+                return redirect('/dashboard');
             }
             // $getaddress = Contact::where('pick', 1)->first();
             // $getcontact = Contact::where('id_user', '=' ,session('user-session')->id)->where('status', '=', 1)->get();
@@ -263,10 +264,11 @@ class CheckoutController extends Controller
             'pick' => '1'
         ]);
         if ($hsl) {
-            Alert::success('Alamat berhasil diubah');
+                           
+            Alert::toast('Alamat berhasil diubah', 'success');
             return redirect()->back();
         } else {
-            Alert::error('Alamat gagal diubah');
+            Alert::toast('Alamat gagal diubah', 'error');
             return redirect()->back();
         }
     }

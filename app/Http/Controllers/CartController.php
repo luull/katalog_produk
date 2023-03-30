@@ -108,10 +108,11 @@ class CartController extends Controller
         }
         $hsl = Cart::find($req->id)->delete();
         if ($hsl) {
-            Alert::success('Barang berhasil dihapus dari keranjang');
+                           
+            Alert::toast('Barang berhasil dihapus dari keranjang', 'success');
             return redirect()->back();
         } else {
-            Alert::error('Barang gagal dihapus dari keranjang');
+            Alert::toast('Barang gagal dihapus dari keranjang', 'error');
             return redirect()->back();
         }
     }
@@ -200,11 +201,15 @@ class CartController extends Controller
                     'berat' => $barang->berat * $qty,
                     'total' => $barang->harga * $qty
                 ]);
-                Alert::success('Jumlah Barang berhasil diubah');
-                return redirect()->back();
-            } else {
-            Alert::error('Jumlah Barang gagal diubah');
-            return redirect()->back();
+                // Alert::success('Jumlah Barang berhasil diubah');
+                if ($hsl) {
+                           
+                    Alert::toast('Jumlah Barang berhasil diubah', 'success');
+                    return redirect()->back();
+                } else {
+                    Alert::toast('Jumlah Barang gagal diubah', 'error');
+                    return redirect()->back();
+                }
         }
 
         // $hsl = Cart::create([
@@ -326,10 +331,11 @@ class CartController extends Controller
             'qty' => $req->qty
         ]);
         if ($hsl) {
-            Alert::success('Jumlah Barang berhasil diubah');
+                           
+            Alert::toast('Jumlah Barang berhasil diubah', 'success');
             return redirect()->back();
         } else {
-            Alert::error('Jumlah Barang gagal diubah');
+            Alert::toast('Jumlah Barang gagal diubah', 'error');
             return redirect()->back();
         }
 

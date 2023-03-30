@@ -2328,7 +2328,7 @@ table .badge-success, table .badge-primary, table .badge-warning, table .badge-d
 
 }
 .footer {
-    background: #fff;
+    background: #fff !important;
     border-top: 5px solid #ebedf2;
     padding-left: 50px;
     padding-right: 40px;

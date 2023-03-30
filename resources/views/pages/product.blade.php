@@ -113,7 +113,7 @@
                             <div class="card">
                                 <div class="card-header" id="headingThree4">
                                     <section class="mb-0 mt-0">
-                                        <div role="menu" class="collapsed" data-toggle="collapse"
+                                        <div role="menu" class="show collapsed" data-toggle="collapse"
                                             data-target="#withoutSpacingAccordionThree" aria-expanded="false"
                                             aria-controls="withoutSpacingAccordionThree">
                                             <span class="nunito bolder black mb-0">Harga</span> <i
@@ -259,188 +259,188 @@
             })
         }
 
-        function category(id) {
-            $.ajax({
-                type: 'get',
-                method: 'get',
-                url: '/product/category/' + id,
-                data: '_token = <?php echo csrf_token(); ?>',
-                success: function(hsl) {
-                    var i;
-                    if (hsl.record > 0) {
-                        $("#search").remove();
-                        $('#bla').attr('style', 'display:block')
-                        $('#bla2').attr('style', 'display:none')
-                        html = '<div class="row row-no-padding2 mb-3">';
-                        for (i = 0; i < hsl.record; ++i) {
-                            var	number_string = hsl.data[i].harga.toString(),
-                                sisa 	= number_string.length % 3,
-                                rupiah 	= number_string.substr(0, sisa),
-                                ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+        // function category(id) {
+        //     $.ajax({
+        //         type: 'get',
+        //         method: 'get',
+        //         url: '/product/category/' + id,
+        //         data: '_token = <?php echo csrf_token(); ?>',
+        //         success: function(hsl) {
+        //             var i;
+        //             if (hsl.record > 0) {
+        //                 $("#search").remove();
+        //                 $('#bla').attr('style', 'display:block')
+        //                 $('#bla2').attr('style', 'display:none')
+        //                 html = '<div class="row row-no-padding2 mb-3">';
+        //                 for (i = 0; i < hsl.record; ++i) {
+        //                     var	number_string = hsl.data[i].harga.toString(),
+        //                         sisa 	= number_string.length % 3,
+        //                         rupiah 	= number_string.substr(0, sisa),
+        //                         ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
                                     
-                            if (ribuan) {
-                                separator = sisa ? '.' : '';
-                                rupiah += separator + ribuan.join('.');
-                            }
-                            html = html +
-                                ' <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6 mb-3">';
-                            html = html + '<a href="/detil-produk/' + hsl.data[i].slug + '">';
-                            html = html + '<div class="card card-product">';
-                            html = html + '<img src="/' + hsl.data[i].image +
-                                '" class="card-img-top" alt="widget-card-2">';
-                            html = html + '<div class="card-body product">';
-                            html = html + '<div class="height-title">';
-                                if(hsl.data[i].nama.length > 35 ){
-                                    html = html + '<h5 class="card-title-produk-resize mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
-                                }else{
-                                    html = html + '<h5 class="card-title-produk mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
-                                }
-                            html = html + '</div>';
-                            html = html + '<h5 class="mb-2"><b>Rp. ' + rupiah + '</b></h5>';
-                            html = html + '</div></div></a></div>';
-                        }
-                        html = html + '</div>';
-                    } else {
-                        html = '<div class="text-center mt-5">'
-                            html = '<h3 class="nunito bolder">Oppss..Produk tidak ditemukan</h3>'
-                            html = '<p>Silahkan gunakan kategori yang lainnya</p>'
-                        html = '</div>'
-                    }
+        //                     if (ribuan) {
+        //                         separator = sisa ? '.' : '';
+        //                         rupiah += separator + ribuan.join('.');
+        //                     }
+        //                     html = html +
+        //                         ' <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6 mb-3">';
+        //                     html = html + '<a href="/detil-produk/' + hsl.data[i].slug + '">';
+        //                     html = html + '<div class="card card-product">';
+        //                     html = html + '<img src="/' + hsl.data[i].image +
+        //                         '" class="card-img-top" alt="widget-card-2">';
+        //                     html = html + '<div class="card-body product">';
+        //                     html = html + '<div class="height-title">';
+        //                         if(hsl.data[i].nama.length > 35 ){
+        //                             html = html + '<h5 class="card-title-produk-resize mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
+        //                         }else{
+        //                             html = html + '<h5 class="card-title-produk mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
+        //                         }
+        //                     html = html + '</div>';
+        //                     html = html + '<h5 class="mb-2"><b>Rp. ' + rupiah + '</b></h5>';
+        //                     html = html + '</div></div></a></div>';
+        //                 }
+        //                 html = html + '</div>';
+        //             } else {
+        //                 html = '<div class="text-center mt-5">'
+        //                     html = '<h3 class="nunito bolder">Oppss..Produk tidak ditemukan</h3>'
+        //                     html = '<p>Silahkan gunakan kategori yang lainnya</p>'
+        //                 html = '</div>'
+        //             }
                     
-                    $("#judul").html(hsl.title)
-                    var element = document.getElementById("name");
-                    element.classList.add("active");
-                    $("#name").html(hsl.name)
-                    $("#bla").addClass("active mb-2")
-                    $("#bla2").removeClass("active")
-                    $("#bla3").removeClass("active")
-                    $('#name2').html("") 
-                    $('#name3').html("")
-                    $("#displayproduct").html(html);
+        //             $("#judul").html(hsl.title)
+        //             var element = document.getElementById("name");
+        //             element.classList.add("active");
+        //             $("#name").html(hsl.name)
+        //             $("#bla").addClass("active mb-2")
+        //             $("#bla2").removeClass("active")
+        //             $("#bla3").removeClass("active")
+        //             $('#name2').html("") 
+        //             $('#name3').html("")
+        //             $("#displayproduct").html(html);
 
-                }
-            })
-        }
+        //         }
+        //     })
+        // }
 
-        function sub_category(id) {
-            $.ajax({
-                type: 'get',
-                method: 'get',
-                url: '/product/sub-category/' + id,
-                data: '_token = <?php echo csrf_token(); ?>',
-                success: function(hsl) {
-                    var i;
-                    if (hsl.record > 0) {
-                        $("#search").remove();
-                        $('#bla').attr('style', 'display:block')
-                        $('#bla2').attr('style', 'display:block')
-                        html = '<div class="row row-no-padding2 mb-3">';
-                        for (i = 0; i < hsl.record; ++i) {
-                            var	number_string = hsl.data[i].harga.toString(),
-                                sisa 	= number_string.length % 3,
-                                rupiah 	= number_string.substr(0, sisa),
-                                ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+        // function sub_category(id) {
+        //     $.ajax({
+        //         type: 'get',
+        //         method: 'get',
+        //         url: '/product/sub-category/' + id,
+        //         data: '_token = <?php echo csrf_token(); ?>',
+        //         success: function(hsl) {
+        //             var i;
+        //             if (hsl.record > 0) {
+        //                 $("#search").remove();
+        //                 $('#bla').attr('style', 'display:block')
+        //                 $('#bla2').attr('style', 'display:block')
+        //                 html = '<div class="row row-no-padding2 mb-3">';
+        //                 for (i = 0; i < hsl.record; ++i) {
+        //                     var	number_string = hsl.data[i].harga.toString(),
+        //                         sisa 	= number_string.length % 3,
+        //                         rupiah 	= number_string.substr(0, sisa),
+        //                         ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
                                     
-                            if (ribuan) {
-                                separator = sisa ? '.' : '';
-                                rupiah += separator + ribuan.join('.');
-                            }
-                            html = html +
-                                ' <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6 mb-3">';
-                            html = html + '<a href="/detil-produk/' + hsl.data[i].slug + '">';
-                            html = html + '<div class="card card-product">';
-                            html = html + '<img src="/' + hsl.data[i].image +
-                                '" class="card-img-top" alt="widget-card-2">';
-                            html = html + '<div class="card-body product">';
-                            html = html + '<div class="height-title">';
-                                if(hsl.data[i].nama.length > 35 ){
-                                    html = html + '<h5 class="card-title-produk-resize mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
-                                }else{
-                                    html = html + '<h5 class="card-title-produk mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
-                                }
-                            html = html + '</div>';
-                            html = html + '<h5 class="mb-2"><b>Rp. ' + rupiah + '</b></h5>';
-                            html = html + '</div></div></a></div>';
-                        }
-                        html = html + '</div>';
-                    } else {
-                        html = '<div class="text-center mt-5">'
-                            html = '<h3 class="nunito bolder">Oppss..Produk tidak ditemukan</h3>'
-                            html = '<p>Silahkan gunakan kategori yang lainnya</p>'
-                        html = '</div>'
-                    }
-                    $("#judul").html(hsl.title)
-                    $("#name").html(hsl.name)
-                    $("#name2").html(hsl.name2)
-                    $("#bla").removeClass("active")
-                    $("#bla3").removeClass("active")
-                    $("#bla2").addClass("active mb-2")
-                    $('#name3').html("")
-                    $("#displayproduct").html(html);
+        //                     if (ribuan) {
+        //                         separator = sisa ? '.' : '';
+        //                         rupiah += separator + ribuan.join('.');
+        //                     }
+        //                     html = html +
+        //                         ' <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6 mb-3">';
+        //                     html = html + '<a href="/detil-produk/' + hsl.data[i].slug + '">';
+        //                     html = html + '<div class="card card-product">';
+        //                     html = html + '<img src="/' + hsl.data[i].image +
+        //                         '" class="card-img-top" alt="widget-card-2">';
+        //                     html = html + '<div class="card-body product">';
+        //                     html = html + '<div class="height-title">';
+        //                         if(hsl.data[i].nama.length > 35 ){
+        //                             html = html + '<h5 class="card-title-produk-resize mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
+        //                         }else{
+        //                             html = html + '<h5 class="card-title-produk mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
+        //                         }
+        //                     html = html + '</div>';
+        //                     html = html + '<h5 class="mb-2"><b>Rp. ' + rupiah + '</b></h5>';
+        //                     html = html + '</div></div></a></div>';
+        //                 }
+        //                 html = html + '</div>';
+        //             } else {
+        //                 html = '<div class="text-center mt-5">'
+        //                     html = '<h3 class="nunito bolder">Oppss..Produk tidak ditemukan</h3>'
+        //                     html = '<p>Silahkan gunakan kategori yang lainnya</p>'
+        //                 html = '</div>'
+        //             }
+        //             $("#judul").html(hsl.title)
+        //             $("#name").html(hsl.name)
+        //             $("#name2").html(hsl.name2)
+        //             $("#bla").removeClass("active")
+        //             $("#bla3").removeClass("active")
+        //             $("#bla2").addClass("active mb-2")
+        //             $('#name3').html("")
+        //             $("#displayproduct").html(html);
 
-                }
-            })
-        }
+        //         }
+        //     })
+        // }
 
-        function sub_sub_category(id) {
-            $.ajax({
-                type: 'get',
-                method: 'get',
-                url: '/product/sub-sub-category/' + id,
-                data: '_token = <?php echo csrf_token(); ?>',
-                success: function(hsl) {
-                    var i;
-                    if (hsl.record > 0) {
-                        $("#search").remove();
-                        $('#bla').attr('style', 'display:block')
-                        $('#bla2').attr('style', 'display:block')
-                        $('#bla3').attr('style', 'display:block')
-                        html = '<div class="row row-no-padding2 mb-3">';
-                        for (i = 0; i < hsl.record; ++i) {
-                            var	number_string = hsl.data[i].harga.toString(),
-                                sisa 	= number_string.length % 3,
-                                rupiah 	= number_string.substr(0, sisa),
-                                ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+        // function sub_sub_category(id) {
+        //     $.ajax({
+        //         type: 'get',
+        //         method: 'get',
+        //         url: '/product/sub-sub-category/' + id,
+        //         data: '_token = <?php echo csrf_token(); ?>',
+        //         success: function(hsl) {
+        //             var i;
+        //             if (hsl.record > 0) {
+        //                 $("#search").remove();
+        //                 $('#bla').attr('style', 'display:block')
+        //                 $('#bla2').attr('style', 'display:block')
+        //                 $('#bla3').attr('style', 'display:block')
+        //                 html = '<div class="row row-no-padding2 mb-3">';
+        //                 for (i = 0; i < hsl.record; ++i) {
+        //                     var	number_string = hsl.data[i].harga.toString(),
+        //                         sisa 	= number_string.length % 3,
+        //                         rupiah 	= number_string.substr(0, sisa),
+        //                         ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
                                     
-                            if (ribuan) {
-                                separator = sisa ? '.' : '';
-                                rupiah += separator + ribuan.join('.');
-                            }
-                            html = html +
-                                ' <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6 mb-3">';
-                            html = html + '<a href="/detil-produk/' + hsl.data[i].slug + '">';
-                            html = html + '<div class="card card-product">';
-                            html = html + '<img src="/' + hsl.data[i].image +
-                                '" class="card-img-top" alt="widget-card-2">';
-                            html = html + '<div class="card-body product">';
-                            html = html + '<div class="height-title">';
-                                if(hsl.data[i].nama.length > 35 ){
-                                    html = html + '<h5 class="card-title-produk-resize mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
-                                }else{
-                                    html = html + '<h5 class="card-title-produk mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
-                                }
-                            html = html + '</div>';
-                            html = html + '<h5 class="mb-2"><b>Rp. ' + rupiah + '</b></h5>';
-                            html = html + '</div></div></a></div>';
-                        }
-                        html = html + '</div>';
-                    } else {
-                        html = '<div class="text-center mt-5">'
-                            html = '<h3 class="nunito bolder">Oppss..Produk tidak ditemukan</h3>'
-                            html = '<p>Silahkan gunakan kategori yang lainnya</p>'
-                        html = '</div>'
-                    }
-                    $("#judul").html(hsl.title)
-                    $("#name").html(hsl.name)
-                    $("#name2").html(hsl.name2)
-                    $("#name3").html(hsl.name3)
-                    $("#bla").removeClass("active")
-                    $("#bla2").removeClass("active")
-                    $("#bla3").addClass("active mb-2")
-                    $("#displayproduct").html(html);
-                }
-            })
-        }
+        //                     if (ribuan) {
+        //                         separator = sisa ? '.' : '';
+        //                         rupiah += separator + ribuan.join('.');
+        //                     }
+        //                     html = html +
+        //                         ' <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6 mb-3">';
+        //                     html = html + '<a href="/detil-produk/' + hsl.data[i].slug + '">';
+        //                     html = html + '<div class="card card-product">';
+        //                     html = html + '<img src="/' + hsl.data[i].image +
+        //                         '" class="card-img-top" alt="widget-card-2">';
+        //                     html = html + '<div class="card-body product">';
+        //                     html = html + '<div class="height-title">';
+        //                         if(hsl.data[i].nama.length > 35 ){
+        //                             html = html + '<h5 class="card-title-produk-resize mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
+        //                         }else{
+        //                             html = html + '<h5 class="card-title-produk mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
+        //                         }
+        //                     html = html + '</div>';
+        //                     html = html + '<h5 class="mb-2"><b>Rp. ' + rupiah + '</b></h5>';
+        //                     html = html + '</div></div></a></div>';
+        //                 }
+        //                 html = html + '</div>';
+        //             } else {
+        //                 html = '<div class="text-center mt-5">'
+        //                     html = '<h3 class="nunito bolder">Oppss..Produk tidak ditemukan</h3>'
+        //                     html = '<p>Silahkan gunakan kategori yang lainnya</p>'
+        //                 html = '</div>'
+        //             }
+        //             $("#judul").html(hsl.title)
+        //             $("#name").html(hsl.name)
+        //             $("#name2").html(hsl.name2)
+        //             $("#name3").html(hsl.name3)
+        //             $("#bla").removeClass("active")
+        //             $("#bla2").removeClass("active")
+        //             $("#bla3").addClass("active mb-2")
+        //             $("#displayproduct").html(html);
+        //         }
+        //     })
+        // }
 
     </script>
 @endsection

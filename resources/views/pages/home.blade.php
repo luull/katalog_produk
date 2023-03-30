@@ -69,7 +69,7 @@
 
                                                 <div class="card card-slider">
                                             
-                                                    <a href="/categoryproduk/{{ $items['id'] }}/{{ $items['name'] }}" class="nunito" style="line-height: 2.5"><i class="fa fa-home ml-1 mr-1"></i> {{ $items['name'] }}</a>
+                                                    <a href="/categoryproduct/{{ $items['id'] }}/-/-/{{ $items['name'] }}" class="nunito" style="line-height: 2.5"><i class="fa fa-home ml-1 mr-1"></i> {{ $items['name'] }}</a>
                                         
                                                 </div>
                                                  
