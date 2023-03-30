@@ -50,8 +50,8 @@
                                        
                                              {{-- <div class="col-sm-6 col-6 col-lg-2" style="width: auto !important;   display: table;"> --}}
                                                  <div class="card card-slider">
-                                            
-                                                     <p class="nunito" style="line-height: 2.5"><i class="fa fa-home ml-1 mr-1"></i> {{ $items['name'] }}</p>
+            
+                                                     <a href="/categoryproduct/{{ $items['id'] }}/-/-/{{ $items['name'] }}" class="nunito" style="line-height: 2.5"><i class="fa fa-home ml-1 mr-1"></i> {{ $items['name'] }}</a>
                                          
                                                  </div>
                                                  
@@ -69,7 +69,7 @@
 
                                                 <div class="card card-slider">
                                             
-                                                    <p class="nunito" style="line-height: 2.5"><i class="fa fa-home ml-1 mr-1"></i> {{ $items['name'] }}</p>
+                                                    <a href="/categoryproduk/{{ $items['id'] }}/{{ $items['name'] }}" class="nunito" style="line-height: 2.5"><i class="fa fa-home ml-1 mr-1"></i> {{ $items['name'] }}</a>
                                         
                                                 </div>
                                                  

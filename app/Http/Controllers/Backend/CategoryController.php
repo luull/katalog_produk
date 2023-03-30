@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
 class categoryController extends Controller
 {
     public function index()
@@ -16,11 +16,19 @@ class categoryController extends Controller
     }
     public function create(Request $request)
     {
-        $request->validate([
+        $validate = Validator::make($req->all(),[
             'name' => 'required',
+            'bg_header' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
         ]);
+        $image = '';
+        if($request->hasFile('bg_header')){
+            $imageName=time().'.'.$request->bg_header->extension();
+            $request->bg_header->move(public_path('category-assets/'), $imageName);
+            $image = "category-assets/$imageName";
+        }
         $hsl = Category::create([
             'name' => $request->name,
+            'bg_header' => $image,
             'created_by' => session('backend-session')->username
         ]);
         if ($hsl) {
@@ -44,9 +52,17 @@ class categoryController extends Controller
             'name' => 'required',
 
         ]);
-
+        $image = '';
+        if($request->hasFile('bg_header')){
+            $imageName=time().'.'.$request->bg_header->extension();
+            $request->bg_header->move(public_path('category-assets/'), $imageName);
+            $image = "category-assets/$imageName";
+        }else {
+            $image = $req->default;
+        }
         $hsl = Category::find($request->id)->update([
             'name' => $request->name,
+            'bg_header' => $image,
         ]);
         if ($hsl) {
             return redirect()->back()->with(['message' => 'category has been updated', 'color' => 'alert-success']);

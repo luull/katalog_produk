@@ -107,4 +107,13 @@ class ProductController extends Controller
         $produk = Product::where('id', $req->id)->first();
         return view("pages.detilProduk", compact('produk'));
     }
+    public function categoryproduct(Request $req)
+    {
+        $name = $req->name;
+        $product = Product::where('kategori',$req->id)->get();
+        $category = Category::where('id', $req->id)->get();
+        $bgheader = Category::where('id', $req->id)->first();
+        return view("pages.category-product", compact('product','category','name','bgheader'));
+    }
+
 }

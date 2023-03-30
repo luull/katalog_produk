@@ -11,12 +11,12 @@
                         <li class="mb-2"><a href="/">Beranda</a>
                         </li>
                         <li class="mb-2"><a href onclick="history.back();">Produk</a></li>
-                        <li class="mb-2"><a href="javscript:void(0);">{{ $product->category->name }}</a></li>
+                        <li class="mb-2"><a href="{{ env('APP_URL') }}/categoryproduct/{{ $product->category->id }}/-/-/{{ $product->category->name }}">{{ $product->category->name }}</a></li>
                         @if(!empty($product->sub_category->name))
-                        <li class="mb-2"><a href="javscript:void(0);">{{ $product->sub_category->name }}</a></li>
+                        <li class="mb-2"><a href="{{ env('APP_URL') }}/categoryproduct/{{ $product->category->id }}/{{ $product->sub_category->id ?? '-' }}/-/{{ $product->category->name }}">{{ $product->sub_category->name }}</a></li>
                         @endif
                         @if(!empty($product->sub_sub_category->name))
-                        <li class="mb-2"><a href="javscript:void(0);">{{ $product->sub_sub_category->name }}</a></li>
+                        <li class="mb-2"><a href="{{ env('APP_URL') }}/categoryproduct/{{ $product->category->id }}/{{ $product->sub_category->id ?? '-' }}/{{ $product->sub_sub_category->id ?? '-' }}/{{ $product->category->name }}">{{ $product->sub_sub_category->name }}</a></li>
                         @endif
                         <li class="active mb-2"><a href="javscript:void(0);">{{ $product->nama }}</a></li>
 

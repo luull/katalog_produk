@@ -32,10 +32,15 @@
 </head>
 <body class="sidebar-noneoverflow" data-spy="scroll" data-target="#navSection" data-offset="100">
     @include("templates.navbar")
-    <div class="containerr">
+    @if(request()->segment(1) !== "categoryproduct")
+        <div class="containerr">
+            @include('sweetalert::alert')
+            @yield('content')
+        </div>
+    @else
         @include('sweetalert::alert')
         @yield('content')
-    </div>
+    @endif
     @include("templates.footer")
     <script src="{{ asset('templates/assets/js/libs/jquery-3.1.1.min.js')}}"></script>
     <script src="{{ asset('templates/bootstrap/js/popper.min.js')}}"></script>
@@ -136,6 +141,7 @@
     </script>
     <script>
         $(document).ready(function() {
+            $("#icon-clear" ).removeClass('fa-close')
             App.init();
         });
         </script>

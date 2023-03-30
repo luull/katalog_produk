@@ -18,7 +18,7 @@
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
                                 <input type="text" name="search" class="jAuto form-control dropdown-toggle" id="cari"
-                                placeholder="Cari produk .." value="{{ !empty($search) ? $search : '' }}" autocomplete="off">
+                                placeholder="Cari produk .." value="{{ $search ?? '' }}" autocomplete="off">
                                 <span class="bl"><i class="fa fa-close" id="icon-clear"></i></span>
                               </div>
                               

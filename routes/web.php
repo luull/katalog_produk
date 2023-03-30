@@ -58,6 +58,7 @@ Route::get('/defaultProduk/{id}', 'SearchController@defaultproduk');
 Route::get('/detil-produk/{slug}', 'ProductController@detilproduk');
 Route::get('/detil-produk/{slug}/{reff}', 'ProductController@detilproduk');
 Route::get('/produk/{id}', 'ProductController@produk');
+Route::get('/categoryproduct/{id}/{id2}/{id3}/{name}', 'ProductController@categoryproduct');
 Route::get('/filterproduct/{id}', 'SearchController@filter');
 Route::get('/bukti-pembayaran/{id}', 'TransactionController@foto_bukti_pembayaran');
 

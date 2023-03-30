@@ -2,7 +2,15 @@
 
 @section('content')
 
-    <div class="container-fluid mt-5">
+<div class="bg-category mt-5">
+    <img src="{{ !empty($bgheader->bg_header) ? asset($bgheader->bg_header) : asset('category-assets/bg-grey.jpg') }}" alt="">
+</div>
+<div class="content-category">
+    <div class="container">
+        <h2 class="nunito semi-bolder">Kategori {{ $name }}</h2>
+       </div>
+</div>
+    <div class="container-fluid mt-5 pt-4 sub-content-category">
 
 
         <div class="row">
@@ -13,7 +21,7 @@
                         <li class="mb-2"><a href="/">Beranda</a>
                         </li>
                         <li class="mb-2"><a href onclick="history.back();">Produk</a></li>
-                        <li id="bla"><a href="javscript:void(0);" id="name"></a></li>
+                        <li class="mb-2"><a href>{{ $name }}</a></li>
                         <li id="bla2"><a href="javscript:void(0);" id="name2"></a></li>
                         <li id="bla3"><a href="javscript:void(0);" id="name3"></a></li>
 
@@ -27,7 +35,7 @@
                         <h4 class="nunito bolder mb-3">Filter</h4>
 
                         <div id="withoutSpacing" class="no-outer-spacing" style="width: 100% !important;">
-                            {{-- @php
+                            @php
                                 $x = 0;
                             @endphp
                             @foreach ($category as $c)
@@ -36,13 +44,13 @@
                                 @endphp
                                 <div class="card">
                                     <div class="card-header mb-0 pb-0 pt-0 pb-0" id="{{ $c->id }}">
-                                        <section class="mb-0 mt-0 pb-0 pt-0">
+                                        <section class="show mb-0 mt-0 pb-0 pt-0">
                                             <div role="menu" data-toggle="collapse" data-target="#ac-{{ $c->id }}"
                                                 aria-expanded="true" aria-controls="withoutSpacingAccordionOne">
                                                 <span class="nunito bolder black mb-0"><a href="#" id="c"
                                                         onclick="category({{ $c->id }})">{{ ucfirst($c->name) }}</a></span>
-                                                <i style="float: right !important;" class="black"
-                                                    data-feather="chevron-down"></i>
+                                                {{-- <i style="float: right !important;" class="black"
+                                                    data-feather="chevron-down"></i> --}}
                                             </div>
                                         </section>
                                     </div>
@@ -50,7 +58,7 @@
                                         $xx = 0;
                                     @endphp
                                     <div id="ac-{{ $c->id }}"
-                                        class="collapse {{ $c->id == 1 ? 'show' : '' }} pb-0 pt-0 mb-0 mt-0 "
+                                        class="collapse show pb-0 pt-0 mb-0 mt-0 "
                                         aria-labelledby="headingOne2" data-parent="#withoutSpacing">
 
                                         @foreach ($c->sub_category as $sc)
@@ -107,38 +115,8 @@
                                     </div>
 
                                 </div>
-                            @endforeach --}}
+                            @endforeach
 
-
-                            <div class="card">
-                                <div class="card-header" id="headingThree4">
-                                    <section class="mb-0 mt-0">
-                                        <div role="menu" class="collapsed" data-toggle="collapse"
-                                            data-target="#withoutSpacingAccordionThree" aria-expanded="false"
-                                            aria-controls="withoutSpacingAccordionThree">
-                                            <span class="nunito bolder black mb-0">Harga</span> <i
-                                                style="float: right !important;" class="black"
-                                                data-feather="chevron-down"></i>
-                                        </div>
-                                    </section>
-                                </div>
-                                <div id="withoutSpacingAccordionThree" class="collapse" aria-labelledby="headingThree4"
-                                    data-parent="#withoutSpacing">
-                                    <div class="card-body">
-                                        <div class="input-group">
-
-                                            <input type="number" name="h1" id="h1" class="form-control p-2" value="10000">
-
-                                            <input type="number" name="h2" id="h2" class="form-control p-2" value="500000">
-                                        </div>
-                                        <div class="row justify-content-center">
-                                            <button class="mt-2 btn btn-info" onclick="harga()">Ok</button>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -146,7 +124,7 @@
             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12 col-12">
                 <div id="search">
                     <hr>
-                    <p class="mb-4">Menampilkan {{ count($product) }} produk untuk pencarian "<strong>{{ $search }}</strong>"</p>
+                    {{-- <p class="mb-4">Menampilkan {{ count($product) }} produk untuk pencarian "<strong>{{ $search }}</strong>"</p> --}}
                     @if(count($product) >= 1)
                         <div class="row row-no-padding mb-3">
                             @foreach ($product as $item)
@@ -193,136 +171,31 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-
+    <input type="hidden" id="id1" value="{{ request()->segment(2) }}">
+<input type="hidden" id="id2" value="{{ request()->segment(3) }}">
+<input type="hidden" id="id3" value="{{ request()->segment(4) }}">
 @endsection
 @section('script')
-    <script>
+<script>
         $(document).ready(function() {
-            // category(1);
-            $('#bla').attr('style', 'display:none')  // option 2
+            var id1 = $("#id1").val();
+            var id2 = $("#id2").val();
+            var id3 = $("#id3").val();
+            if(id2 == '-' && id == '-'){
+                category(id1);   
+            }
+            if(id2 !== '-' && id3 !== '-'){
+                sub_sub_category(id3);
+            }
+            if(id3 == '-'){
+                sub_category(id2);
+            }
             $('#bla2').attr('style', 'display:none')
             $('#bla3').attr('style', 'display:none')
         });
-
-        function harga() {
-            var h1 = $("#h1").val();
-            var h2 = $("#h2").val();
-            $.ajax({
-                type: 'get',
-                method: 'get',
-                url: '/product/range-price/' + h1 + '/' + h2,
-                data: '_token = <?php echo csrf_token(); ?>',
-                success: function(hsl) {
-                    var i;
-                    if (hsl.record > 0) {
-                        $("#search").remove();
-                        html = '<div class="row row-no-padding2 mb-3">';
-                        for (i = 0; i < hsl.record; ++i) {
-                            var	number_string = hsl.data[i].harga.toString(),
-                                sisa 	= number_string.length % 3,
-                                rupiah 	= number_string.substr(0, sisa),
-                                ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
-                                    
-                            if (ribuan) {
-                                separator = sisa ? '.' : '';
-                                rupiah += separator + ribuan.join('.');
-                            }
-                            html = html +
-                                ' <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6 mb-3">';
-                            html = html + '<a href="/detil-produk/' + hsl.data[i].slug + '">';
-                            html = html + '<div class="card card-product">';
-                            html = html + '<img src="/' + hsl.data[i].image +
-                                '" class="card-img-top" alt="widget-card-2">';
-                            html = html + '<div class="card-body product">';
-                            html = html + '<div class="height-title">';
-                                if(hsl.data[i].nama.length > 35 ){
-                                    html = html + '<h5 class="card-title-produk-resize mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
-                                }else{
-                                    html = html + '<h5 class="card-title-produk mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
-                                }
-                            html = html + '</div>';
-                            html = html + '<h5 class="mb-2"><b>Rp. ' + rupiah + '</b></h5>';
-                            html = html + '</div></div></a></div>';
-                        }
-                        html = html + '</div>';
-                    } else {
-                        html =
-                            '<div class="alert alert-danger text-center">Daftar Produk dengan Kategori tersebut tidak ditemukan</div>';
-                    }
-                    $("#judul").html(hsl.title)
-                    $("#displayproduct").html(html);
-
-                }
-            })
-        }
-
-        function category(id) {
-            $.ajax({
-                type: 'get',
-                method: 'get',
-                url: '/product/category/' + id,
-                data: '_token = <?php echo csrf_token(); ?>',
-                success: function(hsl) {
-                    var i;
-                    if (hsl.record > 0) {
-                        $("#search").remove();
-                        $('#bla').attr('style', 'display:block')
-                        $('#bla2').attr('style', 'display:none')
-                        html = '<div class="row row-no-padding2 mb-3">';
-                        for (i = 0; i < hsl.record; ++i) {
-                            var	number_string = hsl.data[i].harga.toString(),
-                                sisa 	= number_string.length % 3,
-                                rupiah 	= number_string.substr(0, sisa),
-                                ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
-                                    
-                            if (ribuan) {
-                                separator = sisa ? '.' : '';
-                                rupiah += separator + ribuan.join('.');
-                            }
-                            html = html +
-                                ' <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6 col-6 mb-3">';
-                            html = html + '<a href="/detil-produk/' + hsl.data[i].slug + '">';
-                            html = html + '<div class="card card-product">';
-                            html = html + '<img src="/' + hsl.data[i].image +
-                                '" class="card-img-top" alt="widget-card-2">';
-                            html = html + '<div class="card-body product">';
-                            html = html + '<div class="height-title">';
-                                if(hsl.data[i].nama.length > 35 ){
-                                    html = html + '<h5 class="card-title-produk-resize mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
-                                }else{
-                                    html = html + '<h5 class="card-title-produk mb-1" mb-1">' + hsl.data[i].nama + '</h5>';
-                                }
-                            html = html + '</div>';
-                            html = html + '<h5 class="mb-2"><b>Rp. ' + rupiah + '</b></h5>';
-                            html = html + '</div></div></a></div>';
-                        }
-                        html = html + '</div>';
-                    } else {
-                        html = '<div class="text-center mt-5">'
-                            html = '<h3 class="nunito bolder">Oppss..Produk tidak ditemukan</h3>'
-                            html = '<p>Silahkan gunakan kategori yang lainnya</p>'
-                        html = '</div>'
-                    }
-                    
-                    $("#judul").html(hsl.title)
-                    var element = document.getElementById("name");
-                    element.classList.add("active");
-                    $("#name").html(hsl.name)
-                    $("#bla").addClass("active mb-2")
-                    $("#bla2").removeClass("active")
-                    $("#bla3").removeClass("active")
-                    $('#name2').html("") 
-                    $('#name3').html("")
-                    $("#displayproduct").html(html);
-
-                }
-            })
-        }
-
-        function sub_category(id) {
+      function sub_category(id) {
             $.ajax({
                 type: 'get',
                 method: 'get',
@@ -441,6 +314,5 @@
                 }
             })
         }
-
-    </script>
-@endsection
+</script>
+@stop

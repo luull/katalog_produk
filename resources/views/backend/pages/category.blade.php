@@ -23,6 +23,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
+                                <th>Header Background</th>
                                 <th>Date created</th>
                                 <th>Created by</th>
                                 <th>Action</th>
@@ -35,6 +36,7 @@
                             <tr>
                                 <td>{{$i++}}</td>
                                 <td>{{$d->name}}</td>
+                                <td><img class="mb-3" src="{{ asset($d->bg_header) }}" style="height:100px;border-radius:8px" alt=""></td>
                                 <td>{{$d->date_created}}</td>
                                 <td>{{$d->created_by}}</td>
                                 <td>
@@ -70,6 +72,16 @@
                                 @error('name')
                                 <br>
                                 <div class="text-danger mt-1">This field is required</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Header Background</label>
+                                <input type="file" class="form-control" name="bg_header">
+                                @error('bg_header')
+                                <br>
+                                <div class="text-danger mt-1">This file is not support</div>
                                 @enderror
                             </div>
                         </div>
@@ -109,6 +121,22 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-md-4 col-12">
+                            <label class="my-3" for="">Header Background </label>
+                            <br>
+                            <div id="edit_bg_header"></div>
+                        </div>
+                        <div class="col-md-8 col-12">
+                            <label class="my-3" for="">Ubah Background</label>
+                            <small class="text-danger">* batas ukuran 2mb</small>
+                            <br>
+                            <input type="file" class="form-control" name="bg_header">
+                            <input type="text" class="form-control" id="edit_default" name="default" hidden>
+                            @error('bg_header')
+                            <br>
+                            <div class="text-danger mt-1">Gambar tidak sesuai dengan ketentuan</div>
+                            @enderror
+                        </div>
 
                     </div>
                 </div>
@@ -140,8 +168,11 @@
                    } else{
                     $("#edit_id").val(hsl.id);
                     $("#edit_name").val(hsl.name);
-
+                    $("#edit_default").val(hsl.bg_header);
+                    // var bla = $("#edit_bg_header").html('<img src="asset'( + hsl.bg_header + )'" style="height:100px" />');
+                    $("#edit_bg_header").html($("<img>").attr("src", hsl.bg_header));
                     $("#editModal").modal();
+                    console.log(bla);
 
                    }
                 }
