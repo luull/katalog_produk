@@ -3,7 +3,7 @@
             <ul class="navbar-nav theme-brand flex-row  text-center mx-auto">
                 <li class="nav-item theme-logo ">
                     <a href="/">
-                        <img src="{{ asset('images/logo.png')}}" class="navbar-logo" style="height: 50px;width:auto" alt="{{env('STORE_NAME')}}" title="{{env('STORE_NAME')}}">
+                        <img src="{{ asset('images/logo.png')}}" class="navbar-logo" alt="{{env('STORE_NAME')}}" title="{{env('STORE_NAME')}}">
                     </a>
                 </li>
             </ul>
@@ -31,8 +31,8 @@
                                 @endforeach
                                 
                                 </div>
-                                <hr>
-                                <button type="button" class="dropdown-item blas">Delete</button>
+                                {{-- <hr>
+                                <button type="button" class="dropdown-item blas">Delete</button> --}}
                           </div>
                         </div>  
                       

@@ -62,37 +62,37 @@ input[type="radio"]{
                                 <div class="paymentWrap">
                                     <div class="btn-group paymentBtnGroup btn-group-justified" data-toggle="buttons">
                                         <div class="row">
-                                            <div class="col-md-2">
+                                            <div class="col-md-2 col-4">
                                                 <label class="btn paymentMethod">
                                                     <div class="method jne"></div>
                                                     <input type="radio" value="jne" name="kurir" id="kurir"> 
                                                 </label>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-2 col-4">
                                                 <label class="btn paymentMethod">
                                                     <div class="method sicepat"></div>
                                                     <input type="radio" value="sicepat" name="kurir" id="kurir"> 
                                                 </label>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-2 col-4">
                                                 <label class="btn paymentMethod">
                                                     <div class="method anteraja"></div>
                                                     <input type="radio" value="anteraja" name="kurir" id="kurir"> 
                                                 </label>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-2 col-4">
                                                 <label class="btn paymentMethod">
                                                     <div class="method ninja"></div>
                                                     <input type="radio" value="ninja" name="kurir" id="kurir"> 
                                                 </label>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-2 col-4">
                                                 <label class="btn paymentMethod">
                                                     <div class="method tiki"></div>
                                                     <input type="radio" value="tiki" name="kurir" id="kurir"> 
                                                 </label>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-2 col-4">
                                                 <label class="btn paymentMethod">
                                                     <div class="method pos"></div>
                                                     <input type="radio" value="pos" name="kurir" id="kurir"> 

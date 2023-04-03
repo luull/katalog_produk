@@ -151,7 +151,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-10">
                                                                         <p class="size-16">{{ $c->category }}</p>
-                                                                        <p class="size-18">{{ $getuser->name }}</p>
+                                                                        <p class="size-18">{{ $c->name }}</p>
                                                                         <p class="info-text">{{ $c->address }},
                                                                             {{ $c->province }}, {{ $c->type }}
                                                                             {{ $c->city_name }},

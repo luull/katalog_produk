@@ -22,6 +22,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Icon</th>
                                 <th>Nama</th>
                                 <th>Header Background</th>
                                 <th>Date created</th>
@@ -35,6 +36,7 @@
 
                             <tr>
                                 <td>{{$i++}}</td>
+                                <td><i class="fa fa-{{ $d->icon }}" style="font-size: 30px"></i></td>
                                 <td>{{$d->name}}</td>
                                 <td><img class="mb-3" src="{{ asset($d->bg_header) }}" style="height:100px;border-radius:8px" alt=""></td>
                                 <td>{{$d->date_created}}</td>
@@ -75,6 +77,16 @@
                                 @enderror
                             </div>
                         </div>
+                       <div class="col-md-12">
+                            <label for="basic-url" class="form-label">Icon</label>
+                            <div class="input-group">
+                              <span class="input-group-text" id="basic-addon3">fa fa-</span>
+                              <input type="text" name="icon" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+                            </div>
+                            <div class="form-text" id="basic-addon4">Referensi icon <a href="https://fontawesome.com/v4/icons/" target="_blank">https://fontawesome.com/v4/icons/</a></div>
+                       
+                       </div>
+                          
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Header Background</label>
@@ -120,6 +132,16 @@
                                 <div class="text-danger mt-1">This field is required</div>
                                 @enderror
                             </div>
+                        </div>
+                        <div class="col-md-12">
+                 
+                                <label for="basic-url" class="form-label">Icon</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon3">fa fa-</span>
+                                  <input type="text" name="icon" id="edit_icon" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+                                </div>
+                                <div class="form-text" id="basic-addon4">Referensi icon <a href="https://fontawesome.com/v4/icons/" target="_blank">https://fontawesome.com/v4/icons/</a></div>
+                            
                         </div>
                         <div class="col-md-4 col-12">
                             <label class="my-3" for="">Header Background </label>
@@ -168,6 +190,7 @@
                    } else{
                     $("#edit_id").val(hsl.id);
                     $("#edit_name").val(hsl.name);
+                    $("#edit_icon").val(hsl.icon);
                     $("#edit_default").val(hsl.bg_header);
                     // var bla = $("#edit_bg_header").html('<img src="asset'( + hsl.bg_header + )'" style="height:100px" />');
                     $("#edit_bg_header").html($("<img>").attr("src", hsl.bg_header));

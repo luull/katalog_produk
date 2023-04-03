@@ -28,6 +28,7 @@ class categoryController extends Controller
         }
         $hsl = Category::create([
             'name' => $request->name,
+            'icon' => $request->icon,
             'bg_header' => $image,
             'created_by' => session('backend-session')->username
         ]);
@@ -58,10 +59,11 @@ class categoryController extends Controller
             $request->bg_header->move(public_path('category-assets/'), $imageName);
             $image = "category-assets/$imageName";
         }else {
-            $image = $req->default;
+            $image = $request->default;
         }
         $hsl = Category::find($request->id)->update([
             'name' => $request->name,
+            'icon' => $request->icon,
             'bg_header' => $image,
         ]);
         if ($hsl) {

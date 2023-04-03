@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="shadow-bottom"></div>
-        <ul class="list-unstyled menu-categories" id="accordionExample">
+        <ul class="list-unstyled menu-categories" id="accordionExample" style="height:350px;overflow: scroll">
             <li class="menu {{ Request::is('backend/dashboard') ? 'active' : '' }}">
                 <a href="/backend/dashboard" aria-expanded="false" class="dropdown-toggle">
                     <div class="">

@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{env('STORE_NAME')}}</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="{{ asset('templates/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templates/assets/css/plugins.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('templates/assets/css/style.css')}}" rel="stylesheet" type="text/css" />
@@ -149,7 +150,7 @@
     <script src="{{ asset('templates/assets/js/custom.js')}}"></script>
     <script src="{{ asset('templates/assets/js/scrollspyNav.js')}}"></script>
     <script src="{{ asset('templates/plugins/font-icons/feather/feather.min.js')}}"></script>
-    <script src="https://use.fontawesome.com/9a35825826.js"></script>
+    {{-- <script src="https://use.fontawesome.com/9a35825826.js"></script> --}}
     <script src="{{ asset('templates/assets/js/components/ui-accordions.js')}}"></script>
     <script src="{{ asset('templates/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js')}}"></script>
     <script src="{{ asset('templates/plugins/bootstrap-touchspin/custom-bootstrap-touchspin.js')}}"></script>

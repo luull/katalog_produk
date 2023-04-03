@@ -128,7 +128,7 @@ function transaction($status)
         $jml = 0;
         foreach ($trans as $t) {
             $jml++;
-            $hasil .= '<div class="card ">
+            $hasil .= '<div class="card mb-3">
                 <div class="card-header bg-light p-3 pb-0 m-0">
                     <div class="row justify-content-between m-0 p-0 text-dark">
                         <div class="col-7 m-0 pl-2 pr-2 "><a href="/detil-transaksi/' . $t->id_transaction . '">' . $t->id_transaction . '</a> / ' . $t->date_created . '</div> 

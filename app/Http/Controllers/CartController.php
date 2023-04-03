@@ -90,10 +90,10 @@ class CartController extends Controller
                 'status' => 1
             ]);
             if ($hsl) {
-                Alert::success('Barang berhasil ditambah ke keranjang');
+                Alert::toast('Barang berhasil ditambah ke keranjang', 'success');
                 return redirect('/cart');
             } else {
-                Alert::error('Barang gagal ditambah ke keranjang');
+                Alert::toast('Barang gagal ditambah ke keranjang', 'error');
                 return redirect()->back();
             }
         }

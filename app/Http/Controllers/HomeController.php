@@ -70,7 +70,16 @@ class HomeController extends Controller
                 ->where('product.show', true)
                 ->get();
             $banner = Banner::where('show', 1)->get();
-            $gets = Category::all();
+            
+            $gets = Category::with('product')
+            // $gets = DB::table('category')
+            // ->join('sub_category','sub_category.id_category', '=', 'category.id')
+            // ->where('sub_category.id_category','category.id')
+            // ->select('category.*')
+            ->get();
+                    // ->where('category.id', '=', 'sub_category.id_category')
+                
+            // dd($gets);
             $category = $gets->toArray();
 
             // dd($category);

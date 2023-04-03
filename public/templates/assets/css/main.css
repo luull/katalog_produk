@@ -2265,6 +2265,15 @@ table .badge-success, table .badge-primary, table .badge-warning, table .badge-d
 .black {
     color: #000 !important;
 }
+.size-24 {
+    font-size: 24px !important;
+}
+.size-22 {
+    font-size: 22px !important;
+}
+.size-20 {
+    font-size: 20px !important;
+}
 .size-18 {
     font-size: 18px !important;
 }
@@ -2328,6 +2337,7 @@ table .badge-success, table .badge-primary, table .badge-warning, table .badge-d
 
 }
 .footer {
+  position: relative;
     background: #fff !important;
     border-top: 5px solid #ebedf2;
     padding-left: 50px;

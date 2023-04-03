@@ -20,7 +20,7 @@
                     <ul class="breadcrumb">
                         <li class="mb-2"><a href="/">Beranda</a>
                         </li>
-                        <li class="mb-2"><a href onclick="history.back();">Produk</a></li>
+                        <li class="mb-2"><a href="javscript:void(0);">Produk</a></li>
                         <li class="mb-2"><a href>{{ $name }}</a></li>
                         <li id="bla2"><a href="javscript:void(0);" id="name2"></a></li>
                         <li id="bla3"><a href="javscript:void(0);" id="name3"></a></li>
@@ -65,8 +65,6 @@
                                             @php
                                                 $xx++;
                                             @endphp
-
-
                                             <div class="card-body p-0 pl-3 m-0 " >
                                                 <div id="iconsAccordion" class="accordion-icons">
                                                     <div class="card m-0 p-0 ">
@@ -126,6 +124,7 @@
                     <hr>
                     {{-- <p class="mb-4">Menampilkan {{ count($product) }} produk untuk pencarian "<strong>{{ $search }}</strong>"</p> --}}
                     @if(count($product) >= 1)
+                    
                         <div class="row row-no-padding mb-3">
                             @foreach ($product as $item)
                             <?PHP
@@ -179,6 +178,7 @@
 @endsection
 @section('script')
 <script>
+
         $(document).ready(function() {
             var id1 = $("#id1").val();
             var id2 = $("#id2").val();

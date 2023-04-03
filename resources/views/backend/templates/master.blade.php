@@ -11,12 +11,12 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&display=swap" rel="stylesheet">
     <link href="{{ asset('backend/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('backend/assets/css/plugins.css')}}" rel="stylesheet" type="text/css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="{{ asset('backend/plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
     <link href="{{ asset('backend/assets/css/dashboard/dash_1.css')}}" rel="stylesheet" type="text/css" class="dashboard-analytics" />
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/elements/alert.css')}}">
-    <link rel="stylesheet" href="{{ asset('backend/plugins/font-icons/fontawesome/css/regular.css')}}">
-    <link rel="stylesheet" href="{{ asset('backend/plugins/font-icons/fontawesome/css/fontawesome.css')}}">
+    {{-- <link rel="stylesheet" href="{{ asset('backend/plugins/font-icons/fontawesome/css/regular.css')}}">
+    <link rel="stylesheet" href="{{ asset('backend/plugins/font-icons/fontawesome/css/fontawesome.css')}}"> --}}
     <link href="{{ asset('backend/assets/css/elements/tooltip.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('backend/assets/css/elements/breadcrumb.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('backend/assets/css/components/custom-modal.css')}}" rel="stylesheet" type="text/css" />

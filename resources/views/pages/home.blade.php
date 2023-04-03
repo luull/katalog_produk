@@ -34,70 +34,67 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
-            </div>
-            <div class="container-fluid" id="category-list">
-                <div class="row" >
-                    <div class="col-sm-12">
-                        <div id="inam" class="carousel slide" data-interval="false">
-                            <div class="carousel-inner">
-                                <?php $i = 0; ?>
-                                @foreach ($category as $item)
-                                    <div class="carousel-item {{ $i == 0 ? 'active' : '' }}">
-                                       <div class="container-fluid">
-                                        <div class="row justify-content-center" style="display: flex;flex-wrap:nowrap;margin:0">
-                                            @foreach  (array_slice($category, 0, 6) as $items)
-                                                
-                                       
-                                             {{-- <div class="col-sm-6 col-6 col-lg-2" style="width: auto !important;   display: table;"> --}}
-                                                 <div class="card card-slider">
-            
-                                                     <a href="/categoryproduct/{{ $items['id'] }}/-/-/{{ $items['name'] }}" class="nunito" style="line-height: 2.5"><i class="fa fa-home ml-1 mr-1"></i> {{ $items['name'] }}</a>
-                                         
-                                                 </div>
-                                                 
-                                             {{-- </div> --}}
-                                             @endforeach
-                                         </div>
-                                       </div>
-                                        <?php $i++ ?>
-                                    </div>
-        
-                                    <div class="carousel-item">
-                                        <div class="container-fluid">
-                                            <div class="row justify-content-start" style="display: flex;flex-wrap:nowrap;margin:0">
-                                            @foreach  (array_slice($category, 6, 14) as $items)
-
-                                                <div class="card card-slider">
-                                            
-                                                    <a href="/categoryproduct/{{ $items['id'] }}/-/-/{{ $items['name'] }}" class="nunito" style="line-height: 2.5"><i class="fa fa-home ml-1 mr-1"></i> {{ $items['name'] }}</a>
-                                        
-                                                </div>
-                                                 
-                                                @endforeach
-                                            </div>
-                                             
-                                             
-                                         </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <a href="#inam" class="carousel-control-prev" data-slide="prev" style="background:#eaeaea;color:#fff;margin-top:15px">
-                                <span class="carousel-control-prev-icon" ></span>
-                            </a>
-                            <a href="#inam" class="carousel-control-next" data-slide="next" style="background:#eaeaea;color:#fff;margin-top:15px">
-                                <span class="carousel-control-next-icon" ></span>
-                            </a>
-                            
-                        </div>
-                        
-                    </div>
-                    
                 </div>
-                
             </div>
+            <div class="row row-no-padding">
+                <div class="col-md-12 mt-3">
+                    <div class="card" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;;border:0">
+                        <div class="card-body">
+                           <div class="row ">
+                            <div class="col-md-12">
+                                <h2 class="nunito bolder mb-3 size-24 title">Kategori Pilihan </h1>
+                                <div class="row row-no-padding">
+                                    @foreach ($category as $item )
+                                    
+                                    <div class="col-md-2 col-6 mb-2">
+                                            @if (!empty($item['product']))
+                                            <a href="/categoryproduct/{{ $item['id'] }}/-/-/{{ $item['name'] }}">
+                                            @else
+                                            <a onclick="noproduct()">
+                                            @endif
+                                            <div class="card card-category">
+                                          
+                                                    <i class="fa fa-{{ $item['icon'] }} mb-2"></i>
+                                                    <h2 class="size-14 semi-bolder nunito">{{ $item['name'] }}</h2>
+                                            
+                                            </div>
+                                            </a>
+                                        </div>
+                              
+                                    @endforeach
+                                </div>
+                            </div>
+                            {{-- <div class="col-md-6">
+                                <h2 class="nunito bolder mb-3 size-18 title">Kategori Pilihan </h1>
+                                <div class="row justify-content-end row-no-padding">
+                                    @foreach ($category as $item )
+                                    @if (empty($item['product']))
+                                        
+                                        <div class="col-md-3 col-6 mb-2">
+                                            <div class="card card-category">
+                                          
+                                                    <i class="fa fa-home mb-2"></i>
+                                                    <h2 class="size-14 semi-bolder nunito">{{ $item['name'] }}</h2>
+                                            
+                                            </div>
+                                            
+                                        </div>
+                                    @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                             --}}
+              
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
             @if (session('message'))
                 <div class="m-3 p-3 w-100 alert alert-{{ session('alert') }} text-center">{{ session('message') }}</div>
             @endif
+            <div class="row">
             <div id="custom_carousel" class="col-lg-12">
            
                     <hr>
@@ -167,29 +164,26 @@
     </div>
 
 @endsection
-{{-- @section('script')
-{{-- <script>
-    $('#recipeCarousel').carousel({
-  interval: 10000
-})
+@section('script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function noproduct(){
+        const Toast = Swal.mixin({
+        toast: true,
+        position: 'bottom-start',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+        })
 
-$('.carousel .carousel-item').each(function(){
-    var minPerSlide = 3;
-    var next = $(this).next();
-    if (!next.length) {
-    next = $(this).siblings(':first');
+        Toast.fire({
+        icon: 'warning',
+        title: 'Produk belum tersedia',
+        })
     }
-    next.children(':first-child').clone().appendTo($(this));
-    
-    for (var i=0;i<minPerSlide;i++) {
-        next=next.next();
-        if (!next.length) {
-        	next = $(this).siblings(':first');
-      	}
-        
-        next.children(':first-child').clone().appendTo($(this));
-      }
-});
-
 </script>
-@stop --}} 
+@stop
