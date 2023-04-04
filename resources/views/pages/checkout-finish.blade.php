@@ -1,7 +1,7 @@
 @extends('templates.master')
 @section('content')
 
-<div class="mt-5">
+<div class="mt-3">
             <div class="row">
                        
                 <div class="col-lg-8 col-md-6 col-sm-6 col-12 list-receipt">
@@ -33,25 +33,26 @@
                                           
                                         </h1>
                                     @endforeach
-                                      </div>
+                                </div>
                                     </div>
                                     <div class="col"></div>
-                                   
-                                            {{-- <table border=0 cellpadding=5 cellspacing=1> 
                                     
+                                    {{-- <table border=0 cellpadding=5 cellspacing=1> 
+                                        
                                                 <tr><td>Nama Bank</td><td> : </td><td> {{$b->nama_bank}}</td></tr>
                                                 <tr><td>No Rekening</td><td> : </td><td> {{$b->no_akun}}</td></tr>
                                                 <tr><td>Pemilik Rekening</td><td> : </td><td> {{$b->nama_akun}}</td></tr>
                                                 <tr><td>Nominal Yang ditransfer</td><td> : </td><td class="text-danger"> </td></tr>
                                             </table> --}}
-                                       
+                                            
+                                        </div>
+                                        
                                     </div>
-                               
-                                </div>
                                 @endif
-                
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12 receipt mt-2">
-                            <div class="container">
+                                
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-12 receipt mt-2">
+                                    <a href="/myorder" class="btn btn-outline-success btn-block my-3">Selesai Transaksi</a>
+                                    <div class="container">
                      
                                 <div class="receipt_box">
                                     <div class="head">
@@ -121,8 +122,7 @@
                                         <p class="nunito">BELUM DIBAYAR</p>
                                     </div>
                                     <div class="foot">
-                                        
-                                        <img src="https://i.ibb.co/c8CQvBq/barcode.png" alt="barcode" class="barcode" />
+                                        <?php echo '<img src="data:image/png;base64,' . DNS1D::getBarcodePNG($no_transaksi, 'C39+',3,120) . '" alt="barcode"   />'; ?>
                                     </div>
                                 </div>
 
@@ -137,6 +137,7 @@
 @section('script')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+    
     function myFunction() {
       // Get the text field
       var copyText = document.getElementById("myInput");

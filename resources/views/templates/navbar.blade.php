@@ -23,7 +23,7 @@
                               </div>
                               
                           <div class="dropdown-menu">
-                              <i class="hasNoResults">No matching results</i>
+                              <p class="hasNoResults">No matching results</p>
                               <div class="list-autocomplete">
                                 @foreach ( session('data-product') as $p )
                                     

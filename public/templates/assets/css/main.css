@@ -2340,9 +2340,7 @@ table .badge-success, table .badge-primary, table .badge-warning, table .badge-d
   position: relative;
     background: #fff !important;
     border-top: 5px solid #ebedf2;
-    padding-left: 50px;
-    padding-right: 40px;
-    padding-top: 80px;
+    padding-top: 50px;
     padding-bottom: 80px;
 }
 .card-cart {
