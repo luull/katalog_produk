@@ -33,7 +33,8 @@ var App = function() {
 
     var categoryScroll = {
         scrollCat: function() {
-            var sidebarWrapper = document.querySelectorAll('.sidebar-wrapper [aria-expanded="true"]')[0];
+            var sidebarWrapper = document.querySelectorAll('.sidebar-wrapper')[0];
+            // alert(sidebarWrapper);
             var sidebarWrapperTop = sidebarWrapper.offsetTop - 20;
             setTimeout(function(){ $('.menu-categories').animate({ scrollTop: sidebarWrapperTop }, 500); }, 500);
         }

@@ -91,7 +91,7 @@
                         <a href="/backend/category"> Kategori </a>
                     </li>
                     <li class="{{ Request::is('backend/subcategory') ? 'active' : '' }}">
-                        <a href="/backend/subcategory"> Sub Kategori </a>
+                        <a href="/backend/product/subcategory"> Sub Kategori </a>
                     </li>
                     <li class="{{ Request::is('backend/subsubcategory') ? 'active' : '' }}">
                         <a href="/backend/subsubcategory"> Sub Sub Kategori </a>
