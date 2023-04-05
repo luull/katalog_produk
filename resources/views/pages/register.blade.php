@@ -57,7 +57,9 @@
                                 </div>
                                  <div id="name-field" class="field-wrapper input">
                                     <label for="name">NAMA LENGKAP</label>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                                      <input id="name" name="name" type="text" class="form-control" placeholder="Nama Lengkap" value="{{ old('name')}}">
+
                                     @error('name')
                                     <div class="text-danger mt-1">{{ $message }}</div>
                                     @enderror
@@ -66,6 +68,7 @@
                                     <div class="d-flex justify-content-between">
                                         <label for="email">EMAIL</label>
                                     </div>
+                                    <i data-feather="slack"></i>
                                     <input id="email" name="email" type="email" class="form-control" placeholder="Alamat Email" value="{{old('email')}}">
                                     @error('email')
                                     <div class="text-danger mt-1">{{ $message }}</div>
@@ -101,7 +104,7 @@
     <script src="{{ asset('templates/assets/js/libs/jquery-3.1.1.min.js')}}"></script>
     <script src="{{ asset('templates/bootstrap/js/popper.min.js')}}"></script>
     <script src="{{ asset('templates/bootstrap/js/bootstrap.min.js')}}"></script>
-
+    <script src="{{ asset('templates/plugins/font-icons/feather/feather.min.js')}}"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
     <script src="{{ asset('templates/assets/js/authentication/form-2.js')}}"></script>
 

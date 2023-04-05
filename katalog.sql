@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 03 Apr 2023 pada 17.45
+-- Waktu pembuatan: 05 Apr 2023 pada 13.55
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 8.2.0
 
@@ -132,9 +132,7 @@ CREATE TABLE `banner` (
 INSERT INTO `banner` (`id`, `image`, `show`, `created_at`, `updated_at`, `created_by`) VALUES
 (209, 'backend/banner/1678346353.jpg', 1, '2023-03-09 07:19:13', '2023-03-09 00:19:13', 'Bayu Nugraha'),
 (210, 'backend/banner/1653615101.jpg', 1, '2022-05-26 18:31:41', '2022-05-26 18:31:41', 'Bayu Nugraha'),
-(211, 'backend/banner/1653615109.jpg', 1, '2022-05-26 18:31:49', '2022-05-26 18:31:49', 'Bayu Nugraha'),
 (212, 'backend/banner/1678346374.jpg', 1, '2023-03-09 07:19:34', '2023-03-09 00:19:34', 'sholeh'),
-(213, 'backend/banner/1678346393.jpg', 1, '2023-03-09 00:19:53', '2023-03-09 00:19:53', 'nurhidayat'),
 (214, 'backend/banner/1678346413.jpg', 1, '2023-03-09 00:20:13', '2023-03-09 00:20:13', 'nurhidayat');
 
 -- --------------------------------------------------------
@@ -183,14 +181,6 @@ CREATE TABLE `cart` (
   `qty` int(11) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `cart`
---
-
-INSERT INTO `cart` (`id`, `id_user`, `id_barang`, `qty`, `status`) VALUES
-(24, 3, 80, 1, 1),
-(25, 3, 6, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -820,7 +810,7 @@ INSERT INTO `contact` (`id`, `id_user`, `category`, `name`, `province`, `city`, 
 (1, 1, 'rumah', 'Bayu Nugraha', 'Jawa Barat', '54', 740, 'Perum Kota Serang Baru Blok E-22 No 5 \r\nRT008 RW017, Desa Sukaragam', 17330, '6287882339006', 0, 0),
 (2, 2, 'rumah', 'Intan Permata', 'Jawa Barat', '54', 740, 'Perum Kota Serang Baru Blok E-22 No 5\r\nRT008 RW 017 Desa Sukaragam', 17330, '6287882339001', 0, 0),
 (3, 3, 'rumah', 'Bayu Nugraha', 'Jawa Barat', '54', 740, 'Perum Kota Serang Baru Blok E-22 No 5', 17330, '6287882339006', 0, 1),
-(4, 4, 'rumah', 'luull', 'Jawa Barat', '54', 740, 'Perum KSB Blok E 22 no 5', 17330, '6281586298430', 0, 0),
+(4, 4, 'rumah', 'luull', 'Jawa Barat', '54', 740, 'Perum KSB Blok E 22 no 5', 17330, '6281586298430', 1, 1),
 (5, 5, 'rumah', 'irwan sholeh', 'Jawa Barat', '115', 1577, 'Jl. Swadaya Ujung, RT 03/07, No.81, Kel. Tanah Baru, Kec. Beji, Kota Depok', 16426, '628170740830', 0, 0),
 (6, 6, 'rumah', 'ikhsan gustiana', 'Jawa Barat', '115', 1580, 'jl. bengkel no.40', 16451, '6281384716091', 0, 0),
 (7, 8, 'rumah', 'saya', 'Sulawesi Selatan', '254', 3589, 'Jl. A Yani No 10', 321121, '6287882339001', 0, 0),
@@ -847,8 +837,8 @@ INSERT INTO `display` (`id`, `produk_id`) VALUES
 (6, 6),
 (7, 5),
 (9, 62),
-(10, 61),
-(11, 32);
+(10, 78),
+(11, 26);
 
 -- --------------------------------------------------------
 
@@ -971,7 +961,16 @@ INSERT INTO `list_transaction` (`id`, `trans_id`, `id_transaction`, `id_user`, `
 (31, 30, 'TR-3202042023', 3, 30, 2, '1800', 34000),
 (32, 31, 'TR-33102042023', 3, 5, 1, '900', 149000),
 (33, 31, 'TR-33102042023', 3, 6, 1, '900', 149000),
-(34, 31, 'TR-33102042023', 3, 71, 1, '900', 63000);
+(34, 31, 'TR-33102042023', 3, 71, 1, '900', 63000),
+(35, 32, 'TR-34904042023', 3, 71, 1, '900', 63000),
+(36, 33, 'TR-31604042023', 3, 6, 1, '900', 149000),
+(37, 34, 'TR-3304042023', 3, 30, 1, '900', 17000),
+(38, 34, 'TR-3304042023', 3, 80, 1, '900', 20000),
+(39, 35, 'TR-31304042023', 3, 6, 1, '900', 149000),
+(40, 36, 'TR-42405042023', 4, 71, 1, '900', 63000),
+(41, 36, 'TR-42405042023', 4, 78, 1, '300', 63000),
+(42, 37, 'TR-43405042023', 4, 78, 1, '300', 63000),
+(43, 38, 'TR-41205042023', 4, 5, 1, '900', 149000);
 
 -- --------------------------------------------------------
 
@@ -1017,7 +1016,14 @@ INSERT INTO `log_processed_by` (`id`, `branch_id`, `status`, `ket_status`, `user
 (20, 'CTR03', 0, 'Belum Dibayar', NULL, NULL, '2023-03-30 09:36:40', NULL),
 (21, 'CTR03', 0, 'Belum Dibayar', NULL, NULL, '2023-03-30 11:54:05', NULL),
 (22, 'CTR03', 0, 'Belum Dibayar', NULL, NULL, '2023-04-02 20:29:44', NULL),
-(23, 'CTR03', 0, 'Belum Dibayar', NULL, NULL, '2023-04-02 20:33:50', NULL);
+(23, 'CTR03', 0, 'Belum Dibayar', NULL, NULL, '2023-04-02 20:33:50', NULL),
+(24, 'CTR03', 0, 'Belum Dibayar', NULL, NULL, '2023-04-04 05:07:45', NULL),
+(25, 'CTR03', 0, 'Belum Dibayar', NULL, NULL, '2023-04-04 10:41:35', NULL),
+(26, 'CTR03', 0, 'Belum Dibayar', NULL, NULL, '2023-04-04 14:21:42', NULL),
+(27, 'CTR03', 0, 'Belum Dibayar', NULL, NULL, '2023-04-04 15:27:43', NULL),
+(28, 'CTR03', 0, 'Belum Dibayar', NULL, NULL, '2023-04-05 10:23:30', NULL),
+(29, 'CTR03', 0, 'Belum Dibayar', NULL, NULL, '2023-04-05 10:25:41', NULL),
+(30, 'CTR03', 0, 'Belum Dibayar', NULL, NULL, '2023-04-05 10:50:56', NULL);
 
 -- --------------------------------------------------------
 
@@ -1157,7 +1163,14 @@ INSERT INTO `log_transaction` (`id`, `trans_id`, `id_transaction`, `status`, `de
 (112, 28, 'TR-34530032023', 0, 'Menunggu Pembayaran', 'Proses Checkout {\"id_transaction\":\"TR-34530032023\",\"trans_id\":28,\"id_user\":3,\"name\":\"Ongkir\",\"quantity\":\"1\",\"price\":\"42000\",\"id\":28}', '2023-03-30 02:36:40', '2023-03-30 02:36:40', 'bayu', 'Customer'),
 (113, 29, 'TR-3630032023', 0, 'Menunggu Pembayaran', 'Proses Checkout {\"id_transaction\":\"TR-3630032023\",\"trans_id\":29,\"id_user\":3,\"name\":\"Ongkir\",\"quantity\":\"1\",\"price\":\"23000\",\"id\":29}', '2023-03-30 04:54:05', '2023-03-30 04:54:05', 'bayu', 'Customer'),
 (114, 30, 'TR-3202042023', 0, 'Menunggu Pembayaran', 'Proses Checkout {\"id_transaction\":\"TR-3202042023\",\"trans_id\":30,\"id_user\":3,\"name\":\"Ongkir\",\"quantity\":\"1\",\"price\":\"14000\",\"id\":30}', '2023-04-02 13:29:44', '2023-04-02 13:29:44', 'bayu', 'Customer'),
-(115, 31, 'TR-33102042023', 0, 'Menunggu Pembayaran', 'Proses Checkout {\"id_transaction\":\"TR-33102042023\",\"trans_id\":31,\"id_user\":3,\"name\":\"Ongkir\",\"quantity\":\"1\",\"price\":\"33000\",\"id\":31}', '2023-04-02 13:33:50', '2023-04-02 13:33:50', 'bayu', 'Customer');
+(115, 31, 'TR-33102042023', 0, 'Menunggu Pembayaran', 'Proses Checkout {\"id_transaction\":\"TR-33102042023\",\"trans_id\":31,\"id_user\":3,\"name\":\"Ongkir\",\"quantity\":\"1\",\"price\":\"33000\",\"id\":31}', '2023-04-02 13:33:50', '2023-04-02 13:33:50', 'bayu', 'Customer'),
+(116, 32, 'TR-34904042023', 0, 'Menunggu Pembayaran', 'Proses Checkout {\"id_transaction\":\"TR-34904042023\",\"trans_id\":32,\"id_user\":3,\"name\":\"Ongkir\",\"quantity\":\"1\",\"price\":\"11500\",\"id\":32}', '2023-04-03 22:07:45', '2023-04-03 22:07:45', 'bayu', 'Customer'),
+(117, 33, 'TR-31604042023', 0, 'Menunggu Pembayaran', 'Proses Checkout {\"id_transaction\":\"TR-31604042023\",\"trans_id\":33,\"id_user\":3,\"name\":\"Ongkir\",\"quantity\":\"1\",\"price\":\"9000\",\"id\":33}', '2023-04-04 03:41:35', '2023-04-04 03:41:35', 'bayu', 'Customer'),
+(118, 34, 'TR-3304042023', 0, 'Menunggu Pembayaran', 'Proses Checkout {\"id_transaction\":\"TR-3304042023\",\"trans_id\":34,\"id_user\":3,\"name\":\"Ongkir\",\"quantity\":\"1\",\"price\":\"18000\",\"id\":34}', '2023-04-04 07:21:42', '2023-04-04 07:21:42', 'bayu', 'Customer'),
+(119, 35, 'TR-31304042023', 0, 'Menunggu Pembayaran', 'Proses Checkout {\"id_transaction\":\"TR-31304042023\",\"trans_id\":35,\"id_user\":3,\"name\":\"Ongkir\",\"quantity\":\"1\",\"price\":\"14000\",\"id\":35}', '2023-04-04 08:27:43', '2023-04-04 08:27:43', 'bayu', 'Customer'),
+(120, 36, 'TR-42405042023', 0, 'Menunggu Pembayaran', 'Proses Checkout {\"id_transaction\":\"TR-42405042023\",\"trans_id\":36,\"id_user\":4,\"name\":\"Ongkir\",\"quantity\":\"1\",\"price\":\"9000\",\"id\":36}', '2023-04-05 03:23:30', '2023-04-05 03:23:30', 'luull', 'Customer'),
+(121, 37, 'TR-43405042023', 0, 'Menunggu Pembayaran', 'Proses Checkout {\"id_transaction\":\"TR-43405042023\",\"trans_id\":37,\"id_user\":4,\"name\":\"Ongkir\",\"quantity\":\"1\",\"price\":\"11500\",\"id\":37}', '2023-04-05 03:25:41', '2023-04-05 03:25:41', 'luull', 'Customer'),
+(122, 38, 'TR-41205042023', 0, 'Menunggu Pembayaran', 'Proses Checkout {\"id_transaction\":\"TR-41205042023\",\"trans_id\":38,\"id_user\":4,\"name\":\"Ongkir\",\"quantity\":\"1\",\"price\":\"14000\",\"id\":38}', '2023-04-05 03:50:56', '2023-04-05 03:50:56', 'luull', 'Customer');
 
 -- --------------------------------------------------------
 
@@ -1262,7 +1275,14 @@ INSERT INTO `payget` (`id`, `trans_id`, `id_transaction`, `id_user`, `name`, `qu
 (28, 28, 'TR-34530032023', 3, 'Ongkir', 1, 42000),
 (29, 29, 'TR-3630032023', 3, 'Ongkir', 1, 23000),
 (30, 30, 'TR-3202042023', 3, 'Ongkir', 1, 14000),
-(31, 31, 'TR-33102042023', 3, 'Ongkir', 1, 33000);
+(31, 31, 'TR-33102042023', 3, 'Ongkir', 1, 33000),
+(32, 32, 'TR-34904042023', 3, 'Ongkir', 1, 11500),
+(33, 33, 'TR-31604042023', 3, 'Ongkir', 1, 9000),
+(34, 34, 'TR-3304042023', 3, 'Ongkir', 1, 18000),
+(35, 35, 'TR-31304042023', 3, 'Ongkir', 1, 14000),
+(36, 36, 'TR-42405042023', 4, 'Ongkir', 1, 9000),
+(37, 37, 'TR-43405042023', 4, 'Ongkir', 1, 11500),
+(38, 38, 'TR-41205042023', 4, 'Ongkir', 1, 14000);
 
 -- --------------------------------------------------------
 
@@ -8817,7 +8837,14 @@ INSERT INTO `transaction` (`id`, `id_transaction`, `id_user`, `id_address`, `sub
 (28, 'TR-34530032023', 3, 3, 63000, '2700', '42000', 'sicepat', NULL, NULL, NULL, '1', '105000', 453, 105453, '5220795707', 'BCA', 0, NULL, 'CTR03', NULL, NULL, '2023-03-30 09:36:39'),
 (29, 'TR-3630032023', 3, 3, 126000, '1800', '23000', 'anteraja', NULL, NULL, NULL, '2-4', '149000', 630, 149630, '5220795707', 'BCA', 0, NULL, 'CTR03', NULL, NULL, '2023-03-30 11:54:03'),
 (30, 'TR-3202042023', 3, 3, 34000, '1800', '14000', 'pos', NULL, NULL, NULL, '2 HARI', '48000', 202, 48202, '1211212121', 'BSI', 0, NULL, 'CTR03', NULL, NULL, '2023-04-02 20:29:44'),
-(31, 'TR-33102042023', 3, 3, 361000, '2700', '33000', 'sicepat', NULL, NULL, NULL, '1-2', '394000', 310, 394310, '5220795707', 'BCA', 0, NULL, 'CTR03', NULL, NULL, '2023-04-02 20:33:50');
+(31, 'TR-33102042023', 3, 3, 361000, '2700', '33000', 'sicepat', NULL, NULL, NULL, '1-2', '394000', 310, 394310, '5220795707', 'BCA', 0, NULL, 'CTR03', NULL, NULL, '2023-04-02 20:33:50'),
+(32, 'TR-34904042023', 3, 3, 63000, '900', '11500', 'anteraja', NULL, NULL, NULL, '2-4', '74500', 490, 74990, '7112538528', 'BSI', 0, NULL, 'CTR03', NULL, NULL, '2023-04-04 05:07:45'),
+(33, 'TR-31604042023', 3, 3, 149000, '900', '9000', 'jne', NULL, NULL, NULL, '2-3', '158000', 160, 158160, '5220795707', 'BCA', 0, NULL, 'CTR03', NULL, NULL, '2023-04-04 10:41:34'),
+(34, 'TR-3304042023', 3, 3, 37000, '1800', '18000', 'jne', NULL, NULL, NULL, '2-3', '55000', 304, 55304, '5220795707', 'BCA', 0, NULL, 'CTR03', NULL, NULL, '2023-04-04 14:21:42'),
+(35, 'TR-31304042023', 3, 3, 149000, '900', '14000', 'sicepat', NULL, NULL, NULL, '1', '163000', 130, 163130, '5220795707', 'BCA', 0, NULL, 'CTR03', NULL, NULL, '2023-04-04 15:27:43'),
+(36, 'TR-42405042023', 4, 4, 126000, '1200', '9000', 'jne', NULL, NULL, NULL, '2-3', '135000', 240, 135240, '1560005442894', 'BANK MANDIRI', 0, NULL, 'CTR03', NULL, NULL, '2023-04-05 10:23:30'),
+(37, 'TR-43405042023', 4, 4, 63000, '300', '11500', 'sicepat', NULL, NULL, NULL, '1-2', '74500', 340, 74840, '5220795707', 'BCA', 0, NULL, 'CTR03', NULL, NULL, '2023-04-05 10:25:41'),
+(38, 'TR-41205042023', 4, 4, 149000, '900', '14000', 'sicepat', NULL, NULL, NULL, '1', '163000', 120, 163120, '5220795707', 'BCA', 0, NULL, 'CTR03', NULL, NULL, '2023-04-05 10:50:56');
 
 -- --------------------------------------------------------
 
@@ -9125,7 +9152,7 @@ ALTER TABLE `branches`
 -- AUTO_INCREMENT untuk tabel `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `category`
@@ -9179,19 +9206,19 @@ ALTER TABLE `level_admin`
 -- AUTO_INCREMENT untuk tabel `list_transaction`
 --
 ALTER TABLE `list_transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT untuk tabel `log_processed_by`
 --
 ALTER TABLE `log_processed_by`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT untuk tabel `log_transaction`
 --
 ALTER TABLE `log_transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- AUTO_INCREMENT untuk tabel `lupa_password`
@@ -9209,7 +9236,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT untuk tabel `payget`
 --
 ALTER TABLE `payget`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT untuk tabel `product`
@@ -9257,7 +9284,7 @@ ALTER TABLE `sub_sub_category`
 -- AUTO_INCREMENT untuk tabel `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
