@@ -180,7 +180,9 @@
                         <div class="text-center mt-5">
                             <h3 class="nunito bolder">Oppss..Produk {{ $search }} tidak ditemukan</h3>
                             <p>Silahkan gunakan kata kunci yang lainnya</p>
-                            <img src="{{ asset('templates/assets/img/search.png')}}" class="img-fluid mt-3" style="width: 400px;" alt="">
+                            <img src="{{ asset('templates/assets/img/search.png')}}" class="img-fluid mt-3" style="width: 400px;  display: block;
+                            margin-left: auto;
+                            margin-right: auto;" alt="">
                         </div>
                     @endif
                 </div>

@@ -470,7 +470,24 @@ img {
     height: 400px;
     align-items: center;
     background-image: url('../../../images/pay.svg');
-    opacity: 0.3;
+    opacity: 0.2;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.list-receipt2{
+    position: relative;
+}
+.list-receipt2:before{
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 10%;
+    top: 30%;
+    width: 100%;
+    height: 400px;
+    align-items: center;
+    background-image: url('../../../images/deliver.svg');
+    opacity: 0.2;
     background-size: contain;
     background-repeat: no-repeat;
 }

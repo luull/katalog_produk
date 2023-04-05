@@ -50,7 +50,7 @@
                                
                                 </div>
                                 @else
-                                <div class="col-lg-8 col-md-6 col-sm-6 col-12 list-receipt">
+                                <div class="col-lg-8 col-md-6 col-sm-6 col-12 list-receipt2">
                                     <div class="col-md-12 text-center">
                                         <h4 class="nunito" style="text-transform: uppercase">No Transaksi <b>{{ $no_transaksi }}</b></h4>
                                         <h4 class="nunito bolder mt-5 w-100 ">Alamat Pengiriman</h4>
@@ -81,6 +81,7 @@
                                 @endif
                 
                         <div class="col-lg-4 col-md-6 col-sm-6 col-12 receipt mt-2">
+                            <a href="/myorder" class="btn btn-outline-default btn-block my-3"><i class="fa fa-angle-left"></i> Kembali</a>
                             <div class="container">
                      
                                 <div class="receipt_box">
