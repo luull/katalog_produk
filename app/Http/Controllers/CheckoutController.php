@@ -7,6 +7,7 @@ use App\City;
 use App\Contact;
 use App\DefaultProduct;
 use App\Dumy;
+use App\Product;
 use App\Province;
 use App\Subdistrict;
 use Illuminate\Http\Request;
@@ -333,6 +334,9 @@ class CheckoutController extends Controller
                             'qty' => $item->qty,
                             'berat' => ($item->product->berat * $item->qty),
                             'total' => ($item->product->harga * $item->qty)
+                        ]);
+                        $hsl4 = Product::where('id', $item->id_barang)->update([
+                            'stok' => ($item->product->stok - $item->qty)
                         ]);
                     }
 

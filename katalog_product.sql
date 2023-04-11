@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 05 Apr 2023 pada 13.55
--- Versi server: 10.4.27-MariaDB
--- Versi PHP: 8.2.0
+-- Generation Time: Apr 11, 2023 at 08:18 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `katalog`
+-- Database: `katalog_product`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -35,13 +36,13 @@ CREATE TABLE `admin` (
   `foto` varchar(100) DEFAULT NULL,
   `telp` varchar(15) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `akses` int(2) NOT NULL DEFAULT 3,
+  `akses` int(2) NOT NULL DEFAULT '3',
   `last_login` datetime DEFAULT NULL,
   `ip_address` varchar(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `nama`, `foto`, `telp`, `email`, `akses`, `last_login`, `ip_address`) VALUES
@@ -54,33 +55,33 @@ INSERT INTO `admin` (`id`, `username`, `password`, `nama`, `foto`, `telp`, `emai
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `app_setting`
+-- Table structure for table `app_setting`
 --
 
 CREATE TABLE `app_setting` (
   `id` int(11) NOT NULL,
-  `app_name` varchar(20) NOT NULL,
-  `app_url` varchar(30) NOT NULL,
-  `app_domain` varchar(20) NOT NULL,
-  `poweredby` varchar(20) NOT NULL,
-  `copyright` varchar(20) NOT NULL,
-  `company_name` varchar(30) NOT NULL,
-  `url_join` varchar(50) NOT NULL,
-  `url_import` varchar(100) NOT NULL,
-  `text_join` varchar(500) NOT NULL,
+  `app_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `app_url` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `app_domain` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `poweredby` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `copyright` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `company_name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `url_join` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `url_import` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `text_join` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `themes_default` tinyint(4) NOT NULL,
   `card_default` tinyint(4) NOT NULL,
   `city_default` smallint(4) NOT NULL,
   `province_default` tinyint(4) NOT NULL,
   `subdistrict` smallint(4) NOT NULL,
-  `moto` varchar(255) NOT NULL,
-  `job` varchar(30) NOT NULL,
-  `job_title` varchar(30) NOT NULL,
-  `about_web` varchar(500) NOT NULL
+  `moto` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `job` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `job_title` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `about_web` varchar(500) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data untuk tabel `app_setting`
+-- Dumping data for table `app_setting`
 --
 
 INSERT INTO `app_setting` (`id`, `app_name`, `app_url`, `app_domain`, `poweredby`, `copyright`, `company_name`, `url_join`, `url_import`, `text_join`, `themes_default`, `card_default`, `city_default`, `province_default`, `subdistrict`, `moto`, `job`, `job_title`, `about_web`) VALUES
@@ -89,7 +90,7 @@ INSERT INTO `app_setting` (`id`, `app_name`, `app_url`, `app_domain`, `poweredby
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bank`
+-- Table structure for table `bank`
 --
 
 CREATE TABLE `bank` (
@@ -98,10 +99,10 @@ CREATE TABLE `bank` (
   `nama_akun` varchar(50) NOT NULL,
   `no_akun` varchar(15) NOT NULL,
   `gambar` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `bank`
+-- Dumping data for table `bank`
 --
 
 INSERT INTO `bank` (`id`, `nama_bank`, `nama_akun`, `no_akun`, `gambar`) VALUES
@@ -113,20 +114,20 @@ INSERT INTO `bank` (`id`, `nama_bank`, `nama_akun`, `no_akun`, `gambar`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `banner`
+-- Table structure for table `banner`
 --
 
 CREATE TABLE `banner` (
   `id` int(11) NOT NULL,
-  `image` varchar(100) NOT NULL,
-  `show` tinyint(1) NOT NULL DEFAULT 1,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `image` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `show` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created_by` varchar(50) NOT NULL
+  `created_by` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data untuk tabel `banner`
+-- Dumping data for table `banner`
 --
 
 INSERT INTO `banner` (`id`, `image`, `show`, `created_at`, `updated_at`, `created_by`) VALUES
@@ -138,7 +139,7 @@ INSERT INTO `banner` (`id`, `image`, `show`, `created_at`, `updated_at`, `create
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `branches`
+-- Table structure for table `branches`
 --
 
 CREATE TABLE `branches` (
@@ -151,16 +152,16 @@ CREATE TABLE `branches` (
   `city` int(11) NOT NULL,
   `subdistrict` int(11) NOT NULL,
   `zip` varchar(6) DEFAULT NULL,
-  `main_office` tinyint(1) NOT NULL DEFAULT 0,
-  `count` int(11) NOT NULL DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `main_office` tinyint(1) NOT NULL DEFAULT '0',
+  `count` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   `created_by` varchar(150) DEFAULT NULL,
   `updated_by` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `branches`
+-- Dumping data for table `branches`
 --
 
 INSERT INTO `branches` (`id`, `branch_id`, `password`, `name`, `propinsi`, `province`, `city`, `subdistrict`, `zip`, `main_office`, `count`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
@@ -171,7 +172,7 @@ INSERT INTO `branches` (`id`, `branch_id`, `password`, `name`, `propinsi`, `prov
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `cart`
+-- Table structure for table `cart`
 --
 
 CREATE TABLE `cart` (
@@ -179,26 +180,26 @@ CREATE TABLE `cart` (
   `id_user` int(11) DEFAULT NULL,
   `id_barang` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `status` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
   `icon` text NOT NULL,
-  `bg_header` text DEFAULT NULL,
-  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `bg_header` text,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created_by` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `name`, `icon`, `bg_header`, `date_created`, `created_by`) VALUES
@@ -218,7 +219,7 @@ INSERT INTO `category` (`id`, `name`, `icon`, `bg_header`, `date_created`, `crea
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `city`
+-- Table structure for table `city`
 --
 
 CREATE TABLE `city` (
@@ -228,10 +229,10 @@ CREATE TABLE `city` (
   `type` varchar(50) NOT NULL,
   `city_name` varchar(50) NOT NULL,
   `postal_code` varchar(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `city`
+-- Dumping data for table `city`
 --
 
 INSERT INTO `city` (`id`, `city_id`, `province_id`, `type`, `city_name`, `postal_code`) VALUES
@@ -740,7 +741,7 @@ INSERT INTO `city` (`id`, `city_id`, `province_id`, `type`, `city_name`, `postal
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `company`
+-- Table structure for table `company`
 --
 
 CREATE TABLE `company` (
@@ -766,16 +767,16 @@ CREATE TABLE `company` (
   `map` varchar(300) DEFAULT NULL,
   `latitude` float DEFAULT NULL,
   `longitude` float DEFAULT NULL,
-  `tentang_web` text DEFAULT NULL,
+  `tentang_web` text,
   `moto` varchar(300) DEFAULT NULL,
   `themes_id` int(2) DEFAULT NULL,
   `logo` varchar(200) DEFAULT NULL,
   `logo_kecil` varchar(100) NOT NULL,
   `hits` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `company`
+-- Dumping data for table `company`
 --
 
 INSERT INTO `company` (`id`, `nama`, `ktp`, `alamat`, `kelurahan`, `kecamatan`, `kota`, `propinsi`, `negara`, `kd_pos`, `email`, `telp`, `hp`, `wa`, `ig`, `fb`, `twitter`, `tube`, `website`, `map`, `latitude`, `longitude`, `tentang_web`, `moto`, `themes_id`, `logo`, `logo_kecil`, `hits`) VALUES
@@ -784,26 +785,26 @@ INSERT INTO `company` (`id`, `nama`, `ktp`, `alamat`, `kelurahan`, `kecamatan`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `contact`
+-- Table structure for table `contact`
 --
 
 CREATE TABLE `contact` (
   `id` int(11) NOT NULL,
   `id_user` int(11) DEFAULT NULL,
-  `category` text DEFAULT NULL,
+  `category` text,
   `name` varchar(50) NOT NULL,
-  `province` text DEFAULT NULL,
+  `province` text,
   `city` varchar(100) DEFAULT NULL,
   `subdistrict` int(11) DEFAULT NULL,
-  `address` text DEFAULT NULL,
+  `address` text,
   `kd_pos` int(100) DEFAULT NULL,
   `phone` varchar(13) DEFAULT NULL,
-  `status` int(11) DEFAULT 0,
-  `pick` tinyint(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `status` int(11) DEFAULT '0',
+  `pick` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `contact`
+-- Dumping data for table `contact`
 --
 
 INSERT INTO `contact` (`id`, `id_user`, `category`, `name`, `province`, `city`, `subdistrict`, `address`, `kd_pos`, `phone`, `status`, `pick`) VALUES
@@ -820,16 +821,16 @@ INSERT INTO `contact` (`id`, `id_user`, `category`, `name`, `province`, `city`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `display`
+-- Table structure for table `display`
 --
 
 CREATE TABLE `display` (
   `id` int(11) NOT NULL,
   `produk_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `display`
+-- Dumping data for table `display`
 --
 
 INSERT INTO `display` (`id`, `produk_id`) VALUES
@@ -843,7 +844,7 @@ INSERT INTO `display` (`id`, `produk_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dummy`
+-- Table structure for table `dummy`
 --
 
 CREATE TABLE `dummy` (
@@ -854,26 +855,26 @@ CREATE TABLE `dummy` (
   `qty` int(11) NOT NULL,
   `berat` varchar(255) NOT NULL,
   `total` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `event_log`
+-- Table structure for table `event_log`
 --
 
 CREATE TABLE `event_log` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `path` varchar(200) NOT NULL,
-  `refferal` varchar(200) DEFAULT NULL,
-  `description` varchar(300) NOT NULL,
-  `ip` varchar(20) NOT NULL,
+  `path` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `refferal` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `ip` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `time` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data untuk tabel `event_log`
+-- Dumping data for table `event_log`
 --
 
 INSERT INTO `event_log` (`id`, `user_id`, `path`, `refferal`, `description`, `ip`, `time`) VALUES
@@ -888,17 +889,17 @@ INSERT INTO `event_log` (`id`, `user_id`, `path`, `refferal`, `description`, `ip
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `level_admin`
+-- Table structure for table `level_admin`
 --
 
 CREATE TABLE `level_admin` (
   `id` int(2) NOT NULL,
   `kode` int(2) NOT NULL,
-  `nama` varchar(20) NOT NULL
+  `nama` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data untuk tabel `level_admin`
+-- Dumping data for table `level_admin`
 --
 
 INSERT INTO `level_admin` (`id`, `kode`, `nama`) VALUES
@@ -909,7 +910,7 @@ INSERT INTO `level_admin` (`id`, `kode`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `list_transaction`
+-- Table structure for table `list_transaction`
 --
 
 CREATE TABLE `list_transaction` (
@@ -921,10 +922,10 @@ CREATE TABLE `list_transaction` (
   `qty` int(11) NOT NULL,
   `berat` varchar(255) NOT NULL,
   `total` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `list_transaction`
+-- Dumping data for table `list_transaction`
 --
 
 INSERT INTO `list_transaction` (`id`, `trans_id`, `id_transaction`, `id_user`, `id_barang`, `qty`, `berat`, `total`) VALUES
@@ -970,12 +971,15 @@ INSERT INTO `list_transaction` (`id`, `trans_id`, `id_transaction`, `id_user`, `
 (40, 36, 'TR-42405042023', 4, 71, 1, '900', 63000),
 (41, 36, 'TR-42405042023', 4, 78, 1, '300', 63000),
 (42, 37, 'TR-43405042023', 4, 78, 1, '300', 63000),
-(43, 38, 'TR-41205042023', 4, 5, 1, '900', 149000);
+(43, 38, 'TR-41205042023', 4, 5, 1, '900', 149000),
+(45, 40, 'TR-31711042023', 3, 79, 3, '2700', 180000),
+(46, 41, 'TR-3511042023', 3, 5, 1, '900', 149000),
+(47, 41, 'TR-3511042023', 3, 79, 1, '900', 60000);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `log_processed_by`
+-- Table structure for table `log_processed_by`
 --
 
 CREATE TABLE `log_processed_by` (
@@ -985,12 +989,12 @@ CREATE TABLE `log_processed_by` (
   `ket_status` varchar(50) DEFAULT NULL,
   `user` varchar(50) DEFAULT NULL,
   `keterangan` varchar(200) DEFAULT NULL,
-  `created_by` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_by` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_by` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `log_processed_by`
+-- Dumping data for table `log_processed_by`
 --
 
 INSERT INTO `log_processed_by` (`id`, `branch_id`, `status`, `ket_status`, `user`, `keterangan`, `created_by`, `updated_by`) VALUES
@@ -1023,12 +1027,14 @@ INSERT INTO `log_processed_by` (`id`, `branch_id`, `status`, `ket_status`, `user
 (27, 'CTR03', 0, 'Belum Dibayar', NULL, NULL, '2023-04-04 15:27:43', NULL),
 (28, 'CTR03', 0, 'Belum Dibayar', NULL, NULL, '2023-04-05 10:23:30', NULL),
 (29, 'CTR03', 0, 'Belum Dibayar', NULL, NULL, '2023-04-05 10:25:41', NULL),
-(30, 'CTR03', 0, 'Belum Dibayar', NULL, NULL, '2023-04-05 10:50:56', NULL);
+(30, 'CTR03', 0, 'Belum Dibayar', NULL, NULL, '2023-04-05 10:50:56', NULL),
+(31, 'CTR03', 0, 'Belum Dibayar', NULL, NULL, '2023-04-11 06:16:35', NULL),
+(32, 'CTR03', 0, 'Belum Dibayar', NULL, NULL, '2023-04-11 06:17:54', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `log_transaction`
+-- Table structure for table `log_transaction`
 --
 
 CREATE TABLE `log_transaction` (
@@ -1037,15 +1043,15 @@ CREATE TABLE `log_transaction` (
   `id_transaction` varchar(30) NOT NULL,
   `status` int(1) NOT NULL,
   `description` varchar(200) NOT NULL,
-  `detail` text DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `detail` text,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `created_by` varchar(30) NOT NULL,
   `menu` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `log_transaction`
+-- Dumping data for table `log_transaction`
 --
 
 INSERT INTO `log_transaction` (`id`, `trans_id`, `id_transaction`, `status`, `description`, `detail`, `created_at`, `updated_at`, `created_by`, `menu`) VALUES
@@ -1170,12 +1176,14 @@ INSERT INTO `log_transaction` (`id`, `trans_id`, `id_transaction`, `status`, `de
 (119, 35, 'TR-31304042023', 0, 'Menunggu Pembayaran', 'Proses Checkout {\"id_transaction\":\"TR-31304042023\",\"trans_id\":35,\"id_user\":3,\"name\":\"Ongkir\",\"quantity\":\"1\",\"price\":\"14000\",\"id\":35}', '2023-04-04 08:27:43', '2023-04-04 08:27:43', 'bayu', 'Customer'),
 (120, 36, 'TR-42405042023', 0, 'Menunggu Pembayaran', 'Proses Checkout {\"id_transaction\":\"TR-42405042023\",\"trans_id\":36,\"id_user\":4,\"name\":\"Ongkir\",\"quantity\":\"1\",\"price\":\"9000\",\"id\":36}', '2023-04-05 03:23:30', '2023-04-05 03:23:30', 'luull', 'Customer'),
 (121, 37, 'TR-43405042023', 0, 'Menunggu Pembayaran', 'Proses Checkout {\"id_transaction\":\"TR-43405042023\",\"trans_id\":37,\"id_user\":4,\"name\":\"Ongkir\",\"quantity\":\"1\",\"price\":\"11500\",\"id\":37}', '2023-04-05 03:25:41', '2023-04-05 03:25:41', 'luull', 'Customer'),
-(122, 38, 'TR-41205042023', 0, 'Menunggu Pembayaran', 'Proses Checkout {\"id_transaction\":\"TR-41205042023\",\"trans_id\":38,\"id_user\":4,\"name\":\"Ongkir\",\"quantity\":\"1\",\"price\":\"14000\",\"id\":38}', '2023-04-05 03:50:56', '2023-04-05 03:50:56', 'luull', 'Customer');
+(122, 38, 'TR-41205042023', 0, 'Menunggu Pembayaran', 'Proses Checkout {\"id_transaction\":\"TR-41205042023\",\"trans_id\":38,\"id_user\":4,\"name\":\"Ongkir\",\"quantity\":\"1\",\"price\":\"14000\",\"id\":38}', '2023-04-05 03:50:56', '2023-04-05 03:50:56', 'luull', 'Customer'),
+(123, 40, 'TR-31711042023', 0, 'Menunggu Pembayaran', 'Proses Checkout {\"id_transaction\":\"TR-31711042023\",\"trans_id\":40,\"id_user\":3,\"name\":\"Ongkir\",\"quantity\":\"1\",\"price\":\"27000\",\"id\":39}', '2023-04-10 23:16:35', '2023-04-10 23:16:35', 'bayu', 'Customer'),
+(124, 41, 'TR-3511042023', 0, 'Menunggu Pembayaran', 'Proses Checkout {\"id_transaction\":\"TR-3511042023\",\"trans_id\":41,\"id_user\":3,\"name\":\"Ongkir\",\"quantity\":\"1\",\"price\":\"28000\",\"id\":40}', '2023-04-10 23:17:54', '2023-04-10 23:17:54', 'bayu', 'Customer');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `lupa_password`
+-- Table structure for table `lupa_password`
 --
 
 CREATE TABLE `lupa_password` (
@@ -1184,10 +1192,10 @@ CREATE TABLE `lupa_password` (
   `email` varchar(50) NOT NULL,
   `start` datetime NOT NULL,
   `expired` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `lupa_password`
+-- Dumping data for table `lupa_password`
 --
 
 INSERT INTO `lupa_password` (`id`, `member_id`, `email`, `start`, `expired`) VALUES
@@ -1200,7 +1208,7 @@ INSERT INTO `lupa_password` (`id`, `member_id`, `email`, `start`, `expired`) VAL
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pages`
+-- Table structure for table `pages`
 --
 
 CREATE TABLE `pages` (
@@ -1209,14 +1217,14 @@ CREATE TABLE `pages` (
   `slug` varchar(100) NOT NULL,
   `content` text NOT NULL,
   `image` varchar(100) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pages`
+-- Dumping data for table `pages`
 --
 
 INSERT INTO `pages` (`id`, `title`, `slug`, `content`, `image`, `created_at`, `updated_at`, `created_by`, `updated_by`) VALUES
@@ -1227,7 +1235,7 @@ INSERT INTO `pages` (`id`, `title`, `slug`, `content`, `image`, `created_at`, `u
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `payget`
+-- Table structure for table `payget`
 --
 
 CREATE TABLE `payget` (
@@ -1238,10 +1246,10 @@ CREATE TABLE `payget` (
   `name` text NOT NULL,
   `quantity` int(100) NOT NULL,
   `price` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `payget`
+-- Dumping data for table `payget`
 --
 
 INSERT INTO `payget` (`id`, `trans_id`, `id_transaction`, `id_user`, `name`, `quantity`, `price`) VALUES
@@ -1282,62 +1290,65 @@ INSERT INTO `payget` (`id`, `trans_id`, `id_transaction`, `id_user`, `name`, `qu
 (35, 35, 'TR-31304042023', 3, 'Ongkir', 1, 14000),
 (36, 36, 'TR-42405042023', 4, 'Ongkir', 1, 9000),
 (37, 37, 'TR-43405042023', 4, 'Ongkir', 1, 11500),
-(38, 38, 'TR-41205042023', 4, 'Ongkir', 1, 14000);
+(38, 38, 'TR-41205042023', 4, 'Ongkir', 1, 14000),
+(39, 40, 'TR-31711042023', 3, 'Ongkir', 1, 27000),
+(40, 41, 'TR-3511042023', 3, 'Ongkir', 1, 28000);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `product`
+-- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
   `id` int(11) NOT NULL,
   `kode_brg` varchar(15) NOT NULL,
   `nama` varchar(100) NOT NULL,
+  `stok` int(100) NOT NULL,
   `slug` varchar(100) NOT NULL,
   `keterangan_singkat` varchar(500) DEFAULT NULL,
-  `keterangan` text CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `keterangan` text CHARACTER SET utf8,
   `harga` int(11) DEFAULT NULL,
   `berat` varchar(255) NOT NULL,
   `satuan` varchar(30) NOT NULL,
   `image` varchar(300) DEFAULT NULL,
   `kategori` int(11) NOT NULL,
-  `sub_kategori` int(11) NOT NULL,
+  `sub_kategori` int(11) DEFAULT NULL,
   `sub_sub_kategory` int(11) DEFAULT NULL,
-  `show` tinyint(1) NOT NULL DEFAULT 1,
-  `date_created` datetime DEFAULT current_timestamp(),
+  `show` tinyint(1) NOT NULL DEFAULT '1',
+  `date_created` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `created_by` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `product`
+-- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `kode_brg`, `nama`, `slug`, `keterangan_singkat`, `keterangan`, `harga`, `berat`, `satuan`, `image`, `kategori`, `sub_kategori`, `sub_sub_kategory`, `show`, `date_created`, `created_by`) VALUES
-(5, '', 'SHAD Nigella Plus 50 kapsul', 'shad-nigella-plus-50-kapsul', '<p style=\"text-align:justify\"><strong>SHAD NIGELLA PLUS</strong> adalah makanan kesehatan yang dikombinasikan secara ideal dari bahan alami pilihan yakni: habbatussauda (Nigella sativa), hilbah (Fenugreek), dan ginseng (Panax) untuk membantu meningkatkan daya tahan dan stamina tubuh, serta membantu mencegah dan mengatasi berbagai penyakit.</p>', '<p style=\"text-align:justify\"><strong>SHAD NIGELLA PLUS</strong> adalah makanan kesehatan yang dikombinasikan secara ideal dari bahan alami pilihan yakni: habbatussauda (Nigella sativa), hilbah (Fenugreek), dan ginseng (Panax) untuk membantu meningkatkan daya tahan dan stamina tubuh, serta membantu mencegah dan mengatasi berbagai penyakit.</p>\r\n\r\n<p style=\"text-align:justify\">Dengan mengkonsumsi <strong>SHAD NIGELLA PLUS</strong> secara rutin sesuai dosis yang dianjurkan, dapat memberikan manfaat antara lain:</p>\r\n\r\n<p>1. Membantu mengontrol sistem immune/kekebalan tubuh<br />\r\n2. Membantu mencegah penyumbatan pembuluh darah, menurunkan kolesterol dan meningkatkan kinerja jantung<br />\r\n3. Membantu meningkatkan daya ingat, konsentrasi, dan kewaspadaan<br />\r\n4. Membantu meningkatkan bioaktivitas hormon<br />\r\n5. Membantu menetralisir racun dalam tubuh<br />\r\n6. Membantu mengatasi gangguan tidur, migrain, dan stres<br />\r\n7. Membantu memperbaiki saluran pencernaan, saluran pernapasan, dan meredakan asma<br />\r\n8. Antibakteri<br />\r\n9. Antiinflamasi</p>\r\n\r\n<p><br />\r\n<strong>Kandungan dan Khasiat Komposisi SHAD NIGELLA PLUS antara lain:</strong></p>\r\n\r\n<p><strong>Ekstrak habbatussauda (Nigella sativa)</strong></p>\r\n\r\n<ul>\r\n	<li style=\"text-align:justify\">Kandungan senyawa aktif dalam habbatussauda antara lain: fixed oil (oleat/omega 9, linoleat/omega 6, linolenat/omega 3, dan eicosadionat), saponin, minyak esensial, fitosterol, alkaloid (nigellieine dan nigellamine-n-oxide), asam amino (lysin, lesitin, methionine), berbagai vitamin dan mineral, yang bekerja secara sinergis memberikan efek farmakologis sebagai peningkat serta pengontrol sistem kekebalan tubuh, penawar racun dalam tubuh (detoksifikasi), dan antibakteri (pencegah infeksi)</li>\r\n	<li style=\"text-align:justify\">Kandungan asam linoleat dan asam linolenat dalam habbatussauda merupakan nutrisi yang baik bagi otak sehingga mengkonsumsinya dapat meningkatkan daya ingat, konsentrasi, dan kewaspadaan.</li>\r\n	<li style=\"text-align:justify\">Kandungan crystalline nigellone dalam habbatussauda bersifat antihistamin (pencegah alergi) sehingga dapat membantu mengatasi berbagai penyakit yang disebabkan alergen seperti asma, bronkitis, migrain, dan lain-lain</li>\r\n	<li style=\"text-align:justify\">Kandungan sterol dalam habbatussauda dapat meningkatkan bioktivitas hormon, sehingga dapat memperbaiki metabolisme tubuh</li>\r\n	<li style=\"text-align:justify\">Kandungan saponin dalam habbatussauda dapat membantu tubuh mempertahankan diri dan menyesuaikan dengan kondisi lingkungan, serta membantu mengatasi gangguan tidur dan stres.</li>\r\n	<li style=\"text-align:justify\">Kandungan minyak atsiri dan minyak esensial dalam habbatussauda dapat membantu mengatasi kembung serta memperbaiki sistem pencernaan. &nbsp;<br />\r\n	&nbsp;</li>\r\n</ul>\r\n\r\n<p><strong>Hulbah (Fenugreek)</strong></p>\r\n\r\n<ul>\r\n	<li style=\"text-align:justify\">Biji hulbah kaya dengan karbohidrat sampai dengan 60%, protein, minyak lemak, minyak atsiri, flavonoid, vitexin, sapogenin, saponin (diosgenin, yamogenin, gitogenin, tigogenin, dan neotigogens), musilago, kumarin, polisakarida, galaktomannan, Vitamin A B2, B1, B3, B5, B6, B15, B17, C, D, E, kolin, asam folat, inositol dan hampir semua mineral. Secara sinergis berbagai kandungan tersebut memberikan efek farmakologis antara lain sebagai antioksidan yang dapat membantu menangkal radikal bebas dalam tubuh sekaligus meningkatkan sistem kekebalan tubuh</li>\r\n	<li style=\"text-align:justify\">Kandungan senyawa steroid dalam hulbah dapat membantu meningkatkan stamina, sehingga cocok digunakan oleh orang dengan aktivitas padat.</li>\r\n	<li style=\"text-align:justify\">Kandungan senyawa bioaktif alkaloid trigonelina dalam biji hulbah berperan sebagai antidiabetik sehingga dapat membantu penanganan diabetes melitus.</li>\r\n	<li style=\"text-align:justify\">Kandungan senyawa fitoestrogen dalam biji hulbah dapat membantu kesehatan wanita pasca menopause, sedangkan kandungan musilago (serat) dan saponinnya yang tinggi dapat membantu mengatasi sembelit</li>\r\n	<li style=\"text-align:justify\">Kandungan zat besi, vitamin, kalsium dan mineral dalam biji hulbah dapat membantu meningkatkan produksi ASI.<br />\r\n	&nbsp;</li>\r\n</ul>\r\n\r\n<p style=\"text-align:justify\"><strong>Ginseng (Panax)</strong><br />\r\nKandungan senyawa utama ginseng adalah ginsenosides yang merupakan senyawa kompleks dari sekitar 25 zat aktif individual. Secara sinergis berbagai senyawa itu berefek farmakologis antara lain:</p>\r\n\r\n<ul>\r\n	<li style=\"text-align:justify\">Bersifat afrodisiak (meningkatkan libido lelaki), karena ginseng dapat meningkatan pembentukan dan pelepasan hormon-hormon, termasuk hormon seks</li>\r\n	<li style=\"text-align:justify\">Bersifat antidepresi, oleh karena itu ginseng dapat membantu melawan stres dan depresi ringan</li>\r\n	<li style=\"text-align:justify\">Bersifat adaptogen, karena dapat meningkatkan daya adaptasi tubuh terhadap faktor stres mental dan fisik, menjaga konsentrasi mental, dan membantu mencegah serta mengatasi aterosklerosis (pengapuran dinding pembuluh darah) dan berbagai penyakit peredaran darah lainnya.</li>\r\n</ul>', 149000, '900', 'Pcs', 'photos/shadnigella.jpg', 1, 2, 3, 1, NULL, 'spangat'),
-(6, '', 'SHAD Hilba Plus 50 kapsul', 'shad-hilba-plus-50-kapsul', '<p style=\"text-align:justify\"><strong>SHAD HILBA PLUS</strong> merupakan kapsul yang diramu dari beberapa herbal berkhasiat seperti hulbah (fenugreek), habbatussauda (Nigella sativa), zanjabil (Zingiberis rhizoma) dan beberapa herbal lainnya, yang dapat membantu menjaga kesehatan usus, mengatasi anemia dan tekanan darah rendah, mengobati gangguan pencernaan seperti sembelit (susah BAB dan wasir), serta berbagai gangguan lambung lainnya.</p>', '<p style=\"text-align:justify\"><strong>SHAD HILBA PLUS</strong> merupakan kapsul yang diramu dari beberapa herbal berkhasiat seperti hulbah (<em>fenugreek</em>), habbatussauda (<em>Nigella sativa</em>), zanjabil (<em>Zingiberis rhizoma</em>) dan beberapa herbal lainnya, yang dapat membantu menjaga kesehatan usus, mengatasi anemia dan tekanan darah rendah, mengobati gangguan pencernaan seperti sembelit (susah BAB dan wasir), serta berbagai gangguan lambung lainnya.</p>\r\n\r\n<p style=\"text-align:justify\">Dengan mengkonsumsi <strong>SHAD HILBA PLUS</strong> secara teratur sesuai dosis yang dianjurkan, dapat memberi manfaat antara lain:</p>\r\n\r\n<ol>\r\n	<li>Membantu mengatasi sembelit/susah buang air besar</li>\r\n	<li>Membantu mencegah dan mengobati wasir</li>\r\n	<li>Membantu mengatasi masalah usus</li>\r\n	<li>Membantu mengatasi migrain, insomnia, dan stres</li>\r\n	<li>Membantu mengatasi anemia dan darah rendah</li>\r\n	<li style=\"text-align:justify\">Membantu mengatasi kembung, sebagai antiradang, dan membantu pembentukan tulang, gigi, dan kuku</li>\r\n</ol>\r\n\r\n<p><strong>Sifat dan Khasiat Herbal Komposisi SHAD HILBA PLUS antara lain:</strong></p>\r\n\r\n<p><strong>Ekstrak Biji Hulbah (<em>Fenugreek</em>)</strong></p>\r\n\r\n<ul>\r\n	<li style=\"text-align:justify\">Biji hulbah mengandung senyawa aktif antara lain musilago, alkaloid&nbsp;<em>trigonelina</em>,&nbsp;<em>steroida</em>,&nbsp;<em>sapogenin</em>,&nbsp;<em>diosgenin</em>,&nbsp;<em>gitogenin</em>,&nbsp;<em>tigogenin</em>,&nbsp;<em>yamogenin</em>,&nbsp;<em>trilin</em>,&nbsp;<em>diosin</em>,&nbsp;<em>flavonoid vitexin</em>, dan enzim yang secara sinergis dapat memberikan efek farmakologis sebagai pencahar (melancarkan BAB),&nbsp;<em>antiinflamasi&nbsp;</em>(mencegah pembengkakan),&nbsp;<em>analgesik&nbsp;</em>(penghilang nyeri),&nbsp;<em>karminatif&nbsp;</em>(pencegah kembung),&nbsp;<em>antiseptik&nbsp;</em>(pembunuh kuman), dan&nbsp;<em>diaforetik&nbsp;</em>(peluruh keringat)</li>\r\n	<li style=\"text-align:justify\">Kandungan senyawa steroid dalam hulbah dapat membantu meningkatkan stamina sehingga cocok untuk orang dengan aktivitas yang padat.</li>\r\n	<li style=\"text-align:justify\">Kandungan musilago (serat) dan saponin yang tinggi dalam biji hulbah dapat membantu mengatasi sembelit, mencegah wasir dan usus buntu, dan menurunkan kolesterol.</li>\r\n	<li style=\"text-align:justify\">Kandungan fosfor dalam biji hulbah berperan dalam penyimpanan dan pengeluaran energi, serta membantu pembentukan tulang, gigi, dan kuku.</li>\r\n	<li style=\"text-align:justify\">Biji hulbah kaya dengan zat besi (Fe) sehingga dapat mengatasi anemia dan tekanan darah rendah, serta membantu memperlancar ASI.</li>\r\n	<li style=\"text-align:justify\">Kandungan senyawa&nbsp;<em>fitoestrogen&nbsp;</em>dalam biji hulbah dapat membantu kesehatan wanita pasca menopause.</li>\r\n	<li style=\"text-align:justify\">Kandungan&nbsp;<em>flavonoid&nbsp;</em>dalam biji hulbah merupakan antioksidan yang dapat menangkal radikal bebas, membantu metabolisme karbohidrat, protein dan lemak, memperbaiki fungsi jantung, ginjal, otot tubuh , dan sistem saraf.</li>\r\n</ul>\r\n\r\n<p><strong>Habbatussauda (<em>Nigella Sativa</em>)</strong></p>\r\n\r\n<ul>\r\n	<li style=\"text-align:justify\">Kandungan&nbsp;<em>sterol&nbsp;</em>dalam&nbsp;<em>habbatussauda&nbsp;</em>dapat meningkatkan bioktivitas hormon, sehingga dapat memperbaiki metabolisme tubuh.</li>\r\n	<li style=\"text-align:justify\">Kandungan&nbsp;<em>saponin&nbsp;</em>dalam&nbsp;<em>habbatussauda&nbsp;</em>dapat membantu tubuh mempertahankan diri dan menyesuaikan dengan kondisi lingkungan, serta membantu mengatasi gangguan tidur dan stres.</li>\r\n	<li style=\"text-align:justify\">Kandungan minyak atsiri dan minyak esensial dalam&nbsp;<em>habbatussauda</em>&nbsp;dapat membantu mengatasi kembung serta memperbaiki sistem pencernaan. &nbsp;</li>\r\n</ul>\r\n\r\n<p><strong>Zanjabil (Zingiberis Rhizoma)</strong></p>\r\n\r\n<ul>\r\n	<li style=\"text-align:justify\">Kandungan senyawa aktif zanjabil berupa&nbsp;<em>sterol/terpen</em>, minyak atsiri, dan&nbsp;<em>oleoresin</em>&nbsp;memberikan efek farmakologis sebagai&nbsp;<em>analgesik&nbsp;</em>(penghilang nyeri) sehingga sangat membantu wanita mengatasi rasa nyeri saat haid, nyeri sendi dan pegal linu.</li>\r\n	<li style=\"text-align:justify\">Minyak atsiri dalam zanjabil juga membantu mengatasi kembung, menambah nafsu makan, menguatkan tubuh melawan kuman, dan meluruhkan keringat, lemak, dan air seni.</li>\r\n</ul>', 149000, '900', 'Pcs', 'photos/shad_hilba.jpg', 1, 2, 3, 1, NULL, 'spangat'),
-(26, 'P-002', 'Zahra Facial Wash (banded 6)', 'zahra-facial-wash-banded-6', '<p style=\"text-align:justify\"><strong>Zahra facial wash</strong> adalah busa pembersih wajah dengan pH balance sehingga dapat mengangkat dan membersihkan kotoran di wajah sampai ke pori-pori tanpa menimbulkan efek negatif. Zahra facial wash diformulasikan secara tepat dan disesuaikan dengan kebutuhan kulit wajah serta bebas dari bahan-bahan kimia berbahaya. Rutin mencuci wajah menggunakan Zahra facial wash adalah cara efektif agar Anda mendapatkan kulit wajah bersih, sehat, dan segar alami.</p>', '<p style=\"text-align:justify\"><strong>Zahra facial wash</strong> adalah busa pembersih wajah dengan pH balance sehingga dapat mengangkat dan membersihkan kotoran di wajah sampai ke pori-pori tanpa menimbulkan efek negatif. Zahra facial wash diformulasikan secara tepat dan disesuaikan dengan kebutuhan kulit wajah serta bebas dari bahan-bahan kimia berbahaya. Rutin mencuci wajah menggunakan Zahra facial wash adalah cara efektif agar Anda mendapatkan kulit wajah bersih, sehat, dan segar alami.</p>\r\n\r\n<p style=\"text-align:justify\">Zahra Facial Wash, mengandung komponen yang membersihkan, melembabkan, dan melindungi kulit, juga memberikan nutrisi untuk kulit karena mengandung ekstrak Alga Hijau</p>\r\n\r\n<p style=\"text-align:justify\"><br />\r\nKeistimewaan dari Produk Zahra Facial Wash adalah kandungan zat aktifnya yang berupa kandungan Alga Hijaunya yang memiliki manfaat sebagai berikut :</p>\r\n\r\n<ol>\r\n	<li>Menutrisi kulit dengan kandungan vitamin dan mineral dari laut</li>\r\n	<li>Berfungsi sebagai anti-oksidan</li>\r\n	<li>Berfungsi sebagai anti-inflamasi</li>\r\n	<li>Berfungsi sebagai pembersih zat berbahaya bagi kulit</li>\r\n	<li style=\"text-align:justify\">Keunggulan lain dari produk ini adalah pH balance. Zahra Facial Wash yang ber-PH 5,5 adalah pembersih wajah yang paling baik karena dapat mencegah munculnya jerawat, iritasi, infeksi, dan dapat pula mengurangi gejala penuaan pada wajah. Produk dengan pH balance 5,5 sangat penting karena dapat melindungi lapisan asam pada kulit.</li>\r\n	<li>Zahra Facial Wash cocok untuk semua jenis kulit dan tidak perih di mata.</li>\r\n	<li style=\"text-align:justify\">Zahra Facial Wash diformulasikan secara tepat dan disesuaikan dengan kebutuhan kulit serta bebas dari bahan kimia.</li>\r\n	<li style=\"text-align:justify\">Rutin menggunakan Zahra Facial Wash adalah cara efektif agar anda mendapatkan kulit wajah bersih, sehat, dan segar alami.</li>\r\n</ol>\r\n\r\n<p>Manjakan kulit anda dengan Zahra Facial Wash dan dapatkan kulit segar sepanjang hari.</p>', 50000, '500', 'Pcs', 'photos/6-facial-wash.jpg', 4, 12, 0, 1, NULL, 'irwan'),
-(30, '', 'Zahra Facial Wash', 'zahra-facial-wash', '<p style=\"text-align:justify\"><strong>Zahra facial wash</strong> adalah busa pembersih wajah dengan pH balance sehingga dapat mengangkat dan membersihkan kotoran di wajah sampai ke pori-pori tanpa menimbulkan efek negatif. Zahra facial wash diformulasikan secara tepat dan disesuaikan dengan kebutuhan kulit wajah serta bebas dari bahan-bahan kimia berbahaya. Rutin mencuci wajah menggunakan Zahra facial wash adalah cara efektif agar Anda mendapatkan kulit wajah bersih, sehat, dan segar alami.</p>', '<p style=\"text-align:justify\"><strong>Zahra facial wash</strong> adalah busa pembersih wajah dengan pH balance sehingga dapat mengangkat dan membersihkan kotoran di wajah sampai ke pori-pori tanpa menimbulkan efek negatif. Zahra facial wash diformulasikan secara tepat dan disesuaikan dengan kebutuhan kulit wajah serta bebas dari bahan-bahan kimia berbahaya. Rutin mencuci wajah menggunakan Zahra facial wash adalah cara efektif agar Anda mendapatkan kulit wajah bersih, sehat, dan segar alami.</p>\r\n\r\n<p style=\"text-align:justify\"><strong>Zahra Facial Wash</strong>, mengandung komponen yang membersihkan, melembabkan, dan melindungi kulit, juga memberikan nutrisi untuk kulit karena mengandung ekstrak Alga Hijau</p>\r\n\r\n<p style=\"text-align:justify\"><br />\r\nKeistimewaan dari Produk <strong>Zahra Facial Wash </strong>adalah kandungan zat aktifnya yang berupa kandungan Alga Hijaunya yang memiliki manfaat sebagai berikut :</p>\r\n\r\n<ol>\r\n	<li>Menutrisi kulit dengan kandungan vitamin dan mineral dari laut</li>\r\n	<li>Berfungsi sebagai anti-oksidan</li>\r\n	<li>Berfungsi sebagai anti-inflamasi</li>\r\n	<li>Berfungsi sebagai pembersih zat berbahaya bagi kulit</li>\r\n</ol>\r\n\r\n<p style=\"text-align:justify\">Keunggulan lain dari produk ini adalah pH balance. Zahra Facial Wash yang ber-PH 5,5 adalah pembersih wajah yang paling baik karena dapat mencegah munculnya jerawat, iritasi, infeksi, dan dapat pula mengurangi gejala penuaan pada wajah. Produk dengan pH balance 5,5 sangat penting karena dapat melindungi lapisan asam pada kulit.</p>\r\n\r\n<p>Zahra Facial Wash cocok untuk semua jenis kulit dan tidak perih di mata.</p>\r\n\r\n<p style=\"text-align:justify\">Zahra Facial Wash diformulasikan secara tepat dan disesuaikan dengan kebutuhan kulit serta bebas dari bahan kimia.</p>\r\n\r\n<p style=\"text-align:justify\">Rutin menggunakan Zahra Facial Wash adalah cara efektif agar anda mendapatkan kulit wajah bersih, sehat, dan segar alami.</p>\r\n\r\n<p>Manjakan kulit anda dengan Zahra Facial Wash dan dapatkan kulit segar sepanjang hari.</p>', 17000, '900', 'Pcs', 'photos/Zahra Facial Wash.jpg', 4, 12, 0, 1, NULL, 'irwan'),
-(71, 'P00009', 'H&T Food Sari Alang-alang (banded 3)', 'ht-food-sari-alang-alang-banded-3', '<p style=\"text-align:justify\">H&amp;T FOOD SARI ALANG-ALANG &ldquo;MITRA&rdquo; adalah minuman kesehatan tradisional yang terbuat dari herbal alami berupa rimpang/akar alang-alang (Imperata spec div), batang secang (Caesalpinia sappan), dan batang ketan hitam (Oriza sativa lim) serta menggunakan gula murni sebagai pemanis sekaligus pengawetnya.</p>', '<p style=\"text-align:justify\"><strong>H&amp;T FOOD SARI ALANG-ALANG &ldquo;MITRA&rdquo;</strong> adalah minuman kesehatan tradisional yang terbuat dari herbal alami berupa rimpang/akar alang-alang (Imperata spec div), batang secang (Caesalpinia sappan), dan batang ketan hitam (Oriza sativa lim) serta menggunakan gula murni sebagai pemanis sekaligus pengawetnya.</p>\r\n\r\n<p style=\"text-align:justify\">Dengan mengkonsumsi <strong>H&amp;T FOOD SARI ALANG-ALANG &ldquo;MITRA&rdquo;</strong> secara teratur sesuai dosis yang dianjurkan, dapat memberi manfaat antara lain:</p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Membantu menurunkan panas dan demam, meredakan bengkak akibat peradangan, menyembuhkan infeksi, meredakan batuk, mengobati tekanan darah tinggi, sakit kuning (hepatitis), menghentikan pendarahan, sesak napas/asma.</li>\r\n	<li style=\"text-align:justify\">Membantu mencegah dan mengatasi penyakit yang disebabkan oleh radikal bebas seperti batuk darah, batuk rejan, asma, radang tenggorokan, radang paru-paru, jantung koroner, campak, dan sebagainya.</li>\r\n	<li style=\"text-align:justify\">Membantu meluruhkan air seni sehingga dapat mempercepat penyembuhan infeksi ginjal, batu ginjal, batu empedu, kencing batu, kencing darah, buang air kecil tidak lancar atau buang air kecil terus-menerus.</li>\r\n	<li style=\"text-align:justify\">Membantu mengobati penyakit pencernaan seperti diare, disentri, dan maag</li>\r\n	<li style=\"text-align:justify\">Membantu menghentikan pendarahan pada mimisan atau pendarahan pada wanita sehabis melahirkan.&nbsp;</li>\r\n</ol>\r\n\r\n<p>Sifat dan Khasiat Herbal Komposisi H&amp;T FOOD SARI ALANG-ALANG &ldquo;MITRA&rdquo; &nbsp;antara lain:</p>\r\n\r\n<ul>\r\n	<li>Ekstrak Akar Alang-Alang (Imperata Spec Div)</li>\r\n</ul>\r\n\r\n<p style=\"text-align:justify\">Akar alang-alang mengandung senyawa aktif antara lain mannitol, glukosa, asam malic, asam sitrat, coixol, arundoin, silindrin, fernerol, simiarenol, anemonin, esin, alkali, saponin, tanin, dan polifenol. Senyawa aktif ini secara sinergis dapat memberikan efek farmakologis sebagai antipiretik (penurun panas), diuretik (peluruh air seni), hemostatik (menghentikan pendarahan), penghilang haus, dan pendingin. &nbsp;</p>\r\n\r\n<ul>\r\n	<li>Ekstrak Secang (Caesalpinia Sappan L)</li>\r\n</ul>\r\n\r\n<p style=\"text-align:justify\">Daun dan batang secang mengandung senyawa aktif antara lain saponin, flavonoid, polifenol, minyak atsiri, tanin, asam galat, resin, resorsin, brasilin, brasilein, d-alfa-phellandrene, dan oscimene. Berbagai senyawa aktif ini dapat memberikan efek farmakologis antara lain sebagai penghenti pendarahan, pembersih darah, pengelat, penawar racun, dan antiseptik, sehingga secara umum secang dapat digunakan untuk membantu pengobatan diare, disentri, batuk darah pada TBC, muntah darah, sifilis, malaria, tetanus, pembengkakan (tumor), dan nyeri karena gangguan sirkulasi darah.</p>\r\n\r\n<ul>\r\n	<li>Ekstrak Ketan Hitam (Oriza sativa lim)</li>\r\n</ul>\r\n\r\n<p style=\"text-align:justify\">Di dalam ketan hitam terkandung zat besi sebesar 15,52 ppm yang sangat dibutuhkan untuk membantu pembentukan sel darah merah dan meningkatkan daya tahan tubuh dan menangkal zat alerger (pencetus alergi)<br />\r\nDi dalam ketan hitam juga terdapat zat antioksidan bernama antosianin yang berperan dalam melindungi lambung dari kerusakan, menghambat sel tumor, meningkatkan kesehatan mata, melindungi kerusakan sel tubuh akibat oksidasi zat berbahaya, membantu melindungi sistem kardiovaskular, serta membantu tubuh melawan penyakit kanker dan jantung.</p>', 63000, '900', 'dus', 'photos/3 H&T alang-alang.jpg', 1, 11, 0, 1, NULL, 'sholeh'),
-(78, 'MF-BB01', 'H&T Food Bumbu Racik Non MSG (banded 3)', 'ht-food-bumbu-racik-non-msg-banded-3', 'Komposisi/Bahan Baku:\r\n\r\nGaram, gula, lada putih, ketumbar bubuk, bawang putih bubuk, maltodextrine, kunyit, beef ekstrak, ekstrak ragi, anti kempal', '<p style=\"text-align:justify\"><strong>Komposisi/Bahan Baku:</strong></p>\r\n\r\n<p style=\"text-align:justify\">Garam, gula, lada putih, ketumbar bubuk, bawang putih bubuk, maltodextrine, kunyit, beef ekstrak, ekstrak ragi, anti kempal</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\"><strong>Manfaat:</strong></p>\r\n\r\n<p style=\"text-align:justify\">H&amp;T Food Bumbu Racik Non MSG terbuat dari rempah-rempah asli dan tanpa bahan pengawet. Paduan formula yang pas untuk bumbu pembuatan aneka macam gorengan, yang kuat akan rasa rempah dan gurih yang mantap, serta dibuat tanpa ada penambahan &nbsp;MSG (Monosodium Glutamate), sehingga baik dan sehat untuk yang sensitif terhadap MSG</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Cara Penggunaan/Pemakaian:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Siapkan air sebanyak 15 mL</li>\r\n	<li style=\"text-align:justify\">Timbang H&amp;T Food Bumbu Racik Non MSG sebanyak 15 gram</li>\r\n	<li style=\"text-align:justify\">Masukan bumbu racik yang telah ditimbang ke dalam air yang telah disiapkan, aduk hingga merata</li>\r\n	<li style=\"text-align:justify\">Masukan potongan tempe/udang/cumi/ikan ke dalam adonan bumbu, kemudian balurkan dan bolak-balikan tempe/udang/cumi/ikan hingga bumbu menyerap</li>\r\n	<li style=\"text-align:justify\">Goreng tempe/udang/ikan/cumi hingga matang</li>\r\n	<li style=\"text-align:justify\">Gorengan tempe/udang/ikan/cumi bumbu serbaguna siap disajikan<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Cara Penyimpanan Sebelum Dibuka:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan ditempat sejuk dan kering, serta bahan yang dapat mengkontaminasi status keHalalan produk</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 25⁰C</li>\r\n	<li style=\"text-align:justify\">Usahakan simpan dalam posisi tegak/berdiri</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Cara Penyimpanan Setelah Dibuka:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan ditempat sejuk dan kering, serta tertutup pada kemasan dan dapat disimpan didalam toples/kotak</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 25⁰C</li>\r\n	<li style=\"text-align:justify\">Usahakan simpan dalam posisi tegak/berdiri</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab</li>\r\n	<li style=\"text-align:justify\">Hindari penyimpanan produk terlalu lama, jika kemasan produk sudah dibuka<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Penanganan Pengiriman:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan dengan kemasan yang tertutup rapi dan tidak bocor. Jika dalam kardus, simpan dengan disusun secara rata dapat dengan posisi tidur jika kemasan belum dibuka dan tidak bocor</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 30⁰C</li>\r\n	<li style=\"text-align:justify\">Hindari dari kemungkinan kontaminasi yang mengurangi mutu dan status keHalalan &nbsp;produk</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab</li>\r\n	<li style=\"text-align:justify\">Lakukan pengecekan kondisi tempat pengangkut produk, sebelum proses transportasi berlangsung</li>\r\n</ol>', 63000, '300', 'Pcs', 'photos/3 H&T bumbu_racik.jpg', 10, 0, 0, 1, NULL, 'sholeh'),
-(79, 'P00023', 'H&T Food Kaldu Sapi Non MSG (banded 3)', 'ht-food-kaldu-sapi-non-msg-banded-3', 'Komposisi/Bahan Baku:\r\n\r\nGaram, gula, lada putih, ketumbar, bawang putih dan bombay bubuk, penguat rasa daging sapi, ekstrak daging sapi, penguat aroma hewani, hidrolis protein nabati, anti kempal', '<p><strong>Komposisi/Bahan Baku:</strong></p>\r\n\r\n<p style=\"text-align:justify\">Garam, gula, lada putih, ketumbar, bawang putih dan bombay bubuk, penguat rasa daging sapi, ekstrak daging sapi, penguat aroma hewani, hidrolis protein nabati, anti kempal</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Manfaat:</strong></p>\r\n\r\n<p style=\"text-align:justify\">Menambah atau memperkuat rasa dan aroma khas daging sapi pada makanan, dengan penambahan kaldu mampu mengurangi jumlah bumbu masakan yang ditambahkan pada masakan dengan praktis. &nbsp;H&amp;T Food Kaldu Sapi Non MSG merupakan bumbu kaldu tanpa penyedap rasa MSG dan tanpa bahan pengawet, baik untuk masakan yang lebih sehat dan aman bagi keluarga terbuat dari rempah-rempah asli dan tanpa bahan pengawet.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Cara Penggunaan/Pemakaian:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Siapkan air sebanyak 1liter dan masak sampai mendidih</li>\r\n	<li style=\"text-align:justify\">Timbang H&amp;T Food Kaldu Sapi Non MSG sebanyak 50 gram</li>\r\n	<li style=\"text-align:justify\">Masukan kaldu yang telah ditimbang ke dalam air yang telah mendidih, aduk hingga semua kaldu larut di dalam air panas</li>\r\n	<li style=\"text-align:justify\">Dapat disajikan sebagai bahan untuk sup dan sejenisnya</li>\r\n	<li style=\"text-align:justify\">Tambahkan potongan daging atau tulang sapi, daun bawang, bawang putih, dan bahan lainnya sebagai pelengkap<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Cara Penyimpanan Sebelum Dibuka:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan ditempat sejuk dan kering, serta bahan yang dapat mengkontaminasi status keHalalan produk</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 25⁰C</li>\r\n	<li style=\"text-align:justify\">Usahakan simpan dalam posisi tegak/berdiri</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Cara Penyimpanan Setelah Dibuka:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan ditempat sejuk dan kering, serta tertutup pada kemasan dan dapat disimpan didalam toples/kotak</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 25⁰C</li>\r\n	<li style=\"text-align:justify\">Usahakan simpan dalam posisi tegak/berdiri</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab</li>\r\n	<li style=\"text-align:justify\">Hindari penyimpanan produk terlalu lama, jika kemasan produk sudah dibuka<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Penanganan Pengiriman:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan dengan kemasan yang tertutup rapi dan tidak bocor. Jika dalam kardus, simpan dengan disusun secara rata dapat dengan posisi tidur jika kemasan belum dibuka dan tidak bocor</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 30⁰C</li>\r\n	<li style=\"text-align:justify\">Hindari dari kemungkinan kontaminasi yang mengurangi mutu dan status keHalalan &nbsp;produk</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab</li>\r\n	<li style=\"text-align:justify\">Lakukan pengecekan kondisi tempat pengangkut produk, sebelum proses transportasi berlangsung</li>\r\n</ol>', 60000, '900', 'Pcs', 'photos/3 H&T bumbu_sapi.jpg', 10, 0, 0, 1, NULL, 'sholeh'),
-(80, 'P00023', 'H&T Food Kaldu Sapi Non MSG', 'ht-food-kaldu-sapi-non-msg', 'Komposisi/Bahan Baku:\r\n\r\nGaram, gula, lada putih, ketumbar, bawang putih dan bombay bubuk, penguat rasa daging sapi, ekstrak daging sapi, penguat aroma hewani, hidrolis protein nabati, anti kempal', '<p><strong>Komposisi/Bahan Baku:</strong></p>\r\n\r\n<p style=\"text-align:justify\">Garam, gula, lada putih, ketumbar, bawang putih dan bombay bubuk, penguat rasa daging sapi, ekstrak daging sapi, penguat aroma hewani, hidrolis protein nabati, anti kempal</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Manfaat:</strong></p>\r\n\r\n<p style=\"text-align:justify\">Menambah atau memperkuat rasa dan aroma khas daging sapi pada makanan, dengan penambahan kaldu mampu mengurangi jumlah bumbu masakan yang ditambahkan pada masakan dengan praktis. &nbsp;H&amp;T Food Kaldu Sapi Non MSG merupakan bumbu kaldu tanpa penyedap rasa MSG dan tanpa bahan pengawet, baik untuk masakan yang lebih sehat dan aman bagi keluarga terbuat dari rempah-rempah asli dan tanpa bahan pengawet.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Cara Penggunaan/Pemakaian:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Siapkan air sebanyak 1liter dan masak sampai mendidih</li>\r\n	<li style=\"text-align:justify\">Timbang H&amp;T Food Kaldu Sapi Non MSG sebanyak 50 gram</li>\r\n	<li style=\"text-align:justify\">Masukan kaldu yang telah ditimbang ke dalam air yang telah mendidih, aduk hingga semua kaldu larut di dalam air panas</li>\r\n	<li style=\"text-align:justify\">Dapat disajikan sebagai bahan untuk sup dan sejenisnya</li>\r\n	<li style=\"text-align:justify\">Tambahkan potongan daging atau tulang sapi, daun bawang, bawang putih, dan bahan lainnya sebagai pelengkap<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Cara Penyimpanan Sebelum Dibuka:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan ditempat sejuk dan kering, serta bahan yang dapat mengkontaminasi status keHalalan produk</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 25⁰C</li>\r\n	<li style=\"text-align:justify\">Usahakan simpan dalam posisi tegak/berdiri</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Cara Penyimpanan Setelah Dibuka:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan ditempat sejuk dan kering, serta tertutup pada kemasan dan dapat disimpan didalam toples/kotak</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 25⁰C</li>\r\n	<li style=\"text-align:justify\">Usahakan simpan dalam posisi tegak/berdiri</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab</li>\r\n	<li style=\"text-align:justify\">Hindari penyimpanan produk terlalu lama, jika kemasan produk sudah dibuka<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Penanganan Pengiriman:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan dengan kemasan yang tertutup rapi dan tidak bocor. Jika dalam kardus, simpan dengan disusun secara rata dapat dengan posisi tidur jika kemasan belum dibuka dan tidak bocor</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 30⁰C</li>\r\n	<li style=\"text-align:justify\">Hindari dari kemungkinan kontaminasi yang mengurangi mutu dan status keHalalan &nbsp;produk</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab</li>\r\n	<li style=\"text-align:justify\">Lakukan pengecekan kondisi tempat pengangkut produk, sebelum proses transportasi berlangsung</li>\r\n</ol>', 20000, '900', 'Pcs', 'photos/1_H&T kaldu sapi.jpg', 10, 0, 0, 1, NULL, 'sholeh'),
-(81, 'KD-HT002', 'H&T Food Bumbu Racik Non MSG', 'ht-food-bumbu-racik-non-msg', 'Komposisi/Bahan Baku:\r\n\r\nGaram, gula, lada putih, ketumbar bubuk, bawang putih bubuk, maltodextrine, kunyit, beef ekstrak, ekstrak ragi, anti kempal', '<p><strong>Komposisi/Bahan Baku:</strong></p>\r\n\r\n<p style=\"text-align:justify\">Garam, gula, lada putih, ketumbar bubuk, bawang putih bubuk, maltodextrine, kunyit, beef ekstrak, ekstrak ragi, anti kempal</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Manfaat:</strong></p>\r\n\r\n<p style=\"text-align:justify\">H&amp;T Food Bumbu Racik Non MSG terbuat dari rempah-rempah asli dan tanpa bahan pengawet. Paduan formula yang pas untuk bumbu pembuatan aneka macam gorengan, yang kuat akan rasa rempah dan gurih yang mantap, serta dibuat tanpa ada penambahan &nbsp;MSG (Monosodium Glutamate), sehingga baik dan sehat untuk yang sensitif terhadap MSG</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Cara Penggunaan/Pemakaian:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Siapkan air sebanyak 15 mL</li>\r\n	<li style=\"text-align:justify\">Timbang H&amp;T Food Bumbu Racik Non MSG sebanyak 15 gram</li>\r\n	<li style=\"text-align:justify\">Masukan bumbu racik yang telah ditimbang ke dalam air yang telah disiapkan, aduk hingga merata</li>\r\n	<li style=\"text-align:justify\">Masukan potongan tempe/udang/cumi/ikan ke dalam adonan bumbu, kemudian balurkan dan bolak-balikan tempe/udang/cumi/ikan hingga bumbu menyerap</li>\r\n	<li style=\"text-align:justify\">Goreng tempe/udang/ikan/cumi hingga matang</li>\r\n	<li style=\"text-align:justify\">Gorengan tempe/udang/ikan/cumi bumbu serbaguna siap disajikan<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Cara Penyimpanan Sebelum Dibuka:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan ditempat sejuk dan kering, serta bahan yang dapat mengkontaminasi status keHalalan produk</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 25⁰C</li>\r\n	<li style=\"text-align:justify\">Usahakan simpan dalam posisi tegak/berdiri</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Cara Penyimpanan Setelah Dibuka:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan ditempat sejuk dan kering, serta tertutup pada kemasan dan dapat disimpan didalam toples/kotak</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 25⁰C</li>\r\n	<li style=\"text-align:justify\">Usahakan simpan dalam posisi tegak/berdiri</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab</li>\r\n	<li style=\"text-align:justify\">Hindari penyimpanan produk terlalu lama, jika kemasan produk sudah dibuka<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Penanganan Pengiriman:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan dengan kemasan yang tertutup rapi dan tidak bocor. Jika dalam kardus, simpan dengan disusun secara rata dapat dengan posisi tidur jika kemasan belum dibuka dan tidak bocor</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 30⁰C</li>\r\n	<li style=\"text-align:justify\">Hindari dari kemungkinan kontaminasi yang mengurangi mutu dan status keHalalan &nbsp;produk</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab</li>\r\n	<li style=\"text-align:justify\">Lakukan pengecekan kondisi tempat pengangkut produk, sebelum proses transportasi berlangsung</li>\r\n</ol>', 21000, '900', 'Pcs', 'photos/1_H&T BUMBU RACIK.jpg', 10, 0, 0, 1, NULL, 'sholeh');
+INSERT INTO `product` (`id`, `kode_brg`, `nama`, `stok`, `slug`, `keterangan_singkat`, `keterangan`, `harga`, `berat`, `satuan`, `image`, `kategori`, `sub_kategori`, `sub_sub_kategory`, `show`, `date_created`, `created_by`) VALUES
+(5, 'P1281', 'SHAD Nigella Plus 50 kapsul', 99, 'shad-nigella-plus-50-kapsul', '<p style=\"text-align:justify\"><strong>SHAD NIGELLA PLUS</strong> adalah makanan kesehatan yang dikombinasikan secara ideal dari bahan alami pilihan yakni: habbatussauda (Nigella sativa), hilbah (Fenugreek), dan ginseng (Panax) untuk membantu meningkatkan daya tahan dan stamina tubuh, serta membantu mencegah dan mengatasi berbagai penyakit.</p>', '<p style=\"text-align:justify\"><strong>SHAD NIGELLA PLUS</strong> adalah makanan kesehatan yang dikombinasikan secara ideal dari bahan alami pilihan yakni: habbatussauda (Nigella sativa), hilbah (Fenugreek), dan ginseng (Panax) untuk membantu meningkatkan daya tahan dan stamina tubuh, serta membantu mencegah dan mengatasi berbagai penyakit.</p>\r\n\r\n<p style=\"text-align:justify\">Dengan mengkonsumsi <strong>SHAD NIGELLA PLUS</strong> secara rutin sesuai dosis yang dianjurkan, dapat memberikan manfaat antara lain:</p>\r\n\r\n<p>1. Membantu mengontrol sistem immune/kekebalan tubuh<br />\r\n2. Membantu mencegah penyumbatan pembuluh darah, menurunkan kolesterol dan meningkatkan kinerja jantung<br />\r\n3. Membantu meningkatkan daya ingat, konsentrasi, dan kewaspadaan<br />\r\n4. Membantu meningkatkan bioaktivitas hormon<br />\r\n5. Membantu menetralisir racun dalam tubuh<br />\r\n6. Membantu mengatasi gangguan tidur, migrain, dan stres<br />\r\n7. Membantu memperbaiki saluran pencernaan, saluran pernapasan, dan meredakan asma<br />\r\n8. Antibakteri<br />\r\n9. Antiinflamasi</p>\r\n\r\n<p><br />\r\n<strong>Kandungan dan Khasiat Komposisi SHAD NIGELLA PLUS antara lain:</strong></p>\r\n\r\n<p><strong>Ekstrak habbatussauda (Nigella sativa)</strong></p>\r\n\r\n<ul>\r\n	<li style=\"text-align:justify\">Kandungan senyawa aktif dalam habbatussauda antara lain: fixed oil (oleat/omega 9, linoleat/omega 6, linolenat/omega 3, dan eicosadionat), saponin, minyak esensial, fitosterol, alkaloid (nigellieine dan nigellamine-n-oxide), asam amino (lysin, lesitin, methionine), berbagai vitamin dan mineral, yang bekerja secara sinergis memberikan efek farmakologis sebagai peningkat serta pengontrol sistem kekebalan tubuh, penawar racun dalam tubuh (detoksifikasi), dan antibakteri (pencegah infeksi)</li>\r\n	<li style=\"text-align:justify\">Kandungan asam linoleat dan asam linolenat dalam habbatussauda merupakan nutrisi yang baik bagi otak sehingga mengkonsumsinya dapat meningkatkan daya ingat, konsentrasi, dan kewaspadaan.</li>\r\n	<li style=\"text-align:justify\">Kandungan crystalline nigellone dalam habbatussauda bersifat antihistamin (pencegah alergi) sehingga dapat membantu mengatasi berbagai penyakit yang disebabkan alergen seperti asma, bronkitis, migrain, dan lain-lain</li>\r\n	<li style=\"text-align:justify\">Kandungan sterol dalam habbatussauda dapat meningkatkan bioktivitas hormon, sehingga dapat memperbaiki metabolisme tubuh</li>\r\n	<li style=\"text-align:justify\">Kandungan saponin dalam habbatussauda dapat membantu tubuh mempertahankan diri dan menyesuaikan dengan kondisi lingkungan, serta membantu mengatasi gangguan tidur dan stres.</li>\r\n	<li style=\"text-align:justify\">Kandungan minyak atsiri dan minyak esensial dalam habbatussauda dapat membantu mengatasi kembung serta memperbaiki sistem pencernaan. &nbsp;<br />\r\n	&nbsp;</li>\r\n</ul>\r\n\r\n<p><strong>Hulbah (Fenugreek)</strong></p>\r\n\r\n<ul>\r\n	<li style=\"text-align:justify\">Biji hulbah kaya dengan karbohidrat sampai dengan 60%, protein, minyak lemak, minyak atsiri, flavonoid, vitexin, sapogenin, saponin (diosgenin, yamogenin, gitogenin, tigogenin, dan neotigogens), musilago, kumarin, polisakarida, galaktomannan, Vitamin A B2, B1, B3, B5, B6, B15, B17, C, D, E, kolin, asam folat, inositol dan hampir semua mineral. Secara sinergis berbagai kandungan tersebut memberikan efek farmakologis antara lain sebagai antioksidan yang dapat membantu menangkal radikal bebas dalam tubuh sekaligus meningkatkan sistem kekebalan tubuh</li>\r\n	<li style=\"text-align:justify\">Kandungan senyawa steroid dalam hulbah dapat membantu meningkatkan stamina, sehingga cocok digunakan oleh orang dengan aktivitas padat.</li>\r\n	<li style=\"text-align:justify\">Kandungan senyawa bioaktif alkaloid trigonelina dalam biji hulbah berperan sebagai antidiabetik sehingga dapat membantu penanganan diabetes melitus.</li>\r\n	<li style=\"text-align:justify\">Kandungan senyawa fitoestrogen dalam biji hulbah dapat membantu kesehatan wanita pasca menopause, sedangkan kandungan musilago (serat) dan saponinnya yang tinggi dapat membantu mengatasi sembelit</li>\r\n	<li style=\"text-align:justify\">Kandungan zat besi, vitamin, kalsium dan mineral dalam biji hulbah dapat membantu meningkatkan produksi ASI.<br />\r\n	&nbsp;</li>\r\n</ul>\r\n\r\n<p style=\"text-align:justify\"><strong>Ginseng (Panax)</strong><br />\r\nKandungan senyawa utama ginseng adalah ginsenosides yang merupakan senyawa kompleks dari sekitar 25 zat aktif individual. Secara sinergis berbagai senyawa itu berefek farmakologis antara lain:</p>\r\n\r\n<ul>\r\n	<li style=\"text-align:justify\">Bersifat afrodisiak (meningkatkan libido lelaki), karena ginseng dapat meningkatan pembentukan dan pelepasan hormon-hormon, termasuk hormon seks</li>\r\n	<li style=\"text-align:justify\">Bersifat antidepresi, oleh karena itu ginseng dapat membantu melawan stres dan depresi ringan</li>\r\n	<li style=\"text-align:justify\">Bersifat adaptogen, karena dapat meningkatkan daya adaptasi tubuh terhadap faktor stres mental dan fisik, menjaga konsentrasi mental, dan membantu mencegah serta mengatasi aterosklerosis (pengapuran dinding pembuluh darah) dan berbagai penyakit peredaran darah lainnya.</li>\r\n</ul>', 149000, '900', 'Pcs', 'photos/shadnigella.jpg', 1, 2, 3, 1, NULL, 'spangat'),
+(6, 'P1002', 'SHAD Hilba Plus 50 kapsul', 100, 'shad-hilba-plus-50-kapsul', '<p style=\"text-align:justify\"><strong>SHAD HILBA PLUS</strong> merupakan kapsul yang diramu dari beberapa herbal berkhasiat seperti hulbah (fenugreek), habbatussauda (Nigella sativa), zanjabil (Zingiberis rhizoma) dan beberapa herbal lainnya, yang dapat membantu menjaga kesehatan usus, mengatasi anemia dan tekanan darah rendah, mengobati gangguan pencernaan seperti sembelit (susah BAB dan wasir), serta berbagai gangguan lambung lainnya.</p>', '<p style=\"text-align:justify\"><strong>SHAD HILBA PLUS</strong> merupakan kapsul yang diramu dari beberapa herbal berkhasiat seperti hulbah (<em>fenugreek</em>), habbatussauda (<em>Nigella sativa</em>), zanjabil (<em>Zingiberis rhizoma</em>) dan beberapa herbal lainnya, yang dapat membantu menjaga kesehatan usus, mengatasi anemia dan tekanan darah rendah, mengobati gangguan pencernaan seperti sembelit (susah BAB dan wasir), serta berbagai gangguan lambung lainnya.</p>\r\n\r\n<p style=\"text-align:justify\">Dengan mengkonsumsi <strong>SHAD HILBA PLUS</strong> secara teratur sesuai dosis yang dianjurkan, dapat memberi manfaat antara lain:</p>\r\n\r\n<ol>\r\n	<li>Membantu mengatasi sembelit/susah buang air besar</li>\r\n	<li>Membantu mencegah dan mengobati wasir</li>\r\n	<li>Membantu mengatasi masalah usus</li>\r\n	<li>Membantu mengatasi migrain, insomnia, dan stres</li>\r\n	<li>Membantu mengatasi anemia dan darah rendah</li>\r\n	<li style=\"text-align:justify\">Membantu mengatasi kembung, sebagai antiradang, dan membantu pembentukan tulang, gigi, dan kuku</li>\r\n</ol>\r\n\r\n<p><strong>Sifat dan Khasiat Herbal Komposisi SHAD HILBA PLUS antara lain:</strong></p>\r\n\r\n<p><strong>Ekstrak Biji Hulbah (<em>Fenugreek</em>)</strong></p>\r\n\r\n<ul>\r\n	<li style=\"text-align:justify\">Biji hulbah mengandung senyawa aktif antara lain musilago, alkaloid&nbsp;<em>trigonelina</em>,&nbsp;<em>steroida</em>,&nbsp;<em>sapogenin</em>,&nbsp;<em>diosgenin</em>,&nbsp;<em>gitogenin</em>,&nbsp;<em>tigogenin</em>,&nbsp;<em>yamogenin</em>,&nbsp;<em>trilin</em>,&nbsp;<em>diosin</em>,&nbsp;<em>flavonoid vitexin</em>, dan enzim yang secara sinergis dapat memberikan efek farmakologis sebagai pencahar (melancarkan BAB),&nbsp;<em>antiinflamasi&nbsp;</em>(mencegah pembengkakan),&nbsp;<em>analgesik&nbsp;</em>(penghilang nyeri),&nbsp;<em>karminatif&nbsp;</em>(pencegah kembung),&nbsp;<em>antiseptik&nbsp;</em>(pembunuh kuman), dan&nbsp;<em>diaforetik&nbsp;</em>(peluruh keringat)</li>\r\n	<li style=\"text-align:justify\">Kandungan senyawa steroid dalam hulbah dapat membantu meningkatkan stamina sehingga cocok untuk orang dengan aktivitas yang padat.</li>\r\n	<li style=\"text-align:justify\">Kandungan musilago (serat) dan saponin yang tinggi dalam biji hulbah dapat membantu mengatasi sembelit, mencegah wasir dan usus buntu, dan menurunkan kolesterol.</li>\r\n	<li style=\"text-align:justify\">Kandungan fosfor dalam biji hulbah berperan dalam penyimpanan dan pengeluaran energi, serta membantu pembentukan tulang, gigi, dan kuku.</li>\r\n	<li style=\"text-align:justify\">Biji hulbah kaya dengan zat besi (Fe) sehingga dapat mengatasi anemia dan tekanan darah rendah, serta membantu memperlancar ASI.</li>\r\n	<li style=\"text-align:justify\">Kandungan senyawa&nbsp;<em>fitoestrogen&nbsp;</em>dalam biji hulbah dapat membantu kesehatan wanita pasca menopause.</li>\r\n	<li style=\"text-align:justify\">Kandungan&nbsp;<em>flavonoid&nbsp;</em>dalam biji hulbah merupakan antioksidan yang dapat menangkal radikal bebas, membantu metabolisme karbohidrat, protein dan lemak, memperbaiki fungsi jantung, ginjal, otot tubuh , dan sistem saraf.</li>\r\n</ul>\r\n\r\n<p><strong>Habbatussauda (<em>Nigella Sativa</em>)</strong></p>\r\n\r\n<ul>\r\n	<li style=\"text-align:justify\">Kandungan&nbsp;<em>sterol&nbsp;</em>dalam&nbsp;<em>habbatussauda&nbsp;</em>dapat meningkatkan bioktivitas hormon, sehingga dapat memperbaiki metabolisme tubuh.</li>\r\n	<li style=\"text-align:justify\">Kandungan&nbsp;<em>saponin&nbsp;</em>dalam&nbsp;<em>habbatussauda&nbsp;</em>dapat membantu tubuh mempertahankan diri dan menyesuaikan dengan kondisi lingkungan, serta membantu mengatasi gangguan tidur dan stres.</li>\r\n	<li style=\"text-align:justify\">Kandungan minyak atsiri dan minyak esensial dalam&nbsp;<em>habbatussauda</em>&nbsp;dapat membantu mengatasi kembung serta memperbaiki sistem pencernaan. &nbsp;</li>\r\n</ul>\r\n\r\n<p><strong>Zanjabil (Zingiberis Rhizoma)</strong></p>\r\n\r\n<ul>\r\n	<li style=\"text-align:justify\">Kandungan senyawa aktif zanjabil berupa&nbsp;<em>sterol/terpen</em>, minyak atsiri, dan&nbsp;<em>oleoresin</em>&nbsp;memberikan efek farmakologis sebagai&nbsp;<em>analgesik&nbsp;</em>(penghilang nyeri) sehingga sangat membantu wanita mengatasi rasa nyeri saat haid, nyeri sendi dan pegal linu.</li>\r\n	<li style=\"text-align:justify\">Minyak atsiri dalam zanjabil juga membantu mengatasi kembung, menambah nafsu makan, menguatkan tubuh melawan kuman, dan meluruhkan keringat, lemak, dan air seni.</li>\r\n</ul>', 149000, '900', 'Botol', 'photos/shad_hilba.jpg', 1, 2, 3, 1, NULL, 'spangat'),
+(26, 'P-002', 'Zahra Facial Wash (banded 6)', 20, 'zahra-facial-wash-banded-6', '<p style=\"text-align:justify\"><strong>Zahra facial wash</strong> adalah busa pembersih wajah dengan pH balance sehingga dapat mengangkat dan membersihkan kotoran di wajah sampai ke pori-pori tanpa menimbulkan efek negatif. Zahra facial wash diformulasikan secara tepat dan disesuaikan dengan kebutuhan kulit wajah serta bebas dari bahan-bahan kimia berbahaya. Rutin mencuci wajah menggunakan Zahra facial wash adalah cara efektif agar Anda mendapatkan kulit wajah bersih, sehat, dan segar alami.</p>', '<p style=\"text-align:justify\"><strong>Zahra facial wash</strong> adalah busa pembersih wajah dengan pH balance sehingga dapat mengangkat dan membersihkan kotoran di wajah sampai ke pori-pori tanpa menimbulkan efek negatif. Zahra facial wash diformulasikan secara tepat dan disesuaikan dengan kebutuhan kulit wajah serta bebas dari bahan-bahan kimia berbahaya. Rutin mencuci wajah menggunakan Zahra facial wash adalah cara efektif agar Anda mendapatkan kulit wajah bersih, sehat, dan segar alami.</p>\r\n\r\n<p style=\"text-align:justify\">Zahra Facial Wash, mengandung komponen yang membersihkan, melembabkan, dan melindungi kulit, juga memberikan nutrisi untuk kulit karena mengandung ekstrak Alga Hijau</p>\r\n\r\n<p style=\"text-align:justify\"><br />\r\nKeistimewaan dari Produk Zahra Facial Wash adalah kandungan zat aktifnya yang berupa kandungan Alga Hijaunya yang memiliki manfaat sebagai berikut :</p>\r\n\r\n<ol>\r\n	<li>Menutrisi kulit dengan kandungan vitamin dan mineral dari laut</li>\r\n	<li>Berfungsi sebagai anti-oksidan</li>\r\n	<li>Berfungsi sebagai anti-inflamasi</li>\r\n	<li>Berfungsi sebagai pembersih zat berbahaya bagi kulit</li>\r\n	<li style=\"text-align:justify\">Keunggulan lain dari produk ini adalah pH balance. Zahra Facial Wash yang ber-PH 5,5 adalah pembersih wajah yang paling baik karena dapat mencegah munculnya jerawat, iritasi, infeksi, dan dapat pula mengurangi gejala penuaan pada wajah. Produk dengan pH balance 5,5 sangat penting karena dapat melindungi lapisan asam pada kulit.</li>\r\n	<li>Zahra Facial Wash cocok untuk semua jenis kulit dan tidak perih di mata.</li>\r\n	<li style=\"text-align:justify\">Zahra Facial Wash diformulasikan secara tepat dan disesuaikan dengan kebutuhan kulit serta bebas dari bahan kimia.</li>\r\n	<li style=\"text-align:justify\">Rutin menggunakan Zahra Facial Wash adalah cara efektif agar anda mendapatkan kulit wajah bersih, sehat, dan segar alami.</li>\r\n</ol>\r\n\r\n<p>Manjakan kulit anda dengan Zahra Facial Wash dan dapatkan kulit segar sepanjang hari.</p>', 50000, '500', 'Pcs', 'photos/6-facial-wash.jpg', 4, 12, NULL, 1, NULL, 'irwan'),
+(30, 'P1299', 'Zahra Facial Wash', 100, 'zahra-facial-wash', '<p style=\"text-align:justify\"><strong>Zahra facial wash</strong> adalah busa pembersih wajah dengan pH balance sehingga dapat mengangkat dan membersihkan kotoran di wajah sampai ke pori-pori tanpa menimbulkan efek negatif. Zahra facial wash diformulasikan secara tepat dan disesuaikan dengan kebutuhan kulit wajah serta bebas dari bahan-bahan kimia berbahaya. Rutin mencuci wajah menggunakan Zahra facial wash adalah cara efektif agar Anda mendapatkan kulit wajah bersih, sehat, dan segar alami.</p>', '<p style=\"text-align:justify\"><strong>Zahra facial wash</strong> adalah busa pembersih wajah dengan pH balance sehingga dapat mengangkat dan membersihkan kotoran di wajah sampai ke pori-pori tanpa menimbulkan efek negatif. Zahra facial wash diformulasikan secara tepat dan disesuaikan dengan kebutuhan kulit wajah serta bebas dari bahan-bahan kimia berbahaya. Rutin mencuci wajah menggunakan Zahra facial wash adalah cara efektif agar Anda mendapatkan kulit wajah bersih, sehat, dan segar alami.</p>\r\n\r\n<p style=\"text-align:justify\"><strong>Zahra Facial Wash</strong>, mengandung komponen yang membersihkan, melembabkan, dan melindungi kulit, juga memberikan nutrisi untuk kulit karena mengandung ekstrak Alga Hijau</p>\r\n\r\n<p style=\"text-align:justify\"><br />\r\nKeistimewaan dari Produk <strong>Zahra Facial Wash </strong>adalah kandungan zat aktifnya yang berupa kandungan Alga Hijaunya yang memiliki manfaat sebagai berikut :</p>\r\n\r\n<ol>\r\n	<li>Menutrisi kulit dengan kandungan vitamin dan mineral dari laut</li>\r\n	<li>Berfungsi sebagai anti-oksidan</li>\r\n	<li>Berfungsi sebagai anti-inflamasi</li>\r\n	<li>Berfungsi sebagai pembersih zat berbahaya bagi kulit</li>\r\n</ol>\r\n\r\n<p style=\"text-align:justify\">Keunggulan lain dari produk ini adalah pH balance. Zahra Facial Wash yang ber-PH 5,5 adalah pembersih wajah yang paling baik karena dapat mencegah munculnya jerawat, iritasi, infeksi, dan dapat pula mengurangi gejala penuaan pada wajah. Produk dengan pH balance 5,5 sangat penting karena dapat melindungi lapisan asam pada kulit.</p>\r\n\r\n<p>Zahra Facial Wash cocok untuk semua jenis kulit dan tidak perih di mata.</p>\r\n\r\n<p style=\"text-align:justify\">Zahra Facial Wash diformulasikan secara tepat dan disesuaikan dengan kebutuhan kulit serta bebas dari bahan kimia.</p>\r\n\r\n<p style=\"text-align:justify\">Rutin menggunakan Zahra Facial Wash adalah cara efektif agar anda mendapatkan kulit wajah bersih, sehat, dan segar alami.</p>\r\n\r\n<p>Manjakan kulit anda dengan Zahra Facial Wash dan dapatkan kulit segar sepanjang hari.</p>', 17000, '900', 'Pcs', 'photos/Zahra Facial Wash.jpg', 4, 12, NULL, 1, NULL, 'irwan'),
+(71, 'P00009', 'H&T Food Sari Alang-alang (banded 3)', 50, 'ht-food-sari-alang-alang-banded-3', '<p style=\"text-align:justify\">H&amp;T FOOD SARI ALANG-ALANG &ldquo;MITRA&rdquo; adalah minuman kesehatan tradisional yang terbuat dari herbal alami berupa rimpang/akar alang-alang (Imperata spec div), batang secang (Caesalpinia sappan), dan batang ketan hitam (Oriza sativa lim) serta menggunakan gula murni sebagai pemanis sekaligus pengawetnya.</p>', '<p style=\"text-align:justify\"><strong>H&amp;T FOOD SARI ALANG-ALANG &ldquo;MITRA&rdquo;</strong> adalah minuman kesehatan tradisional yang terbuat dari herbal alami berupa rimpang/akar alang-alang (Imperata spec div), batang secang (Caesalpinia sappan), dan batang ketan hitam (Oriza sativa lim) serta menggunakan gula murni sebagai pemanis sekaligus pengawetnya.</p>\r\n\r\n<p style=\"text-align:justify\">Dengan mengkonsumsi <strong>H&amp;T FOOD SARI ALANG-ALANG &ldquo;MITRA&rdquo;</strong> secara teratur sesuai dosis yang dianjurkan, dapat memberi manfaat antara lain:</p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Membantu menurunkan panas dan demam, meredakan bengkak akibat peradangan, menyembuhkan infeksi, meredakan batuk, mengobati tekanan darah tinggi, sakit kuning (hepatitis), menghentikan pendarahan, sesak napas/asma.</li>\r\n	<li style=\"text-align:justify\">Membantu mencegah dan mengatasi penyakit yang disebabkan oleh radikal bebas seperti batuk darah, batuk rejan, asma, radang tenggorokan, radang paru-paru, jantung koroner, campak, dan sebagainya.</li>\r\n	<li style=\"text-align:justify\">Membantu meluruhkan air seni sehingga dapat mempercepat penyembuhan infeksi ginjal, batu ginjal, batu empedu, kencing batu, kencing darah, buang air kecil tidak lancar atau buang air kecil terus-menerus.</li>\r\n	<li style=\"text-align:justify\">Membantu mengobati penyakit pencernaan seperti diare, disentri, dan maag</li>\r\n	<li style=\"text-align:justify\">Membantu menghentikan pendarahan pada mimisan atau pendarahan pada wanita sehabis melahirkan.&nbsp;</li>\r\n</ol>\r\n\r\n<p>Sifat dan Khasiat Herbal Komposisi H&amp;T FOOD SARI ALANG-ALANG &ldquo;MITRA&rdquo; &nbsp;antara lain:</p>\r\n\r\n<ul>\r\n	<li>Ekstrak Akar Alang-Alang (Imperata Spec Div)</li>\r\n</ul>\r\n\r\n<p style=\"text-align:justify\">Akar alang-alang mengandung senyawa aktif antara lain mannitol, glukosa, asam malic, asam sitrat, coixol, arundoin, silindrin, fernerol, simiarenol, anemonin, esin, alkali, saponin, tanin, dan polifenol. Senyawa aktif ini secara sinergis dapat memberikan efek farmakologis sebagai antipiretik (penurun panas), diuretik (peluruh air seni), hemostatik (menghentikan pendarahan), penghilang haus, dan pendingin. &nbsp;</p>\r\n\r\n<ul>\r\n	<li>Ekstrak Secang (Caesalpinia Sappan L)</li>\r\n</ul>\r\n\r\n<p style=\"text-align:justify\">Daun dan batang secang mengandung senyawa aktif antara lain saponin, flavonoid, polifenol, minyak atsiri, tanin, asam galat, resin, resorsin, brasilin, brasilein, d-alfa-phellandrene, dan oscimene. Berbagai senyawa aktif ini dapat memberikan efek farmakologis antara lain sebagai penghenti pendarahan, pembersih darah, pengelat, penawar racun, dan antiseptik, sehingga secara umum secang dapat digunakan untuk membantu pengobatan diare, disentri, batuk darah pada TBC, muntah darah, sifilis, malaria, tetanus, pembengkakan (tumor), dan nyeri karena gangguan sirkulasi darah.</p>\r\n\r\n<ul>\r\n	<li>Ekstrak Ketan Hitam (Oriza sativa lim)</li>\r\n</ul>\r\n\r\n<p style=\"text-align:justify\">Di dalam ketan hitam terkandung zat besi sebesar 15,52 ppm yang sangat dibutuhkan untuk membantu pembentukan sel darah merah dan meningkatkan daya tahan tubuh dan menangkal zat alerger (pencetus alergi)<br />\r\nDi dalam ketan hitam juga terdapat zat antioksidan bernama antosianin yang berperan dalam melindungi lambung dari kerusakan, menghambat sel tumor, meningkatkan kesehatan mata, melindungi kerusakan sel tubuh akibat oksidasi zat berbahaya, membantu melindungi sistem kardiovaskular, serta membantu tubuh melawan penyakit kanker dan jantung.</p>', 63000, '900', 'Dus', 'photos/3 H&T alang-alang.jpg', 1, 2, 3, 1, NULL, 'sholeh'),
+(78, 'MF-BB01', 'H&T Food Bumbu Racik Non MSG (banded 3)', 20, 'ht-food-bumbu-racik-non-msg-banded-3', 'Komposisi/Bahan Baku:\r\n\r\nGaram, gula, lada putih, ketumbar bubuk, bawang putih bubuk, maltodextrine, kunyit, beef ekstrak, ekstrak ragi, anti kempal', '<p style=\"text-align:justify\"><strong>Komposisi/Bahan Baku:</strong></p>\r\n\r\n<p style=\"text-align:justify\">Garam, gula, lada putih, ketumbar bubuk, bawang putih bubuk, maltodextrine, kunyit, beef ekstrak, ekstrak ragi, anti kempal</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\"><strong>Manfaat:</strong></p>\r\n\r\n<p style=\"text-align:justify\">H&amp;T Food Bumbu Racik Non MSG terbuat dari rempah-rempah asli dan tanpa bahan pengawet. Paduan formula yang pas untuk bumbu pembuatan aneka macam gorengan, yang kuat akan rasa rempah dan gurih yang mantap, serta dibuat tanpa ada penambahan &nbsp;MSG (Monosodium Glutamate), sehingga baik dan sehat untuk yang sensitif terhadap MSG</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Cara Penggunaan/Pemakaian:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Siapkan air sebanyak 15 mL</li>\r\n	<li style=\"text-align:justify\">Timbang H&amp;T Food Bumbu Racik Non MSG sebanyak 15 gram</li>\r\n	<li style=\"text-align:justify\">Masukan bumbu racik yang telah ditimbang ke dalam air yang telah disiapkan, aduk hingga merata</li>\r\n	<li style=\"text-align:justify\">Masukan potongan tempe/udang/cumi/ikan ke dalam adonan bumbu, kemudian balurkan dan bolak-balikan tempe/udang/cumi/ikan hingga bumbu menyerap</li>\r\n	<li style=\"text-align:justify\">Goreng tempe/udang/ikan/cumi hingga matang</li>\r\n	<li style=\"text-align:justify\">Gorengan tempe/udang/ikan/cumi bumbu serbaguna siap disajikan<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Cara Penyimpanan Sebelum Dibuka:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan ditempat sejuk dan kering, serta bahan yang dapat mengkontaminasi status keHalalan produk</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 25⁰C</li>\r\n	<li style=\"text-align:justify\">Usahakan simpan dalam posisi tegak/berdiri</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Cara Penyimpanan Setelah Dibuka:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan ditempat sejuk dan kering, serta tertutup pada kemasan dan dapat disimpan didalam toples/kotak</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 25⁰C</li>\r\n	<li style=\"text-align:justify\">Usahakan simpan dalam posisi tegak/berdiri</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab</li>\r\n	<li style=\"text-align:justify\">Hindari penyimpanan produk terlalu lama, jika kemasan produk sudah dibuka<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Penanganan Pengiriman:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan dengan kemasan yang tertutup rapi dan tidak bocor. Jika dalam kardus, simpan dengan disusun secara rata dapat dengan posisi tidur jika kemasan belum dibuka dan tidak bocor</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 30⁰C</li>\r\n	<li style=\"text-align:justify\">Hindari dari kemungkinan kontaminasi yang mengurangi mutu dan status keHalalan &nbsp;produk</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab</li>\r\n	<li style=\"text-align:justify\">Lakukan pengecekan kondisi tempat pengangkut produk, sebelum proses transportasi berlangsung</li>\r\n</ol>', 63000, '300', 'Pcs', 'photos/3 H&T bumbu_racik.jpg', 10, NULL, NULL, 1, NULL, 'sholeh'),
+(79, 'P00023', 'H&T Food Kaldu Sapi Non MSG (banded 3)', 1, 'ht-food-kaldu-sapi-non-msg-banded-3', 'Komposisi/Bahan Baku:\r\n\r\nGaram, gula, lada putih, ketumbar, bawang putih dan bombay bubuk, penguat rasa daging sapi, ekstrak daging sapi, penguat aroma hewani, hidrolis protein nabati, anti kempal', '<p><strong>Komposisi/Bahan Baku:</strong></p>\r\n\r\n<p style=\"text-align:justify\">Garam, gula, lada putih, ketumbar, bawang putih dan bombay bubuk, penguat rasa daging sapi, ekstrak daging sapi, penguat aroma hewani, hidrolis protein nabati, anti kempal</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Manfaat:</strong></p>\r\n\r\n<p style=\"text-align:justify\">Menambah atau memperkuat rasa dan aroma khas daging sapi pada makanan, dengan penambahan kaldu mampu mengurangi jumlah bumbu masakan yang ditambahkan pada masakan dengan praktis. &nbsp;H&amp;T Food Kaldu Sapi Non MSG merupakan bumbu kaldu tanpa penyedap rasa MSG dan tanpa bahan pengawet, baik untuk masakan yang lebih sehat dan aman bagi keluarga terbuat dari rempah-rempah asli dan tanpa bahan pengawet.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Cara Penggunaan/Pemakaian:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Siapkan air sebanyak 1liter dan masak sampai mendidih</li>\r\n	<li style=\"text-align:justify\">Timbang H&amp;T Food Kaldu Sapi Non MSG sebanyak 50 gram</li>\r\n	<li style=\"text-align:justify\">Masukan kaldu yang telah ditimbang ke dalam air yang telah mendidih, aduk hingga semua kaldu larut di dalam air panas</li>\r\n	<li style=\"text-align:justify\">Dapat disajikan sebagai bahan untuk sup dan sejenisnya</li>\r\n	<li style=\"text-align:justify\">Tambahkan potongan daging atau tulang sapi, daun bawang, bawang putih, dan bahan lainnya sebagai pelengkap<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Cara Penyimpanan Sebelum Dibuka:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan ditempat sejuk dan kering, serta bahan yang dapat mengkontaminasi status keHalalan produk</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 25⁰C</li>\r\n	<li style=\"text-align:justify\">Usahakan simpan dalam posisi tegak/berdiri</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Cara Penyimpanan Setelah Dibuka:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan ditempat sejuk dan kering, serta tertutup pada kemasan dan dapat disimpan didalam toples/kotak</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 25⁰C</li>\r\n	<li style=\"text-align:justify\">Usahakan simpan dalam posisi tegak/berdiri</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab</li>\r\n	<li style=\"text-align:justify\">Hindari penyimpanan produk terlalu lama, jika kemasan produk sudah dibuka<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Penanganan Pengiriman:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan dengan kemasan yang tertutup rapi dan tidak bocor. Jika dalam kardus, simpan dengan disusun secara rata dapat dengan posisi tidur jika kemasan belum dibuka dan tidak bocor</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 30⁰C</li>\r\n	<li style=\"text-align:justify\">Hindari dari kemungkinan kontaminasi yang mengurangi mutu dan status keHalalan &nbsp;produk</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab</li>\r\n	<li style=\"text-align:justify\">Lakukan pengecekan kondisi tempat pengangkut produk, sebelum proses transportasi berlangsung</li>\r\n</ol>', 60000, '900', 'Pcs', 'photos/3 H&T bumbu_sapi.jpg', 10, NULL, NULL, 1, NULL, 'sholeh'),
+(80, 'P00023', 'H&T Food Kaldu Sapi Non MSG', 50, 'ht-food-kaldu-sapi-non-msg', 'Komposisi/Bahan Baku:\r\n\r\nGaram, gula, lada putih, ketumbar, bawang putih dan bombay bubuk, penguat rasa daging sapi, ekstrak daging sapi, penguat aroma hewani, hidrolis protein nabati, anti kempal', '<p><strong>Komposisi/Bahan Baku:</strong></p>\r\n\r\n<p style=\"text-align:justify\">Garam, gula, lada putih, ketumbar, bawang putih dan bombay bubuk, penguat rasa daging sapi, ekstrak daging sapi, penguat aroma hewani, hidrolis protein nabati, anti kempal</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Manfaat:</strong></p>\r\n\r\n<p style=\"text-align:justify\">Menambah atau memperkuat rasa dan aroma khas daging sapi pada makanan, dengan penambahan kaldu mampu mengurangi jumlah bumbu masakan yang ditambahkan pada masakan dengan praktis. &nbsp;H&amp;T Food Kaldu Sapi Non MSG merupakan bumbu kaldu tanpa penyedap rasa MSG dan tanpa bahan pengawet, baik untuk masakan yang lebih sehat dan aman bagi keluarga terbuat dari rempah-rempah asli dan tanpa bahan pengawet.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Cara Penggunaan/Pemakaian:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Siapkan air sebanyak 1liter dan masak sampai mendidih</li>\r\n	<li style=\"text-align:justify\">Timbang H&amp;T Food Kaldu Sapi Non MSG sebanyak 50 gram</li>\r\n	<li style=\"text-align:justify\">Masukan kaldu yang telah ditimbang ke dalam air yang telah mendidih, aduk hingga semua kaldu larut di dalam air panas</li>\r\n	<li style=\"text-align:justify\">Dapat disajikan sebagai bahan untuk sup dan sejenisnya</li>\r\n	<li style=\"text-align:justify\">Tambahkan potongan daging atau tulang sapi, daun bawang, bawang putih, dan bahan lainnya sebagai pelengkap<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Cara Penyimpanan Sebelum Dibuka:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan ditempat sejuk dan kering, serta bahan yang dapat mengkontaminasi status keHalalan produk</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 25⁰C</li>\r\n	<li style=\"text-align:justify\">Usahakan simpan dalam posisi tegak/berdiri</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Cara Penyimpanan Setelah Dibuka:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan ditempat sejuk dan kering, serta tertutup pada kemasan dan dapat disimpan didalam toples/kotak</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 25⁰C</li>\r\n	<li style=\"text-align:justify\">Usahakan simpan dalam posisi tegak/berdiri</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab</li>\r\n	<li style=\"text-align:justify\">Hindari penyimpanan produk terlalu lama, jika kemasan produk sudah dibuka<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Penanganan Pengiriman:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan dengan kemasan yang tertutup rapi dan tidak bocor. Jika dalam kardus, simpan dengan disusun secara rata dapat dengan posisi tidur jika kemasan belum dibuka dan tidak bocor</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 30⁰C</li>\r\n	<li style=\"text-align:justify\">Hindari dari kemungkinan kontaminasi yang mengurangi mutu dan status keHalalan &nbsp;produk</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab</li>\r\n	<li style=\"text-align:justify\">Lakukan pengecekan kondisi tempat pengangkut produk, sebelum proses transportasi berlangsung</li>\r\n</ol>', 20000, '900', 'Pcs', 'photos/1_H&T kaldu sapi.jpg', 10, NULL, NULL, 1, NULL, 'sholeh'),
+(81, 'KD-HT002', 'H&T Food Bumbu Racik Non MSG', 100, 'ht-food-bumbu-racik-non-msg', 'Komposisi/Bahan Baku:\r\n\r\nGaram, gula, lada putih, ketumbar bubuk, bawang putih bubuk, maltodextrine, kunyit, beef ekstrak, ekstrak ragi, anti kempal', '<p><strong>Komposisi/Bahan Baku:</strong></p>\r\n\r\n<p style=\"text-align:justify\">Garam, gula, lada putih, ketumbar bubuk, bawang putih bubuk, maltodextrine, kunyit, beef ekstrak, ekstrak ragi, anti kempal</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Manfaat:</strong></p>\r\n\r\n<p style=\"text-align:justify\">H&amp;T Food Bumbu Racik Non MSG terbuat dari rempah-rempah asli dan tanpa bahan pengawet. Paduan formula yang pas untuk bumbu pembuatan aneka macam gorengan, yang kuat akan rasa rempah dan gurih yang mantap, serta dibuat tanpa ada penambahan &nbsp;MSG (Monosodium Glutamate), sehingga baik dan sehat untuk yang sensitif terhadap MSG</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Cara Penggunaan/Pemakaian:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Siapkan air sebanyak 15 mL</li>\r\n	<li style=\"text-align:justify\">Timbang H&amp;T Food Bumbu Racik Non MSG sebanyak 15 gram</li>\r\n	<li style=\"text-align:justify\">Masukan bumbu racik yang telah ditimbang ke dalam air yang telah disiapkan, aduk hingga merata</li>\r\n	<li style=\"text-align:justify\">Masukan potongan tempe/udang/cumi/ikan ke dalam adonan bumbu, kemudian balurkan dan bolak-balikan tempe/udang/cumi/ikan hingga bumbu menyerap</li>\r\n	<li style=\"text-align:justify\">Goreng tempe/udang/ikan/cumi hingga matang</li>\r\n	<li style=\"text-align:justify\">Gorengan tempe/udang/ikan/cumi bumbu serbaguna siap disajikan<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Cara Penyimpanan Sebelum Dibuka:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan ditempat sejuk dan kering, serta bahan yang dapat mengkontaminasi status keHalalan produk</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 25⁰C</li>\r\n	<li style=\"text-align:justify\">Usahakan simpan dalam posisi tegak/berdiri</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Cara Penyimpanan Setelah Dibuka:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan ditempat sejuk dan kering, serta tertutup pada kemasan dan dapat disimpan didalam toples/kotak</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 25⁰C</li>\r\n	<li style=\"text-align:justify\">Usahakan simpan dalam posisi tegak/berdiri</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab</li>\r\n	<li style=\"text-align:justify\">Hindari penyimpanan produk terlalu lama, jika kemasan produk sudah dibuka<br />\r\n	&nbsp;</li>\r\n</ol>\r\n\r\n<p><strong>Penanganan Pengiriman:</strong></p>\r\n\r\n<ol>\r\n	<li style=\"text-align:justify\">Simpan dengan kemasan yang tertutup rapi dan tidak bocor. Jika dalam kardus, simpan dengan disusun secara rata dapat dengan posisi tidur jika kemasan belum dibuka dan tidak bocor</li>\r\n	<li style=\"text-align:justify\">Suhu penyimpanan dibawah 30⁰C</li>\r\n	<li style=\"text-align:justify\">Hindari dari kemungkinan kontaminasi yang mengurangi mutu dan status keHalalan &nbsp;produk</li>\r\n	<li style=\"text-align:justify\">Hindari terkena sinar matahari langsung dan tempat yang basah/lembab</li>\r\n	<li style=\"text-align:justify\">Lakukan pengecekan kondisi tempat pengangkut produk, sebelum proses transportasi berlangsung</li>\r\n</ol>', 21000, '900', 'Pcs', 'photos/1_H&T BUMBU RACIK.jpg', 10, NULL, NULL, 1, NULL, 'sholeh');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `province`
+-- Table structure for table `province`
 --
 
 CREATE TABLE `province` (
   `id` int(11) NOT NULL,
   `province_id` int(11) NOT NULL,
   `province` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `province`
+-- Dumping data for table `province`
 --
 
 INSERT INTO `province` (`id`, `province_id`, `province`) VALUES
@@ -1379,7 +1390,7 @@ INSERT INTO `province` (`id`, `province_id`, `province`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `satuan`
+-- Table structure for table `satuan`
 --
 
 CREATE TABLE `satuan` (
@@ -1387,10 +1398,10 @@ CREATE TABLE `satuan` (
   `nama` varchar(30) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `satuan`
+-- Dumping data for table `satuan`
 --
 
 INSERT INTO `satuan` (`id`, `nama`, `created_at`, `updated_at`) VALUES
@@ -1411,7 +1422,7 @@ INSERT INTO `satuan` (`id`, `nama`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `subdistrict`
+-- Table structure for table `subdistrict`
 --
 
 CREATE TABLE `subdistrict` (
@@ -1420,10 +1431,10 @@ CREATE TABLE `subdistrict` (
   `province_id` int(11) NOT NULL,
   `city_id` int(11) NOT NULL,
   `subdistrict_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `subdistrict`
+-- Dumping data for table `subdistrict`
 --
 
 INSERT INTO `subdistrict` (`id`, `subdistrict_id`, `province_id`, `city_id`, `subdistrict_name`) VALUES
@@ -8694,19 +8705,19 @@ INSERT INTO `subdistrict` (`id`, `subdistrict_id`, `province_id`, `city_id`, `su
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sub_category`
+-- Table structure for table `sub_category`
 --
 
 CREATE TABLE `sub_category` (
   `id` int(11) NOT NULL,
   `id_category` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created_by` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `sub_category`
+-- Dumping data for table `sub_category`
 --
 
 INSERT INTO `sub_category` (`id`, `id_category`, `name`, `date_created`, `created_by`) VALUES
@@ -8727,21 +8738,21 @@ INSERT INTO `sub_category` (`id`, `id_category`, `name`, `date_created`, `create
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sub_kategori_pekerjaan`
+-- Table structure for table `sub_kategori_pekerjaan`
 --
 
 CREATE TABLE `sub_kategori_pekerjaan` (
   `id` int(11) NOT NULL,
   `sub_kategori_id` int(4) NOT NULL,
   `kategori_id` int(11) NOT NULL,
-  `nama` varchar(100) NOT NULL,
+  `nama` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `createdBy` int(2) NOT NULL,
-  `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updatedAt` timestamp NOT NULL DEFAULT current_timestamp()
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data untuk tabel `sub_kategori_pekerjaan`
+-- Dumping data for table `sub_kategori_pekerjaan`
 --
 
 INSERT INTO `sub_kategori_pekerjaan` (`id`, `sub_kategori_id`, `kategori_id`, `nama`, `createdBy`, `createdAt`, `updatedAt`) VALUES
@@ -8750,7 +8761,7 @@ INSERT INTO `sub_kategori_pekerjaan` (`id`, `sub_kategori_id`, `kategori_id`, `n
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sub_sub_category`
+-- Table structure for table `sub_sub_category`
 --
 
 CREATE TABLE `sub_sub_category` (
@@ -8758,12 +8769,12 @@ CREATE TABLE `sub_sub_category` (
   `id_category` int(11) NOT NULL,
   `id_sub_category` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created_by` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `sub_sub_category`
+-- Dumping data for table `sub_sub_category`
 --
 
 INSERT INTO `sub_sub_category` (`id`, `id_category`, `id_sub_category`, `name`, `date_created`, `created_by`) VALUES
@@ -8773,7 +8784,7 @@ INSERT INTO `sub_sub_category` (`id`, `id_category`, `id_sub_category`, `name`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transaction`
+-- Table structure for table `transaction`
 --
 
 CREATE TABLE `transaction` (
@@ -8794,16 +8805,16 @@ CREATE TABLE `transaction` (
   `total_bayar` int(11) NOT NULL,
   `no_rek` varchar(15) DEFAULT NULL,
   `bank` varchar(50) DEFAULT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 0,
+  `status` tinyint(1) NOT NULL DEFAULT '0',
   `keterangan` varchar(500) DEFAULT NULL,
   `processed_by` varchar(10) DEFAULT NULL,
-  `detil_transaksi` text DEFAULT NULL,
+  `detil_transaksi` text,
   `bukti_pembayaran` varchar(200) DEFAULT NULL,
-  `date_created` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `transaction`
+-- Dumping data for table `transaction`
 --
 
 INSERT INTO `transaction` (`id`, `id_transaction`, `id_user`, `id_address`, `sub_total`, `total_berat`, `total_ongkir`, `kurir`, `layanan`, `resi`, `penerima`, `etd`, `total`, `unix_code`, `total_bayar`, `no_rek`, `bank`, `status`, `keterangan`, `processed_by`, `detil_transaksi`, `bukti_pembayaran`, `date_created`) VALUES
@@ -8844,33 +8855,35 @@ INSERT INTO `transaction` (`id`, `id_transaction`, `id_user`, `id_address`, `sub
 (35, 'TR-31304042023', 3, 3, 149000, '900', '14000', 'sicepat', NULL, NULL, NULL, '1', '163000', 130, 163130, '5220795707', 'BCA', 0, NULL, 'CTR03', NULL, NULL, '2023-04-04 15:27:43'),
 (36, 'TR-42405042023', 4, 4, 126000, '1200', '9000', 'jne', NULL, NULL, NULL, '2-3', '135000', 240, 135240, '1560005442894', 'BANK MANDIRI', 0, NULL, 'CTR03', NULL, NULL, '2023-04-05 10:23:30'),
 (37, 'TR-43405042023', 4, 4, 63000, '300', '11500', 'sicepat', NULL, NULL, NULL, '1-2', '74500', 340, 74840, '5220795707', 'BCA', 0, NULL, 'CTR03', NULL, NULL, '2023-04-05 10:25:41'),
-(38, 'TR-41205042023', 4, 4, 149000, '900', '14000', 'sicepat', NULL, NULL, NULL, '1', '163000', 120, 163120, '5220795707', 'BCA', 0, NULL, 'CTR03', NULL, NULL, '2023-04-05 10:50:56');
+(38, 'TR-41205042023', 4, 4, 149000, '900', '14000', 'sicepat', NULL, NULL, NULL, '1', '163000', 120, 163120, '5220795707', 'BCA', 0, NULL, 'CTR03', NULL, NULL, '2023-04-05 10:50:56'),
+(40, 'TR-31711042023', 3, 3, 180000, '2700', '27000', 'jne', NULL, NULL, NULL, '2-3', '207000', 171, 207171, '5220795707', 'BCA', 0, NULL, 'CTR03', NULL, NULL, '2023-04-11 06:16:35'),
+(41, 'TR-3511042023', 3, 3, 209000, '1800', '28000', 'sicepat', NULL, NULL, NULL, '1', '237000', 511, 237511, '5220795707', 'BCA', 0, NULL, 'CTR03', NULL, NULL, '2023-04-11 06:17:54');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `name` varchar(80) NOT NULL,
-  `email` varchar(100) NOT NULL,
+  `username` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `phone` varchar(15) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `photo` varchar(100) DEFAULT NULL,
-  `refferal` varchar(30) DEFAULT NULL,
-  `refferal_id` varchar(10) DEFAULT NULL,
-  `google_id` varchar(100) DEFAULT NULL,
-  `remember_token` varchar(100) DEFAULT NULL,
+  `phone` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `refferal` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `refferal_id` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `google_id` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `name`, `email`, `email_verified_at`, `phone`, `password`, `photo`, `refferal`, `refferal_id`, `google_id`, `remember_token`, `created_at`, `updated_at`) VALUES
@@ -8887,7 +8900,7 @@ INSERT INTO `users` (`id`, `username`, `name`, `email`, `email_verified_at`, `ph
 --
 
 --
--- Indeks untuk tabel `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`),
@@ -8895,26 +8908,26 @@ ALTER TABLE `admin`
   ADD KEY `akses` (`akses`);
 
 --
--- Indeks untuk tabel `app_setting`
+-- Indexes for table `app_setting`
 --
 ALTER TABLE `app_setting`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `bank`
+-- Indexes for table `bank`
 --
 ALTER TABLE `bank`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `banner`
+-- Indexes for table `banner`
 --
 ALTER TABLE `banner`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id` (`id`);
 
 --
--- Indeks untuk tabel `branches`
+-- Indexes for table `branches`
 --
 ALTER TABLE `branches`
   ADD PRIMARY KEY (`id`),
@@ -8924,7 +8937,7 @@ ALTER TABLE `branches`
   ADD KEY `subdistrict` (`subdistrict`);
 
 --
--- Indeks untuk tabel `cart`
+-- Indexes for table `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`),
@@ -8932,13 +8945,13 @@ ALTER TABLE `cart`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `city`
+-- Indexes for table `city`
 --
 ALTER TABLE `city`
   ADD PRIMARY KEY (`id`),
@@ -8947,7 +8960,7 @@ ALTER TABLE `city`
   ADD KEY `postal_code` (`postal_code`);
 
 --
--- Indeks untuk tabel `company`
+-- Indexes for table `company`
 --
 ALTER TABLE `company`
   ADD PRIMARY KEY (`id`),
@@ -8957,7 +8970,7 @@ ALTER TABLE `company`
   ADD KEY `themes_id` (`themes_id`);
 
 --
--- Indeks untuk tabel `contact`
+-- Indexes for table `contact`
 --
 ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`),
@@ -8967,19 +8980,19 @@ ALTER TABLE `contact`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `display`
+-- Indexes for table `display`
 --
 ALTER TABLE `display`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `dummy`
+-- Indexes for table `dummy`
 --
 ALTER TABLE `dummy`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `event_log`
+-- Indexes for table `event_log`
 --
 ALTER TABLE `event_log`
   ADD PRIMARY KEY (`id`),
@@ -8989,28 +9002,28 @@ ALTER TABLE `event_log`
   ADD KEY `time` (`time`);
 
 --
--- Indeks untuk tabel `level_admin`
+-- Indexes for table `level_admin`
 --
 ALTER TABLE `level_admin`
   ADD PRIMARY KEY (`id`),
   ADD KEY `kode` (`kode`);
 
 --
--- Indeks untuk tabel `list_transaction`
+-- Indexes for table `list_transaction`
 --
 ALTER TABLE `list_transaction`
   ADD PRIMARY KEY (`id`),
   ADD KEY `trans_id` (`trans_id`);
 
 --
--- Indeks untuk tabel `log_processed_by`
+-- Indexes for table `log_processed_by`
 --
 ALTER TABLE `log_processed_by`
   ADD PRIMARY KEY (`id`),
   ADD KEY `branch_id` (`branch_id`);
 
 --
--- Indeks untuk tabel `log_transaction`
+-- Indexes for table `log_transaction`
 --
 ALTER TABLE `log_transaction`
   ADD PRIMARY KEY (`id`),
@@ -9018,27 +9031,27 @@ ALTER TABLE `log_transaction`
   ADD KEY `trans_id` (`trans_id`);
 
 --
--- Indeks untuk tabel `lupa_password`
+-- Indexes for table `lupa_password`
 --
 ALTER TABLE `lupa_password`
   ADD PRIMARY KEY (`id`),
   ADD KEY `member_id` (`member_id`);
 
 --
--- Indeks untuk tabel `pages`
+-- Indexes for table `pages`
 --
 ALTER TABLE `pages`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `payget`
+-- Indexes for table `payget`
 --
 ALTER TABLE `payget`
   ADD PRIMARY KEY (`id`),
   ADD KEY `trans_id` (`trans_id`);
 
 --
--- Indeks untuk tabel `product`
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
@@ -9050,7 +9063,7 @@ ALTER TABLE `product`
   ADD KEY `kode_brg` (`kode_brg`);
 
 --
--- Indeks untuk tabel `province`
+-- Indexes for table `province`
 --
 ALTER TABLE `province`
   ADD PRIMARY KEY (`id`),
@@ -9058,13 +9071,13 @@ ALTER TABLE `province`
   ADD KEY `province` (`province`);
 
 --
--- Indeks untuk tabel `satuan`
+-- Indexes for table `satuan`
 --
 ALTER TABLE `satuan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `subdistrict`
+-- Indexes for table `subdistrict`
 --
 ALTER TABLE `subdistrict`
   ADD PRIMARY KEY (`id`),
@@ -9074,14 +9087,14 @@ ALTER TABLE `subdistrict`
   ADD KEY `subdistrict_name` (`subdistrict_name`);
 
 --
--- Indeks untuk tabel `sub_category`
+-- Indexes for table `sub_category`
 --
 ALTER TABLE `sub_category`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_category` (`id_category`);
 
 --
--- Indeks untuk tabel `sub_kategori_pekerjaan`
+-- Indexes for table `sub_kategori_pekerjaan`
 --
 ALTER TABLE `sub_kategori_pekerjaan`
   ADD PRIMARY KEY (`id`),
@@ -9090,7 +9103,7 @@ ALTER TABLE `sub_kategori_pekerjaan`
   ADD KEY `sub_kategori_id` (`sub_kategori_id`);
 
 --
--- Indeks untuk tabel `sub_sub_category`
+-- Indexes for table `sub_sub_category`
 --
 ALTER TABLE `sub_sub_category`
   ADD PRIMARY KEY (`id`),
@@ -9099,14 +9112,14 @@ ALTER TABLE `sub_sub_category`
   ADD KEY `id_sub_category` (`id_sub_category`);
 
 --
--- Indeks untuk tabel `transaction`
+-- Indexes for table `transaction`
 --
 ALTER TABLE `transaction`
   ADD PRIMARY KEY (`id`),
   ADD KEY `processed_by` (`processed_by`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -9115,189 +9128,189 @@ ALTER TABLE `users`
   ADD KEY `refferal_id` (`refferal_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
--- AUTO_INCREMENT untuk tabel `app_setting`
+-- AUTO_INCREMENT for table `app_setting`
 --
 ALTER TABLE `app_setting`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `bank`
+-- AUTO_INCREMENT for table `bank`
 --
 ALTER TABLE `bank`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `banner`
+-- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=215;
 
 --
--- AUTO_INCREMENT untuk tabel `branches`
+-- AUTO_INCREMENT for table `branches`
 --
 ALTER TABLE `branches`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `cart`
+-- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
--- AUTO_INCREMENT untuk tabel `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT untuk tabel `city`
+-- AUTO_INCREMENT for table `city`
 --
 ALTER TABLE `city`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1003;
 
 --
--- AUTO_INCREMENT untuk tabel `company`
+-- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `contact`
+-- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `display`
+-- AUTO_INCREMENT for table `display`
 --
 ALTER TABLE `display`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `dummy`
+-- AUTO_INCREMENT for table `dummy`
 --
 ALTER TABLE `dummy`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `event_log`
+-- AUTO_INCREMENT for table `event_log`
 --
 ALTER TABLE `event_log`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `level_admin`
+-- AUTO_INCREMENT for table `level_admin`
 --
 ALTER TABLE `level_admin`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `list_transaction`
+-- AUTO_INCREMENT for table `list_transaction`
 --
 ALTER TABLE `list_transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
--- AUTO_INCREMENT untuk tabel `log_processed_by`
+-- AUTO_INCREMENT for table `log_processed_by`
 --
 ALTER TABLE `log_processed_by`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT untuk tabel `log_transaction`
+-- AUTO_INCREMENT for table `log_transaction`
 --
 ALTER TABLE `log_transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
--- AUTO_INCREMENT untuk tabel `lupa_password`
+-- AUTO_INCREMENT for table `lupa_password`
 --
 ALTER TABLE `lupa_password`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
--- AUTO_INCREMENT untuk tabel `pages`
+-- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `payget`
+-- AUTO_INCREMENT for table `payget`
 --
 ALTER TABLE `payget`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT untuk tabel `product`
+-- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
--- AUTO_INCREMENT untuk tabel `province`
+-- AUTO_INCREMENT for table `province`
 --
 ALTER TABLE `province`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
--- AUTO_INCREMENT untuk tabel `satuan`
+-- AUTO_INCREMENT for table `satuan`
 --
 ALTER TABLE `satuan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT untuk tabel `subdistrict`
+-- AUTO_INCREMENT for table `subdistrict`
 --
 ALTER TABLE `subdistrict`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15047;
 
 --
--- AUTO_INCREMENT untuk tabel `sub_category`
+-- AUTO_INCREMENT for table `sub_category`
 --
 ALTER TABLE `sub_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT untuk tabel `sub_kategori_pekerjaan`
+-- AUTO_INCREMENT for table `sub_kategori_pekerjaan`
 --
 ALTER TABLE `sub_kategori_pekerjaan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `sub_sub_category`
+-- AUTO_INCREMENT for table `sub_sub_category`
 --
 ALTER TABLE `sub_sub_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `transaction`
+-- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `city`
+-- Constraints for table `city`
 --
 ALTER TABLE `city`
   ADD CONSTRAINT `city_ibfk_1` FOREIGN KEY (`province_id`) REFERENCES `province` (`province_id`);

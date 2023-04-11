@@ -84,10 +84,11 @@
                         <form action="{{ route('add-cart') }}" method="POST">
                             <div class="mb-3 custom-qty">
                                 @csrf
-                       
+
+                                <input type="hidden" name="stok" id="stok" value="{{ $product->stok }}">
                                 <input type="hidden" name="id_barang" value="{{ $product->id }}">
                                 <div class="container">
-                                    <input type="text" id="demo6" value="1" class="form-control" name="qty">
+                                    <input type="text" id="demo6" value="1" max="{{$product->stok}}" class="form-control" name="qty">
                                 </div>
                             </div>
                             <div class="row justify-content-center mt-4">
@@ -123,5 +124,15 @@
 
 @endsection
 @section('script')
-<script></script>
+<script>
+$(document).ready(function() {
+    var stok = $('#stok').val();
+    $("input[name='qty']").TouchSpin({
+    min: 1,
+    max:stok,
+    buttondown_class: "btn btn-classic-down",
+    buttonup_class: "btn btn-classic-up"
+});
+});
+</script>
 @endsection

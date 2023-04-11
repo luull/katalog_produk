@@ -32,6 +32,7 @@
                                 <th>Image</th>
                                 <th>Kode</th>
                                 <th>Nama</th>
+                                <th>Stok</th>
                                 <th>Berat</th>
                                 <th>Harga</th>
                                 <th>Kategori</th>
@@ -52,6 +53,7 @@
                                             alt="{{ asset($d->image) }}"></td>
                                     <td>{{ $d->kode_brg }}</td>
                                     <td>{{ $d->nama }}</td>
+                                    <td>{{ $d->stok }}</td>
                                     <td>{{ $d->berat }}</td>
                                     <td>{{ $d->harga }}</td>
                                     <td>{{ $d->category != null ? $d->category->name : '' }}</td>
@@ -111,7 +113,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label>Berat</label>
                                 <div class="input-group mb-3">
                                     <input type="text" name="berat" class="form-control" value="{{ old('berat') }}">
@@ -124,7 +126,17 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
+                                <label>Stok</label>
+                                <div class="form-group mb-3">
+                                    <input type="number" name="stok" class="form-control" value="{{ old('stok') }}">
+                                    @error('stok')
+                                        <br>
+                                        <div class="text-danger mt-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-3">
                                 <label>Satuan</label>
                                 <div class="input-group mb-3">
                                     <select name="satuan" id="satuan" class="form-control">
@@ -138,7 +150,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label>Harga</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -148,7 +160,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Kategori</label>
                                     <select name="kategori" id="kategori" class="form-control">
@@ -163,7 +175,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Sub Kategori</label>
                                     <select name="sub_kategori" id="sub_category" class="form-control">
@@ -175,7 +187,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Sub Sub Kategori</label>
                                     <select name="sub_sub_kategory" id="sub_sub_category" class="form-control">
@@ -265,7 +277,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label>Berat</label>
                                 <div class="input-group mb-3">
                                     <input type="text" id="edit_berat" name="edit_berat" class="form-control"
@@ -279,21 +291,31 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
+                                <label>Stok</label>
+                                <div class="form-group mb-3">
+                                    <input type="number" name="edit_stok" id="edit_stok" class="form-control" value="{{ old('edit_stok') }}">
+                                    @error('edit_stok')
+                                        <br>
+                                        <div class="text-danger mt-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-3">
                                 <label>Satuan</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" id="edit_satuan" name="edit_satuan" class="form-control"
-                                        value="{{ old('edit_satuan') }}">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">Gram</span>
-                                    </div>
+                                    <select name="edit_satuan" id="edit_satuan" class="form-control" value="{{ old('edit_satuan') }}">
+                                        @foreach ($satuan as $s)
+                                            <option value="{{ $s->nama }}">{{ $s->nama }}</option>
+                                        @endforeach
+                                    </select>
                                     @error('edit_satuan')
                                         <br>
                                         <div class="text-danger mt-1">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label>Harga</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -308,7 +330,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Kategori</label>
                                     <select name="edit_kategori" id="edit_kategori" class="form-control">
@@ -323,7 +345,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Sub Kategori</label>
                                     <select name="edit_sub_kategori" id="edit_sub_kategori" class="form-control">
@@ -335,7 +357,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Sub Sub Kategori</label>
                                     <select name="edit_sub_sub_kategori" id="edit_sub_sub_kategori" class="form-control">
@@ -461,6 +483,7 @@
                         $("#edit_id").val(hsl.id);
                         $("#edit_kode_brg").val(hsl.kode_brg);
                         $("#edit_nama").val(hsl.nama);
+                        $("#edit_stok").val(hsl.stok);
                         $("#edit_satuan").val(hsl.satuan);
                         $("#edit_berat").val(hsl.berat);
                         $("#edit_harga").val(hsl.harga);

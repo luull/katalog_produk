@@ -36,10 +36,10 @@ class productController extends Controller
     {
         try {
             $request->validate([
-                'kode_brg' => 'required',
                 'nama' => 'required',
                 'berat' => 'required',
                 'harga' => 'required',
+                'stok' => 'required',
                 'satuan' => 'required',
                 'keterangan_singkat' => 'required',
                 'keterangan' => 'required',
@@ -65,6 +65,7 @@ class productController extends Controller
                     'slug' => $slug,
                     'nama' => $request->nama,
                     'berat' => $request->berat,
+                    'stok' => $request->stok,
                     'harga' => $request->harga,
                     'satuan' => $request->satuan,
                     'keterangan_singkat' => $request->keterangan_singkat,
@@ -101,15 +102,14 @@ class productController extends Controller
         try {
 
             $request->validate([
-                'edit_kode_brg' => 'required',
                 'edit_nama' => 'required',
                 'edit_berat' => 'required',
+                'edit_stok' => 'required',
                 'edit_harga' => 'required',
                 'edit_satuan' => 'required',
                 'edit_keterangan_singkat' => 'required',
                 'edit_keterangan' => 'required',
                 'edit_kategori' => 'required',
-                'edit_sub_kategori' => 'required',
 
             ]);
 
@@ -128,6 +128,7 @@ class productController extends Controller
                 'slug' => $slug,
                 'nama' => $request->edit_nama,
                 'berat' => $request->edit_berat,
+                'stok' => $request->edit_stok,
                 'harga' => $request->edit_harga,
                 'satuan' => $request->edit_satuan,
                 'keterangan_singkat' => $request->edit_keterangan_singkat,

@@ -58,8 +58,4 @@ $("input[name='demo4']").TouchSpin({
 });
 
 // Change button class
-$("input[name='qty']").TouchSpin({
-    min: 1,
-    buttondown_class: "btn btn-classic-down",
-    buttonup_class: "btn btn-classic-up"
-});
+
