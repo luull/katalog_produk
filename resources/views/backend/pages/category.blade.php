@@ -177,7 +177,7 @@
 
      function edit(id){
             
-           var url="<?PHP echo env('APP_URL');?>/";
+           var url="<?PHP echo env('APP_URL');?>";
 
             $.ajax({
                 type:'get',
